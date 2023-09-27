@@ -1,37 +1,34 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 function HeroHeader() {
   return (
-    <div className="relative cursor-pointer">
+    <div className="relative cursor-pointer sm:mx-auto">
       <div className="relative">
+        {/* Add a div with a semi-transparent background */}
+        <div className="absolute inset-0 z-0 bg-black opacity-40"></div>
+
         <Image
-          src="/images/hero-img/header.jpg"
+          src="/images/hero-img/fresh-produce.jpg"
           alt="header image"
-          height={1000}
-          width={800}
-          className="z-0 h-auto w-full"
-          objectFit="cover"
+          width={1200}
+          height={600}
           objectPosition="center"
+          className="z-1" // Set z-index to place the image above the background
+          layout="responsive"
         />
-        <div className="z-1 absolute bottom-0 w-full bg-gray-500/50 px-4 py-3">
-          <div className="space-x-2">
-            <span className="rounded-sm bg-red-600 p-1 text-xs font-semibold uppercase text-white">
-              only here
-            </span>
-            <span className="rounded-sm bg-green-600 p-1 text-xs font-semibold uppercase text-white">
-              facts
-            </span>
-          </div>
+        <div className="z-2 absolute inset-0 flex flex-col items-center justify-center space-y-4 px-4 py-3">
+          <h1 className="text-lg font-bold text-white sm:text-4xl">
+            Welcome to Kilimo Connect
+          </h1>
           <div>
-            <h1 className="text-4xl font-black text-white transition-all duration-150 hover:text-green-600">
-              Today is the last day of the Agro Show! What else can you see?
-              LIVE
-            </h1>
-          </div>
-          <div className="space-x-2 text-xs text-white">
-            <span>Today, 8:41</span>
-            <span className="font-bold">• Joselle Rivera</span>
+            <Link
+              href="/products"
+              className="bg rounded-2xl bg-[#9da452] px-2 py-1 text-[12px] font-bold uppercase text-white sm:px-4 sm:py-2 sm:text-xl"
+            >
+              View Products
+            </Link>
           </div>
         </div>
       </div>

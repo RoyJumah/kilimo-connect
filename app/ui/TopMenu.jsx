@@ -1,32 +1,37 @@
-import { HiChevronDown } from "react-icons/hi";
+"use client";
+import { useState } from "react";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
-function TopMenu() {
-  const menuItems = [
-    { label: "Plants", link: "" },
-    { label: "Animals", link: "" },
-    { label: "Contact", link: "" },
-    { label: "Finance", link: "" },
-    { label: "Business", link: "" },
-    { label: "Facts", link: "" },
-    { label: "Prices", link: "" },
-    { label: "Agrosphere", link: "" },
-    { label: "Renewable", link: "" },
-  ];
+function SearchOrder() {
+  const [query, setQuery] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
+  const totalCartItems = 0;
 
   return (
-    <nav>
-      <ul className="flex items-center gap-4">
-        {menuItems.map((item) => (
-          <li key={item.label} className="flex items-center gap-1">
-            <a href={item.link}>{item.label}</a>
-            <HiChevronDown size={18} color="green" />
-          </li>
-        ))}
-      </ul>
+    <div className="flex items-center gap-2 py-2">
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="w-28 rounded-full border-2 px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400 focus:outline-none focus:ring focus:ring-stone-300 focus:ring-opacity-50 sm:w-64 sm:focus:w-72"
+        ></input>
+      </form>
+      <div className="relative">
+        <AiOutlineShoppingCart size={22} />
 
-      <hr className="mt-2" />
-    </nav>
+        <div className="absolute -right-[5px] -top-[2px] h-[14px] w-[14px] rounded-full bg-[#9da452] text-[10px] text-white">
+          <div className="-mt-[1px] flex items-center justify-center">
+            {totalCartItems}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
-export default TopMenu;
+export default SearchOrder;

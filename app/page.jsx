@@ -1,14 +1,22 @@
 import React from "react";
 
 import HeroHeader from "./ui/HeroHeader";
-import News from "./components/News";
+
+import Products from "./components/Products";
+import Footer from "./components/Footer";
+import Editors from "./components/Editors";
+import Articles from "./components/Articles";
 
 function HomePage() {
   return (
-    <div className=" grid-cols-2-cols grid gap-8 ">
+    <div className="grid grid-rows-[auto_1fr_auto] ">
       <HeroHeader />
-
-      <News />
+      <div>
+        <Products />
+        <Editors />
+        <Articles />
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -13,7 +13,7 @@ export default function Footer() {
     <>
       <footer
         id="Footer"
-        className=" mt-8 hidden border-t px-2 sm:mt-20 sm:block"
+        className=" mt-8 hidden border-t px-2  sm:mt-20 sm:block "
       >
         <div className="min-w-6xl max-w-8xl mx-auto flex flex-col  p-4 sm:flex-row  sm:justify-between sm:px-4 sm:py-10">
           <ul className="mb-8 w-full sm:mb-0 sm:w-1/3">

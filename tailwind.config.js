@@ -8,6 +8,9 @@ module.exports = {
     "./src/**/*.{js,jsx}",
   ],
   theme: {
+    fontFamily: {
+      sans: "Roboto Mono, monospace",
+    },
     container: {
       center: true,
       padding: "2rem",

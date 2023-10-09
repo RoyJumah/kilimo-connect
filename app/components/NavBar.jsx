@@ -6,8 +6,10 @@ import SubMenu from "../ui/SubMenu";
 function NavBar() {
   return (
     <>
-      <div className="mx-auto flex w-full max-w-[1300px] justify-between gap-4">
-        <Logo />
+      <div className="mx-auto flex w-full max-w-[1300px] justify-between gap-4 ">
+        <div className="hidden sm:block">
+          <Logo />
+        </div>
         <div>
           <TopMenu />
         </div>

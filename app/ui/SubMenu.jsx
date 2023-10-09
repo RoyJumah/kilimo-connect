@@ -97,7 +97,7 @@ const components = [
 
 export default function SubMenu() {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="hidden sm:block">
       <NavigationMenuList className="flex items-center gap-6 text-xl font-semibold ">
         <NavigationMenuItem>
           <Link href="/">

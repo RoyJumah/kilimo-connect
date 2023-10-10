@@ -23,7 +23,7 @@ function SearchOrder() {
             className="w-28 rounded-full border-2 px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400 focus:outline-none focus:ring focus:ring-stone-300 focus:ring-opacity-50 sm:w-64 sm:focus:w-72"
           ></input>
         </form>
-        <div className="relative">
+        <div className="relative ">
           <AiOutlineShoppingCart size={22} />
 
           <div className="absolute -right-[5px] -top-[2px] h-[14px] w-[14px] rounded-full bg-[#9da452] text-[10px] text-white">

@@ -107,7 +107,7 @@ export default function SubMenu() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link
-            href=""
+            href="/discover"
             className="transition-all duration-100 hover:text-[#9da452]"
           >
             Discover
@@ -116,7 +116,7 @@ export default function SubMenu() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link
-            href=""
+            href="/superfoods"
             className="transition-all duration-100 hover:text-[#9da452]"
           >
             Superfoods

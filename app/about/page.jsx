@@ -11,18 +11,18 @@ export default function page() {
     },
   };
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2 sm:gap-4">
       <div>
         <h2 className="mb-3 text-xl font-medium">Shared Earth</h2>
-        <p>
+        <p className="text-sm sm:text-base">
           Rainforest Foods has a philosophy we call shared earth. We believe
           that we all share a responsibility to protect the earth and to improve
           the lives of those who need a helping hand.
         </p>
       </div>
       <div>
-        <h2 className="mb-3 text-xl font-medium">About us</h2>
-        <div className="flex flex-col gap-2">
+        <h2 className="mb-3 text-lg font-medium sm:text-xl">About us</h2>
+        <div className="flex flex-col gap-2 text-sm sm:text-base">
           <p>
             Rainforest Foods was founded in 2008 to source high quality
             superfoods from environmentally conscious and ethical suppliers. In
@@ -50,7 +50,7 @@ export default function page() {
       </div>
       <div>
         <h2 className="mb-3 text-xl font-medium">Rainforest Concern</h2>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 text-sm sm:text-base">
           <p>
             Rainforest Concern is a charity that works to protect threatened
             natural habitats, the biodiversity they contain and the indigenous
@@ -67,7 +67,7 @@ export default function page() {
       </div>
       <div>
         <h2 className="mb-3 text-xl font-medium">Warka Water</h2>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 text-sm sm:text-base">
           <p>
             Warka Water is an organisation that aims to provide clean drinking
             water to rural communities in Ethiopia. They do this by building

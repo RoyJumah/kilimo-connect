@@ -1,10 +1,12 @@
 "use client";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import {
   getBestSellingProducts,
   getFeaturedProducts,
 } from "@/data/dummy-products";
 import Image from "next/image";
-import { useState } from "react";
 
 function Products() {
   const bestSellingProducts = getBestSellingProducts();
@@ -49,36 +51,68 @@ function Products() {
           Featured Products
         </button>
       </div>
-      {activeList === "bestSellingProducts" && (
-        <ul className="flex flex-col gap-4 sm:flex-row sm:items-center">
-          {bestSellingProducts.map((product) => (
-            <li key={product.id}>
-              <Image
-                src={product.image}
-                width={imageSize.width}
-                height={imageSize.height}
-                alt={product.name}
-                layout="responsive"
-              />
-            </li>
-          ))}
-        </ul>
-      )}
-      {activeList === "featuredProducts" && (
-        <ul className="flex flex-col gap-4 sm:flex-row sm:items-center">
-          {featuredProducts.map((product) => (
-            <li key={product.id}>
-              <Image
-                src={product.image}
-                width={imageSize.width}
-                height={imageSize.height}
-                alt={product.name}
-                layout="responsive"
-              />
-            </li>
-          ))}
-        </ul>
-      )}
+      <AnimatePresence mode="wait">
+        {activeList === "bestSellingProducts" && (
+          <motion.ul
+            key="bestSelling"
+            className="flex flex-col gap-4 sm:flex-row sm:items-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            {bestSellingProducts.map((product) => (
+              <motion.li
+                key={product.id}
+                className="overflow-hidden"
+                style={{ height: `${imageSize.height}px` }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Image
+                  src={product.image}
+                  width={imageSize.width}
+                  height={imageSize.height}
+                  alt={product.name}
+                  layout="responsive"
+                />
+              </motion.li>
+            ))}
+          </motion.ul>
+        )}
+        {activeList === "featuredProducts" && (
+          <motion.ul
+            key="featured"
+            className="flex flex-col gap-4 sm:flex-row sm:items-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            {featuredProducts.map((product) => (
+              <motion.li
+                key={product.id}
+                className="overflow-hidden"
+                // style={{ width: `${imageSize.width}px` }} prevents the layout shift when the image loads
+                // this is achieved by setting the width of the image container to the desired width
+                style={{ height: `${imageSize.height}px` }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Image
+                  src={product.image}
+                  width={imageSize.width}
+                  height={imageSize.height}
+                  alt={product.name}
+                  layout="responsive"
+                />
+              </motion.li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

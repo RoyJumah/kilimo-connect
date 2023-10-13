@@ -3,7 +3,7 @@ import Image from "next/image";
 function DiscoverFoods() {
   return (
     <>
-      <h1 className="mb-2 text-center text-2xl font-medium sm:mb-4 sm:text-3xl">
+      <h1 className=" mb-2 text-center text-2xl font-medium duration-200  sm:mb-4 sm:text-3xl">
         Discover Foods
       </h1>
       <div className="flex flex-col gap-4 sm:gap-6">

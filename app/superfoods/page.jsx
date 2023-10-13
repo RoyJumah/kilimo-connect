@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function SuperFoodsPage() {
   return (
-    <div className="grid grid-cols-2 gap-2">
+    <div className=" grid grid-cols-2 gap-2">
       <div className="relative">
         <div className="relative">
           <div className="absolute inset-0 z-0 bg-black opacity-40"></div>

@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  user_id       String     @id @default(uuid())
+  email     String   
+  name      String?
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  role     Role     @default(USER)
+
+  orders   Order[]
+//using block-level attibutes to indicate that the name and the email must be unique
+  @@unique([email, name])
+
+}
+
+model Products{
+  product_id      String     @id @default(uuid())
+  farmer_id       String?
+  name         String
+  description  String
+  ingredients  String
+  usage        String
+  price        Int
+  image        String
+  quantity     Int
+  orders       Order[]
+    farmer       Farmer?     @relation(fields: [farmer_id], references: [farmer_id])
+  
+}
+
+model Order {
+  order_id     String     @id @default(uuid())
+ user_id      String
+ stripe_id    String
+  quantity     Int
+  total_price  Int
+  status       String
+ products    Products[]  
+  // Define a foreign key that references the User model
+  user         User       @relation(fields: [user_id], references: [user_id])
+  createdAt    DateTime? @default(now())
+ 
+}
+
+model Farmer {
+  farmer_id    String     @id @default(uuid())
+  name         String
+  phone        String
+  address      String
+  farm_location String?
+  products     Products[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+
+enum Role {
+  USER
+  FARMER
+}

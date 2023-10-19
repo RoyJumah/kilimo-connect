@@ -1,10 +1,16 @@
 "use client";
-import { getProductsInStock } from "@/data/dummy-stock";
 
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-export default function page() {
-  const products = getProductsInStock();
+import Link from "next/link";
+
+import { getProducts } from "@/services/apiProducts";
+
+export default function ProductListPage() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    getProducts().then((res) => setProducts(res));
+  }, []);
 
   return (
     <>
@@ -23,15 +29,16 @@ export default function page() {
 
       <ul className="mt-2  grid gap-2  sm:grid-cols-2 sm:gap-6 md:grid-cols-4 md:gap-4 lg:grid-cols-6 lg:gap-2">
         {products.map((product, i) => (
-          <motion.li
+          <Link
+            href={`/products/${product.product_id}`}
             key={i}
             className="overflow-hidden"
             // style={{ width: `${imageSize.width}px` }} prevents the layout shift when the image loads
             // this is achieved by setting the width of the image container to the desired width
 
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ duration: 0.3 }}
+            // whileHover={{ scale: 1.1 }}
+            // whileTap={{ scale: 0.9 }}
+            // transition={{ duration: 0.3 }}
           >
             <Image
               src={product.image}
@@ -40,7 +47,7 @@ export default function page() {
               alt={product.name}
               layout="responsive"
             />
-          </motion.li>
+          </Link>
         ))}
       </ul>
     </>

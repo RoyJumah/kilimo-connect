@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import {  useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import {
@@ -8,7 +8,9 @@ import {
 } from "@/data/dummy-products";
 import Image from "next/image";
 
+
 function Products() {
+
   const bestSellingProducts = getBestSellingProducts();
   const featuredProducts = getFeaturedProducts();
   const [activeList, setActiveList] = useState("bestSellingProducts");

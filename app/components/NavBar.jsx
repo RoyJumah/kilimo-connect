@@ -4,15 +4,23 @@ import { HiMenu, HiOutlineUser, HiOutlineX } from "react-icons/hi";
 import Link from "next/link";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 
 import Logo from "../ui/Logo";
 import TopMenu from "../ui/TopMenu";
 import SubMenu from "../ui/SubMenu";
+import { useCart } from "../context/cart";
+import SearchBar from "../ui/SearchBar";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
   const [query, setQuery] = useState("");
+  const cart = useCart();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,7 +29,7 @@ function NavBar() {
   function handleIsOpenSearch() {
     setIsOpenSearch(!isOpenSearch);
   }
-  const totalCartItems = 1;
+
   const mobileLinks = [
     {
       name: "Home",
@@ -45,14 +53,25 @@ function NavBar() {
     },
   ];
   return (
-    <>
+    <div>
       {/* desktop menu */}
       <nav className="mx-auto flex w-full max-w-[1200px] items-center justify-between">
         <div className="hidden sm:block">
           <Logo />
         </div>
-        <div>
-          <TopMenu />
+        <div className="flex items-center gap-2">
+          <SearchBar />
+          <HoverCard>
+            {/* used the hover component from shadcn ui to display the menu indicating no items are in the cart */}
+            <HoverCardTrigger>
+              <TopMenu />
+            </HoverCardTrigger>
+            {cart.cartCount() === 0 && (
+              <HoverCardContent className="text-xs">
+                No products in the cart
+              </HoverCardContent>
+            )}
+          </HoverCard>
         </div>
       </nav>
       <div className="mx-auto max-w-2xl">
@@ -76,10 +95,10 @@ function NavBar() {
               <HiOutlineUser size={24} />
               <div onClick={() => navigate("/cart")} className="relative">
                 <AiOutlineShoppingCart size={22} />
-                {totalCartItems > 0 && (
+                {cart.cartCount() > 0 && (
                   <div className="absolute -right-[5px] -top-[2px] h-[14px] w-[14px] rounded-full bg-red-500 text-[10px] text-white">
                     <div className="-mt-[1px] flex items-center justify-center">
-                      {totalCartItems}
+                      {cart.cartCount()}
                     </div>
                   </div>
                 )}
@@ -122,7 +141,7 @@ function NavBar() {
           ))}
         </ul>
       </nav>
-    </>
+    </div>
   );
 }
 

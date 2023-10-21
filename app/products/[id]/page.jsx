@@ -3,6 +3,8 @@
 import { getProductDetails } from "@/services/apiProducts";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useCart } from "@/app/context/cart";
+import Button from "@/app/ui/Button";
 
 export default function ProductPage({ params: { id } }) {
   const [product, setProduct] = useState([]);
@@ -13,17 +15,34 @@ export default function ProductPage({ params: { id } }) {
     getProductDetails(id).then((res) => setProduct(res));
   }, [id]);
 
+  const cart = useCart();
+
   return (
     <div className="sm:w-[1200px]">
-      <div className="mb-20 flex flex-col gap-6 md:flex-row ">
+      <div className="mb-20 flex flex-col gap-6 lg:flex-row ">
         <Image
           src={product.image}
           width={300}
           height={300}
-          alt={product.name}
+          alt={product.name || "product image"}
         />
-        <h1 className="text-xl font-bold">{product.name}</h1>
+        <div className="flex flex-col items-start justify-start gap-3">
+          <h1 className="text-xl font-bold">{product.name}</h1>
+          <Button
+            type="primary"
+            onClick={() => {
+              if (cart.isItemAdded) {
+                cart.removeFromCart(product);
+              } else {
+                cart.addToCart(product);
+              }
+            }}
+          >
+            {cart.isItemAdded ? "Remove From Cart" : "Add To Cart"}
+          </Button>
+        </div>
       </div>
+
       <div className="mt-6 flex flex-col gap-2 ">
         <div className="sm:flex-start grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 ">
           <Image

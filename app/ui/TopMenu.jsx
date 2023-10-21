@@ -1,24 +1,23 @@
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import SearchBar from "./SearchBar";
+
+import { useCart } from "../context/cart";
 
 function TopMenu() {
-  const totalCartItems = 0;
+  const cart = useCart();
 
   return (
-    <>
-      <div className=" hidden items-center gap-2 py-2 sm:flex">
-        <SearchBar />
-        <div className="relative sm:rounded-full sm:border sm:border-stone-400 sm:p-2">
-          <AiOutlineShoppingCart size={22} />
-
-          <div className="absolute -left-[5px] -top-[2px] h-[18px] w-[18px] rounded-full bg-[#9da452] text-[10px] text-white">
-            <div className=" flex items-center justify-center">
-              {totalCartItems}
+    <div className="hidden items-center gap-2 py-2 sm:flex">
+      <div className="relative sm:rounded-full sm:border sm:border-stone-400 sm:p-2">
+        <AiOutlineShoppingCart size={22} />
+        {cart.cartCount() > 0 && (
+          <div className="absolute -right-[5px] -top-[2px] h-[14px] w-[14px] rounded-full bg-red-500 text-[10px] text-white">
+            <div className="-mt-[1px] flex items-center justify-center">
+              {cart.cartCount()}
             </div>
           </div>
-        </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }
 

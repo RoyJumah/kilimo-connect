@@ -1,46 +1,83 @@
 "use client";
+import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
 
 import { getProductDetails } from "@/services/apiProducts";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { useCart } from "@/app/context/cart";
+
 import Button from "@/app/ui/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { addItems, getCurrentQuantityById } from "@/app/redux/cartSlice";
+import DeleteItem from "@/app/ui/DeleteItem";
+import UpdateItemQuantity from "@/app/ui/UpdateItemQuantity";
+import ShippingInfoCard from "@/app/components/ShippingInfoCard";
 
 export default function ProductPage({ params: { id } }) {
-  const [product, setProduct] = useState([]);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    // fetch product details by id
+  const currentQuantity = useSelector(getCurrentQuantityById(id));
 
-    getProductDetails(id).then((res) => setProduct(res));
-  }, [id]);
+  const {
+    data: productDetails,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["productDetails", id],
+    queryFn: () => getProductDetails(id),
+  });
 
-  const cart = useCart();
+  if (isLoading) {
+    <p>Loading...</p>;
+  }
+  if (!productDetails) {
+    return <p>Product details not available</p>;
+  }
+  if (error) return <p>Error:{error.message}</p>; // show an error message if no sneaker
+
+  const isInCart = currentQuantity > 0;
+  const { name, image, price, usage, ingredients, description } =
+    productDetails;
+  console.log({ name, image, price });
+  function handleAddToCart() {
+    //add to cart
+
+    const newItem = {
+      id,
+      image,
+      name,
+      quantity: 1,
+      price,
+      totalPrice: price * 1,
+    };
+    dispatch(addItems(newItem));
+  }
 
   return (
     <div className="sm:w-[1200px]">
-      <div className="mb-20 flex flex-col gap-6 lg:flex-row ">
+      <div className="mx-auto my-8 grid grid-cols-[1fr-auto] gap-4 md:grid-cols-[auto_1fr_auto] md:gap-4">
         <Image
-          src={product.image}
+          src={image}
           width={300}
           height={300}
-          alt={product.name || "product image"}
+          alt={name || "product image"}
         />
         <div className="flex flex-col items-start justify-start gap-3">
-          <h1 className="text-xl font-bold">{product.name}</h1>
-          <Button
-            type="primary"
-            onClick={() => {
-              if (cart.isItemAdded) {
-                cart.removeFromCart(product);
-              } else {
-                cart.addToCart(product);
-              }
-            }}
-          >
-            {cart.isItemAdded ? "Remove From Cart" : "Add To Cart"}
-          </Button>
+          <h1 className="text-xl font-bold">{name}</h1>
+          {isInCart && (
+            <div className="flex items-center gap-3 sm:gap-8">
+              <UpdateItemQuantity
+                productId={id}
+                currentQuantity={currentQuantity}
+              />
+              <DeleteItem productId={id} />
+            </div>
+          )}
+          {!isInCart && (
+            <Button type="small" onClick={handleAddToCart}>
+              Add to Cart
+            </Button>
+          )}
         </div>
+        <ShippingInfoCard />
       </div>
 
       <div className="mt-6 flex flex-col gap-2 ">
@@ -78,16 +115,16 @@ export default function ProductPage({ params: { id } }) {
         </div>
         <div className="flex flex-col gap-4">
           <div>
-            <h2 className="text-base font-semibold">{product.name}</h2>
-            <p>{product.description}</p>
+            <h2 className="text-base font-semibold">{name}</h2>
+            <p>{description}</p>
           </div>
           <div>
             <h2 className="text-base font-semibold">Ingredients</h2>
-            <p>{product.ingredients}</p>
+            <p>{ingredients}</p>
           </div>
           <div>
             <h2 className="text-base font-semibold">How To Use</h2>
-            <p>{product.usage}</p>
+            <p>{usage}</p>
           </div>
           <div>
             <h2 className="text-base font-semibold">Why Rainforest Foods </h2>

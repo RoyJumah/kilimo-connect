@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { HiMenu, HiOutlineUser, HiOutlineX } from "react-icons/hi";
+import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -10,18 +11,27 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
 import Logo from "../ui/Logo";
 import TopMenu from "../ui/TopMenu";
 import SubMenu from "../ui/SubMenu";
-import { useCart } from "../context/cart";
 import SearchBar from "../ui/SearchBar";
+import Button from "../ui/Button";
+import { getTotalCartQuantity } from "../redux/cartSlice";
+import { useSelector } from "react-redux";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
   const [query, setQuery] = useState("");
-  const cart = useCart();
+  const items = useSelector((state) => state.cart.cart);
 
+  const totalCartItems = useSelector(getTotalCartQuantity);
   function handleSubmit(e) {
     e.preventDefault();
   }
@@ -59,19 +69,54 @@ function NavBar() {
         <div className="hidden sm:block">
           <Logo />
         </div>
-        <div className="flex items-center gap-2">
-          <SearchBar />
-          <HoverCard>
-            {/* used the hover component from shadcn ui to display the menu indicating no items are in the cart */}
-            <HoverCardTrigger>
-              <TopMenu />
-            </HoverCardTrigger>
-            {cart.cartCount() === 0 && (
+        <div className="flex items-center gap-2  ">
+          <div className="hidden sm:block">
+            <SearchBar />
+          </div>
+
+          {totalCartItems === 0 && (
+            <HoverCard>
+              {/* used the hover component from shadcn ui to display the menu indicating no items are in the cart */}
+              <HoverCardTrigger>
+                <TopMenu />
+              </HoverCardTrigger>
               <HoverCardContent className="text-xs">
                 No products in the cart
               </HoverCardContent>
-            )}
-          </HoverCard>
+            </HoverCard>
+          )}
+          {/* displaying a pop over menu containing the cart items */}
+          {totalCartItems > 0 && (
+            <Popover>
+              <PopoverTrigger>
+                <TopMenu />
+              </PopoverTrigger>
+              <PopoverContent>
+                <ul className="flex flex-col gap-1">
+                  {items.map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-center justify-start gap-2"
+                    >
+                      <Image
+                        src={item.image}
+                        width={25}
+                        height={25}
+                        alt="product image"
+                      />
+                      <span className="text-xs">{item.quantity}X</span>
+                      <p className="text-xs">{item.name}</p>
+                    </li>
+                  ))}
+                  <div className="mx-auto">
+                    <Button to="/cart" type="small">
+                      Go To Cart
+                    </Button>
+                  </div>
+                </ul>
+              </PopoverContent>
+            </Popover>
+          )}
         </div>
       </nav>
       <div className="mx-auto max-w-2xl">
@@ -95,10 +140,10 @@ function NavBar() {
               <HiOutlineUser size={24} />
               <div onClick={() => navigate("/cart")} className="relative">
                 <AiOutlineShoppingCart size={22} />
-                {cart.cartCount() > 0 && (
+                {totalCartItems > 0 && (
                   <div className="absolute -right-[5px] -top-[2px] h-[14px] w-[14px] rounded-full bg-red-500 text-[10px] text-white">
                     <div className="-mt-[1px] flex items-center justify-center">
-                      {cart.cartCount()}
+                      {totalCartItems}
                     </div>
                   </div>
                 )}

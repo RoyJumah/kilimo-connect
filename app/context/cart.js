@@ -25,34 +25,41 @@ const Provider = ({ children }) => {
     }
     cart.push(product);
     localStorage.setItem("cart", JSON.stringify(cart));
-    isItemAddedToCart(product);
-    router.refresh();
+
+    setIsItemAdded(true);
   };
 
   const removeFromCart = (product) => {
-    let cart = [];
-    if (typeof localStorage !== "undefined") {
-      cart = JSON.parse(localStorage.getItem("cart")) || [];
-    }
-    cart = cart.filter((item) => item.id !== product.id);
+    let cart = getCart();
+    cart = cart.filter((item) => item.product_id !== product?.product_id);
     localStorage.setItem("cart", JSON.stringify(cart));
-    isItemAddedToCart(product);
-    router.refresh();
-  };
-
-  const isItemAddedToCart = (product) => {
-    let cart = [];
-    if (typeof localStorage !== "undefined") {
-      cart = JSON.parse(localStorage.getItem("cart")) || [];
-    }
-    cart = cart.filter((item) => item.id === product.id);
-
-    if (cart.length > 0) {
-      setIsItemAdded(true);
-      return;
-    }
+    // isItemAddedToCart(product);
 
     setIsItemAdded(false);
+  };
+
+  const increaseItemQuantity = (product) => {
+    let cart = [];
+    if (typeof localStorage !== "undefined") {
+      cart = JSON.parse(localStorage.getItem("cart")) || [];
+    }
+
+    const item = cart.find((item) => item.product_id === product?.product_id);
+    item.quantity += 1;
+    item.totalPrice = item.quantity * item.price;
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  const decreaseItemQuantity = (product) => {
+    let cart = [];
+    if (typeof localStorage !== "undefined") {
+      cart = JSON.parse(localStorage.getItem("cart")) || [];
+    }
+
+    const item = cart.find((item) => item.product_id === product?.product_id);
+    item.quantity -= 1;
+    item.totalPrice = item.quantity * item.price;
+    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   const cartCount = () => {
@@ -61,6 +68,16 @@ const Provider = ({ children }) => {
       cart = JSON.parse(localStorage.getItem("cart")) || [];
     }
     return cart.length;
+  };
+
+  const getCurrentQuantityById = (id) => {
+    let cart = [];
+    if (typeof localStorage !== "undefined") {
+      cart = JSON.parse(localStorage.getItem("cart")) || [];
+    }
+
+    const item = cart.find((item) => item.product_id === id)?.quantity ?? 0;
+    return item.quantity;
   };
 
   const cartTotal = () => {
@@ -84,10 +101,13 @@ const Provider = ({ children }) => {
 
   const exposed = {
     isItemAdded,
+
     getCart,
     addToCart,
     removeFromCart,
-    isItemAddedToCart,
+    increaseItemQuantity,
+    decreaseItemQuantity,
+    getCurrentQuantityById,
     cartCount,
     cartTotal,
     clearCart,

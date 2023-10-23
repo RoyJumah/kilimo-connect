@@ -1,24 +1,30 @@
+"use client";
+import { Provider } from "react-redux";
+
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
-import CartProvider from "./context/cart";
 import "./globals.css";
+import TanstackProvider from "./components/providers/TanstackProvider";
+import store from "./redux/store";
 
-export const metadata = {
-  title: "Kilimo-Connect",
-  description: "Fresh Produce, Local Farming Solutions",
-};
+// export const metadata = {
+//   title: "Kilimo-Connect",
+//   description: "Fresh Produce, Local Farming Solutions",
+// };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body id="root">
-        <CartProvider>
-          <div className="grid grid-rows-[auto_1fr_auto]">
-            <NavBar />
-            <main className="mx-auto max-w-6xl p-6">{children}</main>
-            <Footer />
-          </div>
-        </CartProvider>
+        <TanstackProvider>
+          <Provider store={store}>
+            <div className="grid grid-rows-[auto_1fr_auto]">
+              <NavBar />
+              <main className="mx-auto max-w-6xl p-6">{children}</main>
+              <Footer />
+            </div>
+          </Provider>
+        </TanstackProvider>
       </body>
     </html>
   );

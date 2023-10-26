@@ -4,7 +4,7 @@ async function seedProducts() {
   try {
     await prisma.products.create({
       data: {
-        name: "Natural Skin Moisturiser",
+        name: "Organic Raw Cacao Butter Chunks",
         description:
           "Our award-winning cacao butter originates from Peru where the Cacao tree was sacred amongst the Mayans and Aztecs. Cacao butter is made by pressing ground, milled cacao nibs to make a cocoa paste. This process separates powder from the butter to create a velvety and rich paste that can be used as a natural alternative to processed cooking oils. Our cacao butter also dissolves beautifully onto the skin as a pure chemical-free moisturiser.",
         image:
@@ -13,7 +13,6 @@ async function seedProducts() {
         usage:
           "Clean and pure, our cacao butter melts into a  milky rich buttery mass. With an excellent clean finish, our cacao butter is a very versatile culinary product.",
         ingredients: "100% Cacao Butter",
-        quantity: 100,
       },
     });
 
@@ -28,7 +27,6 @@ async function seedProducts() {
         usage:
           "With a deliciously rich dark chocolate flavour, melt our cacao paste to create decadent organic desserts or hot chocolate!",
         ingredients: "100% Cacao Paste",
-        quantity: 12,
       },
     });
 
@@ -43,7 +41,6 @@ async function seedProducts() {
         usage:
           "With a crunchy texture and rich flavour like unsweetened dark chocolate, you can enjoy our cacao nibs directly from the pack! Or get creative and sprinkle them over cakes and dash over breakfast bowls. ",
         ingredients: "100% Cacao Nibs",
-        quantity: 0,
       },
     });
     await prisma.products.create({
@@ -57,7 +54,6 @@ async function seedProducts() {
         usage:
           "Our Acerola powder has a sweet and sour taste and can be added to smoothies, juices, and desserts.",
         ingredients: "100% Acerola Powder",
-        quantity: 2,
       },
     });
 
@@ -72,7 +68,6 @@ async function seedProducts() {
         usage:
           "Our hemp protein powder has a mild flavour and colour, making it a convenient addition to any meal, shake or bake for a quick and easy vegan protein super boost.",
         ingredients: "100% Hemp Protein Powder",
-        quantity: 0,
       },
     });
     await prisma.products.create({
@@ -86,7 +81,6 @@ async function seedProducts() {
         usage:
           "Our bee pollen has a sweet and floral flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Bee Pollen",
-        quantity: 12,
       },
     });
 
@@ -101,7 +95,6 @@ async function seedProducts() {
         usage:
           "Our matcha powder has a smooth flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Matcha Powder",
-        quantity: 165,
       },
     });
 
@@ -112,12 +105,10 @@ async function seedProducts() {
           "Our award-winning cacao butter originates from Peru where the Cacao tree was sacred amongst the Mayans and Aztecs. Cacao butter is made by pressing ground, milled cacao nibs to make a cocoa paste. This process separates powder from the butter to create a velvety and rich paste that can be used as a natural alternative to processed cooking oils. Our cacao butter also dissolves beautifully onto the skin as a pure chemical-free moisturiser.",
         image:
           "https://yvqzpcvcpgibbhhpgcad.supabase.co/storage/v1/object/public/products/10_medium.webp",
-        price: 25,
         usage:
           "Clean and pure, our cacao butter melts into a  milky rich buttery mass. With an excellent clean finish, our cacao butter is a very versatile culinary product.",
         price: 79.99,
         ingredients: "100% Cacao Butter",
-        quantity: 100,
       },
     });
     await prisma.products.create({
@@ -131,7 +122,6 @@ async function seedProducts() {
         usage:
           "Our baobab powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Baobab Powder",
-        quantity: 100,
       },
     });
 
@@ -146,7 +136,6 @@ async function seedProducts() {
         usage:
           "Our chia seeds has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Chia Seeds",
-        quantity: 112,
       },
     });
 
@@ -161,7 +150,6 @@ async function seedProducts() {
         usage:
           "Our chlorella and spirulina tablets has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Chlorella and Spirulina",
-        quantity: 100,
       },
     });
 
@@ -176,7 +164,6 @@ async function seedProducts() {
         usage:
           "Our banana powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Banana Powder",
-        quantity: 100,
       },
     });
 
@@ -191,7 +178,6 @@ async function seedProducts() {
         usage:
           "Our barley grass powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Barley Grass Powder",
-        quantity: 100,
       },
     });
 
@@ -206,7 +192,6 @@ async function seedProducts() {
         usage:
           "Our beetroot powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Beetroot Powder",
-        quantity: 100,
       },
     });
 
@@ -221,7 +206,6 @@ async function seedProducts() {
         usage:
           "Our blueberry powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Blueberry Powder",
-        quantity: 100,
       },
     });
 
@@ -236,7 +220,6 @@ async function seedProducts() {
         usage:
           "Our cacao beans has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Cacao Beans",
-        quantity: 100,
       },
     });
 
@@ -251,7 +234,6 @@ async function seedProducts() {
         usage:
           "With a deliciously rich dark chocolate flavour, melt our cacao paste wafers to create decadent organic desserts or hot chocolate!",
         ingredients: "100% Cacao Paste",
-        quantity: 100,
       },
     });
 
@@ -266,7 +248,6 @@ async function seedProducts() {
         usage:
           "Our Camu Camu powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Camu Camu Powder",
-        quantity: 100,
       },
     });
 
@@ -281,7 +262,6 @@ async function seedProducts() {
         usage:
           "Our Chaga powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Chaga Powder",
-        quantity: 100,
       },
     });
     await prisma.products.create({
@@ -295,7 +275,6 @@ async function seedProducts() {
         usage:
           "Our cinnamon powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Cinnamon Powder",
-        quantity: 100,
       },
     });
 
@@ -310,7 +289,6 @@ async function seedProducts() {
         usage:
           "Our coconut sugar has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Coconut Sugar",
-        quantity: 100,
       },
     });
 
@@ -325,7 +303,6 @@ async function seedProducts() {
         usage:
           "Our coconut water powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Coconut Water Powder",
-        quantity: 100,
       },
     });
 
@@ -340,7 +317,6 @@ async function seedProducts() {
         usage:
           "Our Incan berries has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Incan Berries",
-        quantity: 100,
       },
     });
 
@@ -355,7 +331,6 @@ async function seedProducts() {
         usage:
           "Our Maca powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Maca Powder",
-        quantity: 100,
       },
     });
 
@@ -370,7 +345,6 @@ async function seedProducts() {
         usage:
           "Our Goji berries has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Goji Berries",
-        quantity: 100,
       },
     });
 
@@ -385,7 +359,6 @@ async function seedProducts() {
         usage:
           "Our Guarana powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Guarana Powder",
-        quantity: 100,
       },
     });
 
@@ -400,7 +373,6 @@ async function seedProducts() {
         usage:
           "Our Lucuma powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Lucuma Powder",
-        quantity: 100,
       },
     });
     await prisma.products.create({
@@ -414,7 +386,6 @@ async function seedProducts() {
         usage:
           "Our Maca powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Maca Powder",
-        quantity: 100,
       },
     });
 
@@ -429,7 +400,6 @@ async function seedProducts() {
         usage:
           "Our Acai Berry powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Acai Berry Powder",
-        quantity: 100,
       },
     });
     await prisma.products.create({
@@ -443,7 +413,6 @@ async function seedProducts() {
         usage:
           "Our Coconut Flour has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Coconut Flour",
-        quantity: 100,
       },
     });
 
@@ -458,7 +427,6 @@ async function seedProducts() {
         usage:
           "Our Chia Seeds has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
         ingredients: "100% Chia Seeds",
-        quantity: 100,
       },
     });
   } catch (error) {

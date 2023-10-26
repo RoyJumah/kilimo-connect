@@ -1,14 +1,35 @@
-import { useRouter } from "next/navigation";
-import { formatCurrency } from "../../utils/helpers";
+import { formatCurrency } from "../../lib/utilities/helpers";
 import Image from "next/image";
-import { useCart } from "../context/cart";
+
 import { useSelector } from "react-redux";
 import { getTotalCartPrice, getTotalCartQuantity } from "../redux/cartSlice";
+import { useState } from "react";
+import axios from "axios";
 
 export default function OrderSummary() {
   const totalQuantity = useSelector(getTotalCartQuantity);
   const totalPrice = useSelector(getTotalCartPrice);
-  const router = useRouter();
+
+  const [redirecting, setRedirecting] = useState(false);
+
+  const cartDetails = useSelector((state) => state.cart.cart);
+
+  const redirectToCheckout = async () => {
+    // Create Stripe checkout
+    const {
+      data: { id },
+    } = await axios.post("/api/checkout_sessions", {
+      items: Object.entries(cartDetails).map(([_, { id, quantity }]) => ({
+        price: id,
+        quantity,
+      })),
+    });
+
+    // Redirect to checkout
+    const stripe = await getStripe();
+    await stripe.redirectToCheckout({ sessionId: id });
+  };
+
   return (
     <div className=" mt-4 flex h-[350px] flex-col gap-4 rounded-md bg-stone-200 p-4 sm:mt-0 sm:w-[350px]">
       <div className="mb-6 flex justify-between  border-b border-stone-400 p-2 font-bold">
@@ -56,10 +77,10 @@ export default function OrderSummary() {
       </div>
       <button
         data-set="proceed-to-confirm-order"
-        onClick={() => router("/checkout")}
+        onClick={redirectToCheckout}
         className="inline-block rounded-md bg-[#9da452] px-4 py-3 text-sm font-semibold capitalize tracking-wide text-slate-50 transition-colors duration-300 focus:outline-none focus:ring focus:ring-green-200 focus:ring-offset-2 disabled:cursor-not-allowed md:px-6 md:py-4"
       >
-        Proceed to Checkout
+        {redirecting ? "Redirecting..." : "Go to Checkout"}
       </button>
     </div>
   );

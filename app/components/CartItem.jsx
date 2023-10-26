@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import UpdateItemQuantity from "../ui/UpdateItemQuantity";
 import DeleteItem from "../ui/DeleteItem";
-import { formatCurrency } from "@/utils/helpers";
+import { formatCurrency } from "@/lib/utilities/helpers";
 
 import { getCurrentQuantityById } from "../redux/cartSlice";
 import { useSelector } from "react-redux";

@@ -10,25 +10,26 @@ export default function OrderSummary() {
   const totalQuantity = useSelector(getTotalCartQuantity);
   const totalPrice = useSelector(getTotalCartPrice);
 
-  const [redirecting, setRedirecting] = useState(false);
+  // const [redirecting, setRedirecting] = useState(false);
 
   const cartDetails = useSelector((state) => state.cart.cart);
+  console.log({ cartDetails });
 
-  const redirectToCheckout = async () => {
-    // Create Stripe checkout
-    const {
-      data: { id },
-    } = await axios.post("/api/checkout_sessions", {
-      items: Object.entries(cartDetails).map(([_, { id, quantity }]) => ({
-        price: id,
-        quantity,
-      })),
-    });
+  // const redirectToCheckout = async () => {
+  //   // Create Stripe checkout
+  //   const {
+  //     data: { id },
+  //   } = await axios.post("/api/checkout_sessions", {
+  //     items: Object.entries(cartDetails).map(([_, { id, quantity }]) => ({
+  //       price: id,
+  //       quantity,
+  //     })),
+  //   });
 
-    // Redirect to checkout
-    const stripe = await getStripe();
-    await stripe.redirectToCheckout({ sessionId: id });
-  };
+  //   // Redirect to checkout
+  //   const stripe = await getStripe();
+  //   await stripe.redirectToCheckout({ sessionId: id });
+  // };
 
   return (
     <div className=" mt-4 flex h-[350px] flex-col gap-4 rounded-md bg-stone-200 p-4 sm:mt-0 sm:w-[350px]">
@@ -76,11 +77,10 @@ export default function OrderSummary() {
         <span>${totalPrice}</span>
       </div>
       <button
-        data-set="proceed-to-confirm-order"
-        onClick={redirectToCheckout}
+        onClick={console.log("clicked")}
         className="inline-block rounded-md bg-[#9da452] px-4 py-3 text-sm font-semibold capitalize tracking-wide text-slate-50 transition-colors duration-300 focus:outline-none focus:ring focus:ring-green-200 focus:ring-offset-2 disabled:cursor-not-allowed md:px-6 md:py-4"
       >
-        {redirecting ? "Redirecting..." : "Go to Checkout"}
+        Checkout
       </button>
     </div>
   );

@@ -12,90 +12,14 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { FaHome } from "react-icons/fa";
-const components = [
-  {
-    id: "1",
-    name: "Blueberries",
-  },
-  {
-    id: "2",
-    name: "Acerola",
-  },
-  {
-    id: "3",
-    name: "Spinach",
-  },
-  {
-    id: "4",
-    name: "Kale",
-  },
-  {
-    id: "5",
-    name: "Chia Seeds",
-  },
-  {
-    id: "6",
-    name: "Quinoa",
-  },
-  {
-    id: "7",
-    name: "Avocado",
-  },
-  {
-    id: "8",
-    name: "Salmon",
-  },
-  {
-    id: "9",
-    name: "Broccoli",
-  },
-  {
-    id: "10",
-    name: "Sweet Potatoes",
-  },
-  {
-    id: "11",
-    name: "Turmeric",
-  },
-  {
-    id: "12",
-    name: "Green Tea",
-  },
-  {
-    id: "13",
-    name: "Walnuts",
-  },
-  {
-    id: "14",
-    name: "Almonds",
-  },
-  {
-    id: "15",
-    name: "Cauliflower",
-  },
-  {
-    id: "16",
-    name: "Spirulina",
-  },
-  {
-    id: "17",
-    name: "Beets",
-  },
-  {
-    id: "18",
-    name: "Ginger",
-  },
-  {
-    id: "19",
-    name: "Garlic",
-  },
-  {
-    id: "20",
-    name: "Pomegranate",
-  },
-];
+import { use, useEffect, useState } from "react";
+import { getProducts } from "@/services/apiProducts";
 
 export default function SubMenu() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    getProducts().then((res) => setProducts(res));
+  }, []);
   return (
     <NavigationMenu className="hidden sm:block">
       <NavigationMenuList className="flex items-center gap-6 text-xl font-semibold ">
@@ -130,13 +54,14 @@ export default function SubMenu() {
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 text-sm font-semibold md:w-[500px] md:grid-cols-4 lg:w-[600px]  ">
-              {components.map((component) => (
-                <li
-                  key={component.id}
-                  className="transition-all duration-100 hover:text-[#9da452] "
+              {products.map((product) => (
+                <Link
+                  href={`/products/${product.product_id}`}
+                  key={product.product_id}
+                  className="text-xs transition-all duration-100 hover:text-[#9da452]"
                 >
-                  {component.name}
-                </li>
+                  {product.name}
+                </Link>
               ))}
             </ul>
           </NavigationMenuContent>

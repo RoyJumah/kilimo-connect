@@ -12,23 +12,30 @@ import {
 } from "@/components/ui/hover-card";
 
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 import Logo from "../ui/Logo";
 import TopMenu from "../ui/TopMenu";
 import SubMenu from "../ui/SubMenu";
 import SearchBar from "../ui/SearchBar";
 import Button from "../ui/Button";
-import { getTotalCartQuantity } from "../redux/cartSlice";
-import { useSelector } from "react-redux";
+import { clearCart, getTotalCartQuantity } from "../redux/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { formatCurrency } from "@/lib/utilities/helpers";
+import UpdateItemQuantity from "../ui/UpdateItemQuantity";
+import DeleteItem from "../ui/DeleteItem";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
   const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.cart);
 
   const totalCartItems = useSelector(getTotalCartQuantity);
@@ -38,6 +45,10 @@ function NavBar() {
 
   function handleIsOpenSearch() {
     setIsOpenSearch(!isOpenSearch);
+  }
+
+  function handleClearCart() {
+    dispatch(clearCart());
   }
 
   const mobileLinks = [
@@ -87,35 +98,87 @@ function NavBar() {
           )}
           {/* displaying a pop over menu containing the cart items */}
           {totalCartItems > 0 && (
-            <Popover>
-              <PopoverTrigger>
+            <Sheet className="relative">
+              <SheetTrigger>
                 <TopMenu />
-              </PopoverTrigger>
-              <PopoverContent>
-                <ul className="flex flex-col gap-1">
+              </SheetTrigger>
+              <SheetContent>
+                <SheetHeader>
+                  <SheetTitle>Shopping Cart</SheetTitle>
+                  <SheetDescription></SheetDescription>
+                </SheetHeader>
+                <ul className="flex  grow flex-col divide-stone-200 pt-0.5">
                   {items.map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-center justify-start gap-2"
-                    >
+                    <li className="flex gap-4 py-2" key={item.product_id}>
                       <Image
                         src={item.image}
-                        width={25}
-                        height={25}
-                        alt="product image"
+                        alt={item.name + "product image"}
+                        width={50}
+                        height={50}
                       />
-                      <span className="text-xs">{item.quantity}X</span>
-                      <p className="text-xs">{item.name}</p>
+                      <div className="flex  grow flex-col pt-0.5">
+                        <div className="flex items-center justify-between">
+                          <p className="text-sm font-medium">{item.name}</p>
+                          <p className="text-sm font-bold">
+                            {formatCurrency(item.price)}
+                          </p>
+                        </div>
+
+                        <div className="mt-auto flex items-center justify-between ">
+                          <p className="text-sm">Qty: {item.quantity}</p>
+
+                          <div className="flex items-center gap-3 sm:gap-8">
+                            <UpdateItemQuantity productId={item.id} />
+                            <DeleteItem productId={item.id} />
+                          </div>
+                        </div>
+                      </div>
                     </li>
                   ))}
-                  <div className="mx-auto">
-                    <Button to="/cart" type="small">
-                      Go To Cart
-                    </Button>
+                  <div className=" absolute bottom-0 border-gray-300 pb-4">
+                    {/* Subtotal */}
+                    <p className="flex justify-between text-base font-bold">
+                      <p>Subtotal:</p>
+                      <span className="inline-block">
+                        {formatCurrency(
+                          items.reduce(
+                            (acc, item) => acc + item.price * item.quantity,
+                            0,
+                          ),
+                        )}
+                      </span>
+                    </p>
+                    {/* Shipping and taxes message */}
+                    <div className="flex flex-col gap-2">
+                      <p className="mt-1 text-xs text-stone-600">
+                        Shipping and taxes will be calculated at checkout.
+                      </p>
+                      {/* Checkout button */}
+
+                      <button
+                        to="/checkout"
+                        type="small"
+                        className="mt-4 inline-block rounded-md bg-[#0ca678] p-2 text-sm font-semibold capitalize tracking-wide text-slate-50 transition-colors duration-300 focus:outline-none focus:ring focus:ring-green-200 focus:ring-offset-2 disabled:cursor-not-allowed "
+                      >
+                        Checkout
+                      </button>
+
+                      {/* Continue shopping link */}
+                      <div className="flex items-center justify-center gap-2">
+                        <p className="text-xs">or</p>
+                        <Link
+                          href="/products"
+                          className=" inline-block text-xs text-[#087f5b] underline"
+                        >
+                          Continue Shopping
+                        </Link>
+                        <span className="text-[#087f5b]">&#x2192;</span>
+                      </div>
+                    </div>
                   </div>
                 </ul>
-              </PopoverContent>
-            </Popover>
+              </SheetContent>
+            </Sheet>
           )}
         </div>
       </nav>

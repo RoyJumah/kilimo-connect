@@ -1,10 +1,9 @@
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { useCart } from "../context/cart";
+
 import { useSelector } from "react-redux";
 import { getTotalCartQuantity } from "../redux/cartSlice";
 
 function TopMenu() {
-  const cart = useCart();
   const totalCartItems = useSelector(getTotalCartQuantity);
 
   return (

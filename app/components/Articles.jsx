@@ -15,7 +15,7 @@ const DUMMY_ARTICLES = [
     id: 3,
     title: "Urban Farming: How City Dwellers Are Cultivating Green Spaces",
     tag: "Urban Farming",
-    image: "/images/articles/urban-planning.jpg",
+    image: "/images/articles/urban-farmingJ.jpg",
     date: "2021-05-12",
     author: "Peter Wong",
   },

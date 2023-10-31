@@ -8,6 +8,7 @@ function Logo() {
       height={150}
       width={150}
       alt="Kilimo Connect Logo"
+      priority
     />
   );
 }

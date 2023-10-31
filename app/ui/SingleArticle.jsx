@@ -10,9 +10,7 @@ function SingleArticle({ articles }) {
           alt="header image"
           width={1200}
           height={600}
-          objectPosition="center"
           className="h-full w-full"
-          layout="responsive"
         />
         <div className="absolute inset-0 flex flex-col justify-end p-2 text-white">
           <span className="inline-block max-w-max rounded-sm bg-[#9da452] px-[4px] py-[1px] text-sm font-semibold uppercase">

@@ -15,9 +15,7 @@ function HeroHeader() {
             alt="header image"
             width={1200}
             height={600}
-            objectPosition="center"
             className="z-1" // Set z-index to place the image above the background
-            layout="responsive"
           />
           <div className="z-2 absolute inset-0 flex flex-col items-center justify-center space-y-4 px-4 py-3">
             <h1 className="text-lg font-bold text-white sm:text-4xl">
@@ -43,9 +41,7 @@ function HeroHeader() {
               alt="header image"
               width={1200}
               height={600}
-              objectPosition="center"
               className="h-full w-full"
-              layout="responsive"
             />
             <div className="absolute inset-0 flex flex-col items-end justify-end  p-2 text-white sm:p-4 ">
               <h2 className="mt-2 text-end text-base font-extrabold sm:text-2xl">
@@ -70,9 +66,7 @@ function HeroHeader() {
               alt="header image"
               width={1200}
               height={600}
-              objectPosition="center"
               className="h-full w-full"
-              layout="responsive"
             />
             <div className="absolute inset-0 flex flex-col items-end justify-end  p-2 text-white sm:p-4 ">
               <h2 className="mt-2 text-end text-base font-extrabold sm:text-2xl">
@@ -99,9 +93,7 @@ function HeroHeader() {
               alt="header image"
               width={1200}
               height={600}
-              objectPosition="center"
               className="h-full w-full"
-              layout="responsive"
             />
             <div className="absolute inset-0 flex flex-col  items-center justify-center p-2 text-white">
               <h2 className="mt-2 text-base font-extrabold sm:text-2xl">

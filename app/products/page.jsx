@@ -4,12 +4,21 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { getProducts } from "@/services/apiProducts";
-
 export default function ProductListPage() {
   const [products, setProducts] = useState([]);
+
+  const getProductsData = async () => {
+    const products = await fetch("/api/products", {
+      next: {
+        revalidate: 60,
+      },
+    });
+    const data = await products.json();
+    setProducts(data);
+  };
+
   useEffect(() => {
-    getProducts().then((res) => setProducts(res));
+    getProductsData();
   }, []);
 
   return (
@@ -45,7 +54,8 @@ export default function ProductListPage() {
               width={200}
               height={200}
               alt={product.name}
-              layout="responsive"
+              priority
+              className="h-auto w-auto"
             />
           </Link>
         ))}

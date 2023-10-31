@@ -1,8 +1,6 @@
 "use client";
-import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
 
-import { getProductDetails } from "@/services/apiProducts";
+import Image from "next/image";
 
 import Button from "@/app/ui/Button";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,33 +8,30 @@ import { addItems, getCurrentQuantityById } from "@/app/redux/cartSlice";
 import DeleteItem from "@/app/ui/DeleteItem";
 import UpdateItemQuantity from "@/app/ui/UpdateItemQuantity";
 import ShippingInfoCard from "@/app/components/ShippingInfoCard";
+import { useEffect, useState } from "react";
 
 export default function ProductPage({ params: { id } }) {
+  const [productDetails, setProductDetails] = useState();
   const dispatch = useDispatch();
 
   const currentQuantity = useSelector(getCurrentQuantityById(id));
 
-  const {
-    data: productDetails,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["productDetails", id],
-    queryFn: () => getProductDetails(id),
-  });
+  const getProductDetails = async () => {
+    const productDetailsData = await fetch(`/api/products/${id}`);
+    const data = await productDetailsData.json();
+    setProductDetails(data);
+  };
 
-  if (isLoading) {
-    <p>Loading...</p>;
-  }
-  if (!productDetails) {
-    return <p>Product details not available</p>;
-  }
-  if (error) return <p>Error:{error.message}</p>; // show an error message if no sneaker
+  useEffect(() => {
+    getProductDetails();
+  }, []);
+
+  if (!productDetails) return null;
 
   const isInCart = currentQuantity > 0;
   const { name, image, price, usage, ingredients, description } =
     productDetails;
-  console.log({ name, image, price });
+
   function handleAddToCart() {
     //add to cart
 
@@ -59,6 +54,8 @@ export default function ProductPage({ params: { id } }) {
           width={300}
           height={300}
           alt={name || "product image"}
+          priority
+          className="h-auto w-auto"
         />
         <div className="flex flex-col items-start justify-start gap-3">
           <h1 className="text-xl font-bold">{name}</h1>
@@ -138,12 +135,14 @@ export default function ProductPage({ params: { id } }) {
           </div>
           <div className="flex gap-2">
             <Image
+              className="h-auto w-auto"
               src="/images/tags/Warka_Water_Logo.avif"
               alt="digestive icon"
               height={100}
               width={150}
             />
             <Image
+              className="h-auto w-auto"
               src="/images/tags/Rainforest_Concern_Logo.avif"
               alt="digestive icon"
               height={75}

@@ -11,9 +11,7 @@ export default function MainArticle() {
           alt="header image"
           width={1200}
           height={600}
-          objectPosition="center"
           className="z-1" // Set z-index to place the image above the background
-          layout="responsive"
         />
         <div className="absolute inset-0 flex flex-col justify-end p-2 text-white">
           <span className="text-md inline-block max-w-max rounded-sm bg-[#9da452] px-[4px] py-[1px] font-semibold uppercase">

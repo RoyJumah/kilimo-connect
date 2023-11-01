@@ -3,30 +3,32 @@
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { HiOutlineClock, HiOutlineRefresh } from "react-icons/hi";
 import { formatCurrency } from "@/lib/utilities/helpers";
-
-import Image from "next/image";
-
-import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItems } from "../redux/cartSlice";
+import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "./loading";
+
+const fetchProductsData = async () => {
+  const products = await fetch("http://localhost:3000/api/products", {
+    next: {
+      revalidate: 60,
+    },
+  });
+  if (!products.ok) throw new Error("Failed to fetch products");
+  await new Promise((resolve) => setTimeout(resolve, 1200));
+  const data = await products.json();
+  return data.slice(0, 8);
+};
 
 function SuperFoodsPage() {
-  const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["products"],
+    queryFn: fetchProductsData,
+  });
 
-  const getProductsData = async () => {
-    const products = await fetch("/api/products", {
-      next: {
-        revalidate: 60,
-      },
-    });
-    const data = await products.json();
-    setProducts(data.slice(0, 8));
-  };
-
-  useEffect(() => {
-    getProductsData();
-  }, []);
+  if (isLoading) return <Loading />;
 
   function handleAddToCart() {
     //add to cart
@@ -43,8 +45,8 @@ function SuperFoodsPage() {
   }
   return (
     <ul className="grid grid-cols-2 gap-2">
-      {products.map((product) => (
-        <Dialog key={product.product_id}>
+      {data.map((product, i) => (
+        <Dialog key={i}>
           <li>
             <div className="relative">
               <div className="absolute inset-0 z-0 bg-black opacity-40"></div>
@@ -55,6 +57,7 @@ function SuperFoodsPage() {
                   width={360}
                   height={360}
                   className="z-1"
+                  layout="responsive"
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-2 text-white">
                   <h2 className="mt-2 text-lg font-extrabold sm:text-2xl">
@@ -67,8 +70,8 @@ function SuperFoodsPage() {
                   <Image
                     src={product.image}
                     alt={product.image + "product image"}
-                    width={200}
-                    height={200}
+                    width={175}
+                    height={175}
                   />
                   <div className="flex flex-col gap-2">
                     <h2 className="text-[18px] font-bold">{product.name}</h2>

@@ -8,26 +8,41 @@ import { addItems, getCurrentQuantityById } from "@/app/redux/cartSlice";
 import DeleteItem from "@/app/ui/DeleteItem";
 import UpdateItemQuantity from "@/app/ui/UpdateItemQuantity";
 import ShippingInfoCard from "@/app/components/ShippingInfoCard";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import ProductDetailsLoader from "./ProductDetailsLoader";
+
+const fetchProductDetails = async (id) => {
+  const productDetails = await fetch(`/api/products/${id}`);
+  if (!productDetails.ok) throw new Error("Failed to fetch product details");
+  await new Promise((resolve) => setTimeout(resolve, 1200));
+  const data = await productDetails.json();
+  return data;
+};
 
 export default function ProductPage({ params: { id } }) {
-  const [productDetails, setProductDetails] = useState();
+  const fetchProductDetails = async () => {
+    const productDetails = await fetch(`/api/products/${id}`);
+    if (!productDetails.ok) throw new Error("Failed to fetch product details");
+    await new Promise((resolve) => setTimeout(resolve, 1200));
+    const data = await productDetails.json();
+    return data;
+  };
+  const {
+    data: productDetails,
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["productDetails", id],
+    queryFn: fetchProductDetails,
+  });
+
+  console.log({ productDetails });
+
   const dispatch = useDispatch();
 
   const currentQuantity = useSelector(getCurrentQuantityById(id));
 
-  const getProductDetails = async () => {
-    const productDetailsData = await fetch(`/api/products/${id}`);
-    const data = await productDetailsData.json();
-    setProductDetails(data);
-  };
-
-  useEffect(() => {
-    getProductDetails();
-  }, []);
-
-  if (!productDetails) return null;
-
+  if (isLoading) return <ProductDetailsLoader />;
   const isInCart = currentQuantity > 0;
   const { name, image, price, usage, ingredients, description } =
     productDetails;

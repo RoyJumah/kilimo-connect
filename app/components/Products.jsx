@@ -2,17 +2,55 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import {
-  getBestSellingProducts,
-  getFeaturedProducts,
-} from "@/data/dummy-products";
 import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
+import ProductsLoader from "./ProductsLoader";
+import { useRouter } from "next/navigation";
+const fetchBestSellingProductsData = async () => {
+  const products = await fetch("http://localhost:3000/api/products", {
+    next: {
+      revalidate: 60,
+    },
+  });
+  if (!products.ok) throw new Error("Failed to fetch products");
+  await new Promise((resolve) => setTimeout(resolve, 1200));
+  const data = await products.json();
+  return data.slice(0, 4);
+};
+const fetchFeaturedProductsData = async () => {
+  const products = await fetch("http://localhost:3000/api/products", {
+    next: {
+      revalidate: 60,
+    },
+  });
+  if (!products.ok) throw new Error("Failed to fetch products");
+  await new Promise((resolve) => setTimeout(resolve, 1200));
+  const data = await products.json();
+  return data.slice(4, 8);
+};
 
 function Products() {
-  const bestSellingProducts = getBestSellingProducts();
-  const featuredProducts = getFeaturedProducts();
-  const [activeList, setActiveList] = useState("bestSellingProducts");
+  const router = useRouter();
 
+  const [activeList, setActiveList] = useState("bestSellingProducts");
+  const {
+    data: bestSellingProducts,
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["bestSellingProducts"],
+    queryFn: fetchBestSellingProductsData,
+  });
+  const {
+    data: featuredProducts,
+    error: featuredProductsError,
+    isLoading: featuredProductsIsLoading,
+  } = useQuery({
+    queryKey: ["featuredProducts"],
+    queryFn: fetchFeaturedProductsData,
+  });
+
+  if (isLoading || featuredProductsIsLoading) return <ProductsLoader />;
   function handleShowBestSellingProducts() {
     setActiveList("bestSellingProducts");
   }
@@ -69,6 +107,7 @@ function Products() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ duration: 0.3 }}
+                onClick={() => router.push(`/products/${product.product_id}`)}
               >
                 <Image
                   src={product.image}
@@ -101,6 +140,7 @@ function Products() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ duration: 0.3 }}
+                onClick={() => router.push(`/products/${product.product_id}`)}
               >
                 <Image
                   src={product.image}

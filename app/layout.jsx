@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import "./globals.css";
-import TanstackProvider from "./components/providers/TanstackProvider";
+import TanstackProvider from "./providers/TanstackProvider";
 import store from "./redux/store";
 
 // export const metadata = {

@@ -1,25 +1,20 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ProductListPage() {
-  const [products, setProducts] = useState([]);
+const fetchProductsData = async () => {
+  const products = await fetch("http://localhost:3000/api/products", {
+    next: {
+      revalidate: 60,
+    },
+  });
+  if (!products.ok) throw new Error("Failed to fetch products");
+  await new Promise((resolve) => setTimeout(resolve, 1200));
+  const data = await products.json();
+  return data;
+};
 
-  const getProductsData = async () => {
-    const products = await fetch("/api/products", {
-      next: {
-        revalidate: 60,
-      },
-    });
-    const data = await products.json();
-    setProducts(data);
-  };
-
-  useEffect(() => {
-    getProductsData();
-  }, []);
+export default async function ProductListPage() {
+  const data = await fetchProductsData();
 
   return (
     <>
@@ -37,7 +32,7 @@ export default function ProductListPage() {
       </div>
 
       <ul className="mt-2  grid gap-2  sm:grid-cols-2 sm:gap-6 md:grid-cols-4 md:gap-4 lg:grid-cols-6 lg:gap-2">
-        {products.map((product, i) => (
+        {data.map((product, i) => (
           <Link
             href={`/products/${product.product_id}`}
             key={i}

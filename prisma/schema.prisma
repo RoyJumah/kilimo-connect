@@ -36,6 +36,7 @@ model Products{
   price        Int
   image        String
   quantity     Int
+  stripe_id    String
   orders       Order[]
     farmer       Farmer?     @relation(fields: [farmer_id], references: [farmer_id])
   

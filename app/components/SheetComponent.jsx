@@ -14,6 +14,7 @@ import DeleteItem from "../ui/DeleteItem";
 import { formatCurrency } from "@/lib/utilities/helpers";
 import Link from "next/link";
 import ClientOnly from "./ClientOnly";
+import { checkout } from "../stripe/checkout";
 
 export default function SheetComponent({ items }) {
   return (
@@ -75,7 +76,16 @@ export default function SheetComponent({ items }) {
                 {/* Checkout button */}
 
                 <button
-                  to="/checkout"
+                  onClick={() => {
+                    checkout({
+                      lineItems: [
+                        {
+                          price: "price_1O51uIKUTnlP475OCHYye3C5",
+                          quantity: 1,
+                        },
+                      ],
+                    });
+                  }}
                   type="small"
                   className="mt-4 inline-block rounded-md bg-[#0ca678] p-2 text-sm font-semibold capitalize tracking-wide text-slate-50 transition-colors duration-300 focus:outline-none focus:ring focus:ring-green-200 focus:ring-offset-2 disabled:cursor-not-allowed "
                 >

@@ -44,7 +44,7 @@ export default function ProductPage({ params: { id } }) {
 
   if (isLoading) return <ProductDetailsLoader />;
   const isInCart = currentQuantity > 0;
-  const { name, image, price, usage, ingredients, description } =
+  const { name, image, price, usage, ingredients, description, stripe_id } =
     productDetails;
 
   function handleAddToCart() {
@@ -56,6 +56,7 @@ export default function ProductPage({ params: { id } }) {
       name,
       quantity: 1,
       price,
+      stripe_id,
       totalPrice: price * 1,
     };
     dispatch(addItems(newItem));

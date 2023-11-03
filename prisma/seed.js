@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 async function seedProducts() {
   try {
@@ -8,7 +8,7 @@ async function seedProducts() {
         description:
           "Our award-winning cacao butter originates from Peru where the Cacao tree was sacred amongst the Mayans and Aztecs. Cacao butter is made by pressing ground, milled cacao nibs to make a cocoa paste. This process separates powder from the butter to create a velvety and rich paste that can be used as a natural alternative to processed cooking oils. Our cacao butter also dissolves beautifully onto the skin as a pure chemical-free moisturiser.",
         image:
-          "https://yvqzpcvcpgibbhhpgcad.supabase.co/storage/v1/object/public/products/cacao-butter.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/cacaobutterchunks.jpg?t=2023-11-02T09%3A55%3A50.480Z",
         price: 25,
         usage:
           "Clean and pure, our cacao butter melts into a  milky rich buttery mass. With an excellent clean finish, our cacao butter is a very versatile culinary product.",
@@ -23,7 +23,7 @@ async function seedProducts() {
         description:
           "Containing only a small amount of naturally occurring sugars and no additives, preservatives, or allergens, our 100% vegan and organic Cacao Paste Chunks are a healthier alternative to chocolate. With a luxurious dark chocolate flavour, our cacao paste chunks are made by pressing cacao nibs into a paste which is then broken into chunks. Because of this minimal processing, our cacao paste chunks retain the nutrients found within the cacao bean to create a nutritious and delicious snack.",
         image:
-          "https://yvqzpcvcpgibbhhpgcad.supabase.co/storage/v1/object/public/products/cacao-paste.jpg",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/cacaopastechunksshavings_600x.jpg?t=2023-11-02T09%3A56%3A16.238Z",
         price: 24.99,
         usage:
           "With a deliciously rich dark chocolate flavour, melt our cacao paste to create decadent organic desserts or hot chocolate!",
@@ -38,7 +38,7 @@ async function seedProducts() {
         description:
           "Our cacao nibs are made by simply breaking raw cacao beans into small pieces. These nibs preserve the cacao bean's nutritional value and contain no additives resulting in a versatile and nutritious superfood snack.  Cacao nibs are rich in iron, which boosts energy and reduces tiredness, and are naturally filled with antioxidants. They're also impressively high in magnesium which supports psychological health. So take some time to enjoy those feel-good feelings that our super nibs bring.",
         image:
-          "https://yvqzpcvcpgibbhhpgcad.supabase.co/storage/v1/object/public/products/cacao-nibs.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/cacao-nibs.webp?t=2023-11-02T14%3A50%3A48.112Z",
         price: 12.99,
         usage:
           "With a crunchy texture and rich flavour like unsweetened dark chocolate, you can enjoy our cacao nibs directly from the pack! Or get creative and sprinkle them over cakes and dash over breakfast bowls. ",
@@ -52,7 +52,7 @@ async function seedProducts() {
         description:
           "Grown in Brazil, our Acerola fruits soak up the intense South American sun to develop vibrant crimson red Cherries. We harvest and freeze-dry the cherries to preserve as much of the nutritional content as possible. This results in a superfood powder that is incredibly high in Vitamin C which supports immunity and skin health.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/28_medium.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/28_medium.webp?t=2023-11-02T09%3A42%3A09.418Z",
         price: 19.99,
         usage:
           "Our Acerola powder has a sweet and sour taste and can be added to smoothies, juices, and desserts.",
@@ -67,7 +67,7 @@ async function seedProducts() {
         description:
           "Our hemp protein powder is made from the highest quality raw hemp seeds that are pressed and stone ground to create a powder. With 47g of protein per 100g, it is an exceptional source of vegan protein to support your muscle growth and maintenance. Our hemp protein powder is also high in Manganese, which boosts energy, making it a perfect addition to your pre-workout shakes. It's also natural contains Omega 3 fatty acids which support cholesterol health. With a mild flavour and colour, our hemp protein powder can be conveniently added to any meal, shake or bake for a quick and easy vegan protein super boost.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/hempproteinpowderscoopsandgymgear.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/hempproteinpowderscoopsandgymgear.webp?t=2023-11-02T09%3A51%3A05.305Z",
         price: 19.99,
         usage:
           "Our hemp protein powder has a mild flavour and colour, making it a convenient addition to any meal, shake or bake for a quick and easy vegan protein super boost.",
@@ -81,7 +81,7 @@ async function seedProducts() {
         description:
           "Our bee pollen is collected by bees from the flowers of the acacia tree. The bees then mix the pollen with their own nectar to create a superfood that is rich in vitamins, minerals, and amino acids. Bee pollen is a great source of protein and is also high in fibre, which supports digestive health. With a sweet and floral flavour, our bee pollen is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/Beepollenbeingserved.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/Beepollenbeingserved.webp?t=2023-11-02T09%3A42%3A53.818Z",
         price: 19.99,
         usage:
           "Our bee pollen has a sweet and floral flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -96,7 +96,7 @@ async function seedProducts() {
         description:
           "Our ceremonial matcha powder is made from the highest quality green tea leaves that are stone ground to create a fine powder. With a vibrant green colour and a smooth flavour, our matcha powder is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/ceremonialmatchapreperation.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/ceremonialmatchapreperation.webp?t=2023-11-02T09%3A47%3A52.006Z",
         price: 17.99,
         usage:
           "Our matcha powder has a smooth flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -111,7 +111,7 @@ async function seedProducts() {
         description:
           "Our award-winning cacao butter originates from Peru where the Cacao tree was sacred amongst the Mayans and Aztecs. Cacao butter is made by pressing ground, milled cacao nibs to make a cocoa paste. This process separates powder from the butter to create a velvety and rich paste that can be used as a natural alternative to processed cooking oils. Our cacao butter also dissolves beautifully onto the skin as a pure chemical-free moisturiser.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/10_medium.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/10_medium.webp?t=2023-11-02T09%3A41%3A11.077Z",
         usage:
           "Clean and pure, our cacao butter melts into a  milky rich buttery mass. With an excellent clean finish, our cacao butter is a very versatile culinary product.",
         price: 79.99,
@@ -125,7 +125,7 @@ async function seedProducts() {
         description:
           "Our baobab powder is made from the highest quality baobab fruits that are dried and ground to create a fine powder. With a sweet and tangy flavour, our baobab powder is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/14_medium.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/14_medium.webp?t=2023-11-02T09%3A41%3A28.006Z",
         price: 19.99,
         usage:
           "Our baobab powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -140,7 +140,7 @@ async function seedProducts() {
         description:
           "Our chia seeds are made from the highest quality chia seeds that are dried and ground to create a fine powder. With a sweet and tangy flavour, our chia seeds is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/17_medium.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/17_medium.webp?t=2023-11-02T09%3A41%3A49.440Z",
         price: 13.99,
         usage:
           "Our chia seeds has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -155,7 +155,7 @@ async function seedProducts() {
         description:
           "Our chlorella and spirulina tablets are made from the highest quality chlorella and spirulina that are dried and ground to create a fine powder. With a sweet and tangy flavour, our chlorella and spirulina tablets is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/aportionofchlorellaandspirulinatablets.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/aportionofchlorellaandspirulinatablets.webp?t=2023-11-02T09%3A44%3A39.583Z",
         price: 19.99,
         usage:
           "Our chlorella and spirulina tablets has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -170,7 +170,7 @@ async function seedProducts() {
         description:
           "Our banana powder is made from the highest quality bananas that are dried and ground to create a fine powder. With a sweet and tangy flavour, our banana powder is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/Bananapowderforaproteinshake.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/Bananapowderforaproteinshake.webp?t=2023-11-02T09%3A42%3A30.995Z",
         price: 121.99,
         usage:
           "Our banana powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -185,7 +185,7 @@ async function seedProducts() {
         description:
           "Our barley grass powder is made from the highest quality barley grass that are dried and ground to create a fine powder. With a sweet and tangy flavour, our barley grass powder is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/barleygrassserving.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/barleygrassserving.webp?t=2023-11-02T09%3A44%3A59.189Z",
         price: 19.99,
         usage:
           "Our barley grass powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -200,7 +200,7 @@ async function seedProducts() {
         description:
           "Our beetroot powder is made from the highest quality beetroot that are dried and ground to create a fine powder. With a sweet and tangy flavour, our beetroot powder is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/beetrootpowderonsteak.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/beetrootpowderonsteak.webp?t=2023-11-02T09%3A45%3A19.562Z",
         price: 19.99,
         usage:
           "Our beetroot powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -215,7 +215,7 @@ async function seedProducts() {
         description:
           "Our blueberry powder is made from the highest quality blueberries that are dried and ground to create a fine powder. With a sweet and tangy flavour, our blueberry powder is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/blueberrywaffles.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/blueberrywaffles.webp?t=2023-11-02T09%3A46%3A06.936Z",
         price: 12.49,
         usage:
           "Our blueberry powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -230,7 +230,7 @@ async function seedProducts() {
         description:
           "Our cacao beans are made from the highest quality cacao beans that are dried and ground to create a fine powder. With a sweet and tangy flavour, our cacao beans is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/cacaobeanswithmortarandpestle.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/cacaobeanswithmortarandpestle.webp?t=2023-11-02T09%3A46%3A32.629Z",
         price: 11.99,
         usage:
           "Our cacao beans has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -245,7 +245,7 @@ async function seedProducts() {
         description:
           "Containing only a small amount of naturally occurring sugars and no additives, preservatives or allergens our 100% vegan and organic Cacao paste wafers are a healthier alternative to regular processed chocolate buttons. With a luxurious dark chocolate flavour, our cacao paste wafers are made by pressing cacao nibs into a paste which is then melted and moulded into buttons. Because of this minimal processing, our cacao paste wafers retain the nutrients found within the cacao bean to create a nutritious and delicious snack. ",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/cacaopastewafers.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/cacaopastewafers.webp?t=2023-11-02T09%3A47%3A06.867Z",
         price: 12.19,
         usage:
           "With a deliciously rich dark chocolate flavour, melt our cacao paste wafers to create decadent organic desserts or hot chocolate!",
@@ -260,7 +260,7 @@ async function seedProducts() {
         description:
           "Traditionally used in native diets as a natural flavouring in sweets, Camu Camu berries grow wild along the flood plains of the Amazon Rainforest. Along with its fruity flavour and fragrance, our Camu Camu powder is brilliantly high in Vitamin C, which boosts immunity, enhances energy and boasts antioxidants that protect the skin from free radicals that accelerate ageing. ",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/camucamupowderonspoon.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/camucamupowderonspoon.webp?t=2023-11-02T09%3A47%3A26.299Z",
         price: 19.99,
         usage:
           "Our Camu Camu powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -275,7 +275,7 @@ async function seedProducts() {
         description:
           "Known as 'Black Gold', Chaga is a treasure trove of nutrients and has been traditionally used as herbal medicine. Our Chaga powder is made from carefully selected premium mushrooms that have a naturally sweet taste. We use only the mushroom's fruiting body as it is the most nutrient-rich part of the mushroom. ",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/Chagateaset.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/Chagateaset.webp?t=2023-11-02T09%3A43%3A24.894Z",
         price: 43.99,
         usage:
           "Our Chaga powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -289,7 +289,7 @@ async function seedProducts() {
         description:
           "Created from the finely milled bark of Sri Lanken laurel trees, our premium quality organic cinnamon powder is deliciously sweet and fragrantly aromatic. As well as its delicate flavour and many uses, our cinnamon powder is also high in fibre! ",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/cinnamonpowderinaspoon.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/cinnamonpowderinaspoon.webp?t=2023-11-02T09%3A48%3A35.625Z",
         price: 19.99,
         usage:
           "Our cinnamon powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -304,7 +304,7 @@ async function seedProducts() {
         description:
           "Coconut Sugar is a natural sweetener made by evaporating the nectar harvested from the coconut palm flower. It is rich in flavour with a hint of caramel sweetness and resembles brown sugar. Our coconut sugar is impressively high in Calcium, which supports bone and tooth health, enhances energy, helps muscle function, and aids digestion. We source our coconut sugar from ethical, sustainable and organic small cooperative farmers in the third world. ",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/coconutsugarinbowl.webp?t=2023-11-01T12%3A10%3A54.681Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/coconutsugarinbowl.webp?t=2023-11-02T09%3A49%3A00.433Z",
         price: 122.19,
         usage:
           "Our coconut sugar has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -319,7 +319,7 @@ async function seedProducts() {
         description:
           "Our organic coconut water powder is made from fresh coconut water, which is freeze-dried then milled into a fine powder. Our coconuts are sustainably grown and harvested in the Philippines, are rich in nutrients and have a refreshing taste. Our coconut water powder is high in Potassium which supports muscle health and maintains blood pressure and high in Magnesium which enhances energy and balances the nervous system. Our coconut water is also refreshingly high in antioxidants resulting in an all-natural, low in calories, low in sugar, all-natural organic hydration drink.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/coconutwaterpowderonaspoon.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/coconutwaterpowderonaspoon.webp?t=2023-11-02T09%3A49%3A26.062Z",
         price: 12.49,
         usage:
           "Our coconut water powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -334,7 +334,7 @@ async function seedProducts() {
         description:
           "Also known as the 'Golden Berry' or 'Aztek Berry', these delightfully sweet and tart berries possess a naturally golden colour and a sweet yet tart flavour. Grown in the highlands of Peru, Incan berries are harvested and hand-selected for the finest quality, then cleaned in water and dried to preserve their nutritional content. Containing a high Fibre content, these berries make a delicious super snack. ",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/driedgoldenincanberriesinadish.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/driedgoldenincanberriesinadish.webp?t=2023-11-02T09%3A49%3A52.208Z",
         price: 12.49,
         usage:
           "Our Incan berries has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -349,7 +349,7 @@ async function seedProducts() {
         description:
           "Dubbed the “superfood of the Andes”, Maca has long been integrated into the nutrition of the indigenous population of the Peruvian Andes. Our maca is high in calcium which supports bone and tooth health. ",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/GelatinisedMacadrink.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/GelatinisedMacadrink.webp?t=2023-11-02T09%3A43%3A49.042Z",
         price: 11.99,
         usage:
           "Our Maca powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -364,7 +364,7 @@ async function seedProducts() {
         description:
           "Grown in the alkaline-rich soil of the Chinese Goji Belt, our sweet goji berries are carefully selected for quality, size and flavour to provide the most premium berries. As well as their great taste, our Goji berries are also a source of Protein and are high in Fibre, making them a perfect vegan snack.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/gojiberriesinabulb.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/gojiberriesinabulb.webp?t=2023-11-02T09%3A50%3A21.988Z",
         price: 3.99,
         usage:
           "Our Goji berries has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -379,7 +379,7 @@ async function seedProducts() {
         description:
           "Grown in the Amazon rainforest, the skin of Guarana fruit is red whilst the inside of the white meat is surrounded by black seeds giving the appearance of a human eye. These seeds contain large amounts of Guaranine, which is a natural alternative to caffeine. Our Guarana powder is made from the highest quality hand-selected guarana seeds, which are cleaned in natural water, dried, then ground into a powder. ",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/guaranapowderscooped.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/guaranapowderscooped.webp?t=2023-11-02T09%3A50%3A38.353Z",
         price: 12.49,
         usage:
           "Our Guarana powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -394,7 +394,7 @@ async function seedProducts() {
         description:
           "Grown in the Peruvian Highlands, lucuma is a nutrient-dense superfruit that has been nicknamed 'Gold of The Incas'. Celebrated for its aromatic fragrance and exotic flavour, our lucuma powder is made from the highest quality selected lucuma fruits which are ground into a natural additive-free powder. Lucuma powder is popularly used as a naturally sweet ice cream flavouring in the Andes.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/lucumapowderonaspoon.jpg",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/hempproteinpowderscoopsandgymgear.webp?t=2023-11-02T09%3A51%3A05.305Z",
         price: 12.29,
         usage:
           "Our Lucuma powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -408,7 +408,7 @@ async function seedProducts() {
         description:
           "Dubbed the “superfood of the Andes”, Maca has long been integrated into the nutrition of the indigenous population of the Peruvian Andes. Our maca is high in calcium which supports bone and tooth health. ",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/macarootcapsulesincutebowl.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/macarootcapsulesincutebowl.webp?t=2023-11-02T09%3A51%3A45.478Z",
         price: 12.49,
         usage:
           "Our Maca powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -423,7 +423,7 @@ async function seedProducts() {
         description:
           "Grown in the flood lands and swampy areas of the Brazilian Amazon Rainforest, Acai berries are a treasure of nutrients. Acai is naturally rich in antioxidants which contribute to the maintenance of normal skin and neutralize the damaging effects of free radicals throughout the body. Our Acai Berry powder is impressively nutrient-dense with approximately 20kg of fruit compressed to create 1kg of Rainforest Foods Acai powder. ",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/RainforestFoodsShopifyImages.webp",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/RainforestFoodsShopifyImages.webp?t=2023-11-02T09%3A44%3A12.332Z",
         price: 12.49,
         usage:
           "Our Acai Berry powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -437,7 +437,7 @@ async function seedProducts() {
         description:
           "White flour can lead to negative health conditions like fatty liver, raised bad cholesterol and weight gain. Our coconut flour is a Gluten-Free alternative that has a finely milled consistency which makes it easy to use. Our coconut flour is unrefined which means that it retains all its nutrients. It is high in iron which supports immunity and enhances energy, high in protein which helps muscle growth and is high in fibre.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/rfcoconutflourgrinder.webp?t=2023-11-01T12%3A15%3A07.458Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/rfcoconutflourgrinder.webp?t=2023-11-02T09%3A52%3A04.021Z",
         price: 12.49,
         usage:
           "Our Coconut Flour has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
@@ -452,7 +452,7 @@ async function seedProducts() {
         description:
           "Containing nearly 5 times more calcium than milk, and 3 times more iron than spinach, Chia Seeds are an ancient natural food and originating from South America. Enriched with a plethora of useful proteins and vitamins, Chia Seeds also contain large quantities of omega 3 fatty acids.",
         image:
-          "https://qywftlydzqvuwwhibviy.supabase.co/storage/v1/object/public/stock/scoopchiaseedsinajar.webp?t=2023-11-01T12%3A15%3A27.713.Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/scoopchiaseedsinajar.webp?t=2023-11-02T09%3A52%3A21.011Z",
         price: 12.49,
         usage:
           "Our Chia Seeds has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",

@@ -54,14 +54,13 @@ function SuperFoodsPage() {
                 <Image
                   src={product.image}
                   alt="cacao image"
-                  width={360}
-                  height={360}
+                  width={300}
+                  height={300}
                   className="z-1"
-                  layout="responsive"
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-2 text-white">
-                  <h2 className="mt-2 text-lg font-extrabold sm:text-2xl">
-                    {product.name.split(" ").slice(0, 2).join(" ")}
+                  <h2 className="mt-2 text-lg font-extrabold sm:text-xl">
+                    {product.name}
                   </h2>
                 </div>
               </DialogTrigger>

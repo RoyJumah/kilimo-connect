@@ -17,6 +17,10 @@ import ClientOnly from "./ClientOnly";
 import { checkout } from "../stripe/checkout";
 
 export default function SheetComponent({ items }) {
+  const lineItems = items.map((item, i) => ({
+    price: item.stripe_id,
+    quantity: item.quantity,
+  }));
   return (
     <ClientOnly>
       <Sheet className="relative">
@@ -78,12 +82,7 @@ export default function SheetComponent({ items }) {
                 <button
                   onClick={() => {
                     checkout({
-                      lineItems: [
-                        {
-                          price: "price_1O51uIKUTnlP475OCHYye3C5",
-                          quantity: 1,
-                        },
-                      ],
+                      lineItems,
                     });
                   }}
                   type="small"

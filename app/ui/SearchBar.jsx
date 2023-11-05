@@ -1,113 +1,107 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { debounce } from "debounce";
-import { getProductByName } from "@/services/apiProducts";
-import { formatCurrency } from "@/lib/utilities/helpers";
+
 import Image from "next/image";
 import { BiLoaderCircle } from "react-icons/bi";
-import { AiOutlineSearch } from "react-icons/ai";
+
 import Link from "next/link";
 
-export default function SearchBar() {
-  const [products, setProducts] = useState([]);
-  const [isSearching, setIsSearching] = useState(null);
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-  const handleSearchName = debounce(async (event) => {
-    const searchTerm = event.target.value.trim(); // Trim leading/trailing spaces
+import ClientOnly from "../components/ClientOnly";
 
-    if (searchTerm === "") {
-      setProducts([]);
-      setIsDropdownVisible(false);
+export default function SearchBar() {
+  const [items, setItems] = useState([]);
+  const [isSearching, setIsSearching] = useState(null);
+  const [isDropDownVisible, setIsDropDownVisible] = useState(false);
+
+  const dropdownRef = useRef(null);
+
+  const handleSearchName = debounce(async (event) => {
+    //we are going to trim the search term for any leading white spaces
+    const searchTerm = event.target.value.trim();
+    if (searchTerm == "") {
+      setItems([]);
       return;
     }
+    console.log({ searchTerm });
 
     setIsSearching(true);
 
     try {
-      const response = await getProductByName(searchTerm);
+      const response = await fetch(
+        `http://localhost:3000/api/product/search-by-name/${searchTerm}`,
+      );
+      const result = await response.json();
 
-      if (response) {
-        setProducts(response);
+      if (result) {
+        setItems(result);
+        setIsDropDownVisible(true);
         setIsSearching(false);
-        setIsDropdownVisible(true);
-      } else {
-        setProducts([]);
-        setIsSearching(false);
-        setIsDropdownVisible(false);
+        return;
       }
+      setItems([]);
+      setIsSearching(false);
+      setIsDropDownVisible(false);
     } catch (error) {
       console.log(error);
       alert(error);
     }
   }, 500);
 
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsDropDownVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
-    <div className="border-b">
-      <nav className="mx-auto flex w-full max-w-[1200px] items-center justify-between">
-        <div className="flex w-full items-center">
-          <div className="mx-auto flex w-full max-w-[1150px] justify-between gap-10 px-3 py-5 lg:justify-start">
-            <div className="w-full">
-              <div className="relative">
-                <div className="flex items-center">
-                  <div className="relative flex w-full items-center border-2 border-gray-900 p-2">
-                    <button className="flex items-center">
-                      <AiOutlineSearch size={22} />
-                    </button>
+    <ClientOnly>
+      <div className="relative flex w-28 rounded-full border border-[#b6bc79] bg-inherit px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400 focus:outline-none focus:ring focus:ring-[#bfc48a] focus:ring-opacity-50 sm:w-64 sm:focus:w-72">
+        <input
+          type="text"
+          placeholder="Search product #"
+          onChange={handleSearchName}
+          className="w-full outline-none"
+          ref={dropdownRef}
+        />
 
-                    <input
-                      className="
-                                            w-full
-                                            pl-3
-                                            text-sm
-                                            placeholder-gray-400
-                                            focus:outline-none
-                                        "
-                      onChange={handleSearchName}
-                      placeholder="Search for anything"
-                      type="text"
+        {isSearching ? (
+          <BiLoaderCircle className="mr-2 animate-spin" size={22} />
+        ) : null}
+
+        {isDropDownVisible && items.length > 0 ? (
+          <div className="absolute left-0 top-12 z-20 h-auto w-full max-w-[910px] border bg-white p-1">
+            {items.map((item, i) => (
+              <div className="p-1" key={i}>
+                <Link
+                  href={`/products/${item.product_id}`}
+                  className="flex w-full cursor-pointer items-center justify-between p-1 px-2 hover:bg-gray-200"
+                  onClick={() => setIsDropDownVisible(false)}
+                >
+                  <div className="flex items-center">
+                    <Image
+                      className="rounded-md"
+                      width={20}
+                      height={20}
+                      alt="product image"
+                      src={item?.image}
                     />
-
-                    {isSearching ? (
-                      <BiLoaderCircle className="mr-2 animate-spin" size={22} />
-                    ) : null}
-
-                    {isDropdownVisible && products.length > 0 ? (
-                      <div className="absolute left-0 top-12 z-20 h-auto w-full max-w-[910px] border bg-white p-1">
-                        {products.map((product) => (
-                          <div className="p-1" key={product.product_id}>
-                            <Link
-                              href={`/products/${product.product_id}`}
-                              onClick={() => setIsDropdownVisible(false)}
-                              className="flex w-full cursor-pointer items-center justify-between p-1 px-2 hover:bg-gray-200"
-                            >
-                              <div className="flex items-center">
-                                <Image
-                                  className="rounded-md"
-                                  width={40}
-                                  height={40}
-                                  src={product.image}
-                                  alt={product.name + " image"}
-                                />
-                                <div className="ml-2 truncate">
-                                  {product.name}
-                                </div>
-                              </div>
-                              <div className="truncate">
-                                {formatCurrency(product?.price)}
-                              </div>
-                            </Link>
-                          </div>
-                        ))}
-                      </div>
-                    ) : null}
+                    <div className="ml-2 truncate text-xs">{item?.name}</div>
                   </div>
-                </div>
+                </Link>
               </div>
-            </div>
+            ))}
           </div>
-        </div>
-      </nav>
-    </div>
+        ) : null}
+      </div>
+    </ClientOnly>
   );
 }

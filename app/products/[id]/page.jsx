@@ -11,14 +11,6 @@ import ShippingInfoCard from "@/app/components/ShippingInfoCard";
 import { useQuery } from "@tanstack/react-query";
 import ProductDetailsLoader from "./ProductDetailsLoader";
 
-const fetchProductDetails = async (id) => {
-  const productDetails = await fetch(`/api/products/${id}`);
-  if (!productDetails.ok) throw new Error("Failed to fetch product details");
-  await new Promise((resolve) => setTimeout(resolve, 1200));
-  const data = await productDetails.json();
-  return data;
-};
-
 export default function ProductPage({ params: { id } }) {
   const fetchProductDetails = async () => {
     const productDetails = await fetch(`/api/products/${id}`);
@@ -94,37 +86,40 @@ export default function ProductPage({ params: { id } }) {
       </div>
 
       <div className="mt-6 flex flex-col gap-2 ">
-        <div className="sm:flex-start grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 ">
-          <Image
-            src="/images/tags/vegan.avif"
-            alt="vegan icon"
-            height={75}
-            width={75}
-          />
-          <Image
-            src="/images/tags/organic.avif"
-            alt="organic icon"
-            height={75}
-            width={75}
-          />
-          <Image
-            src="/images/tags/pure.avif"
-            alt="pure icon"
-            height={75}
-            width={75}
-          />
-          <Image
-            src="/images/tags/gluten.avif"
-            alt="gluten icon"
-            height={75}
-            width={75}
-          />
-          <Image
-            src="/images/tags/digestive.avif"
-            alt="digestive icon"
-            height={75}
-            width={75}
-          />
+        <div className="flex ">
+          <div className="sm:flex-start grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 ">
+            <Image
+              src="/images/tags/vegan.avif"
+              alt="vegan icon"
+              height={75}
+              width={75}
+            />
+            <Image
+              src="/images/tags/organic.avif"
+              alt="organic icon"
+              height={75}
+              width={75}
+            />
+            <Image
+              src="/images/tags/pure.avif"
+              alt="pure icon"
+              height={75}
+              width={75}
+            />
+            <Image
+              src="/images/tags/gluten.avif"
+              alt="gluten icon"
+              height={75}
+              width={75}
+            />
+            <Image
+              src="/images/tags/digestive.avif"
+              alt="digestive icon"
+              height={75}
+              width={75}
+            />
+          </div>
+          <div></div>
         </div>
         <div className="flex flex-col gap-4">
           <div>

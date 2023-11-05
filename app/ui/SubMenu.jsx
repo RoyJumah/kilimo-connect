@@ -6,19 +6,24 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { FaHome } from "react-icons/fa";
-import { use, useEffect, useState } from "react";
-import { getProducts } from "@/services/apiProducts";
+import { useEffect, useState } from "react";
+
+const fetchProducts = async () => {
+  const products = await fetch("http://localhost:3000/api/products");
+  if (!products.ok) throw new Error("Failed to fetch products");
+  const data = await products.json();
+  return data;
+};
 
 export default function SubMenu() {
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
-    getProducts().then((res) => setProducts(res));
+    fetchProducts().then((data) => setProducts(data));
   }, []);
   return (
     <NavigationMenu className="hidden sm:block">
@@ -27,7 +32,6 @@ export default function SubMenu() {
           <Link href="/">
             <FaHome size={20} color="#9da452" />
           </Link>
-          <NavigationMenuContent></NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link
@@ -36,7 +40,6 @@ export default function SubMenu() {
           >
             Discover
           </Link>
-          <NavigationMenuContent></NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link
@@ -45,7 +48,6 @@ export default function SubMenu() {
           >
             Superfoods
           </Link>
-          <NavigationMenuContent></NavigationMenuContent>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
@@ -73,7 +75,6 @@ export default function SubMenu() {
           >
             About us
           </Link>
-          <NavigationMenuContent></NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

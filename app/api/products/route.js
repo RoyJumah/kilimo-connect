@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     const products = await prisma.products.findMany();
-    console.log(products);
+
     await prisma.$disconnect();
     return NextResponse.json(products);
   } catch (error) {

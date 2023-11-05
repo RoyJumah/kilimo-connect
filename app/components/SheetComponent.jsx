@@ -20,6 +20,7 @@ export default function SheetComponent({ items }) {
   const lineItems = items.map((item, i) => ({
     price: item.stripe_id,
     quantity: item.quantity,
+  
   }));
   return (
     <ClientOnly>

@@ -80,7 +80,7 @@ function NavBar() {
       {/* mobile menu */}
       <nav className="sm:hidden">
         {isOpenSearch && (
-          <div className="flex justify-between bg-white p-3">
+          <div className="flex justify-between bg-white px-2 py-1">
             <div onClick={() => setIsOpen(!isOpen)} className="cursor-pointer">
               {isOpen ? <HiOutlineX size={24} /> : <HiMenu size={24} />}
             </div>

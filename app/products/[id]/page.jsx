@@ -10,12 +10,13 @@ import UpdateItemQuantity from "@/app/ui/UpdateItemQuantity";
 import ShippingInfoCard from "@/app/components/ShippingInfoCard";
 import { useQuery } from "@tanstack/react-query";
 import ProductDetailsLoader from "./ProductDetailsLoader";
+import toast from "react-hot-toast";
 
 export default function ProductPage({ params: { id } }) {
   const fetchProductDetails = async () => {
     const productDetails = await fetch(`/api/products/${id}`);
     if (!productDetails.ok) throw new Error("Failed to fetch product details");
-    await new Promise((resolve) => setTimeout(resolve, 1200));
+    await new Promise((resolve) => setTimeout(resolve, 600));
     const data = await productDetails.json();
     return data;
   };
@@ -27,8 +28,6 @@ export default function ProductPage({ params: { id } }) {
     queryKey: ["productDetails", id],
     queryFn: fetchProductDetails,
   });
-
-  console.log({ productDetails });
 
   const dispatch = useDispatch();
 
@@ -52,6 +51,7 @@ export default function ProductPage({ params: { id } }) {
       totalPrice: price * 1,
     };
     dispatch(addItems(newItem));
+    toast.success("Item added to cart", { autoClose: 2000 });
   }
 
   return (

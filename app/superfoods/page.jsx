@@ -16,7 +16,7 @@ const fetchProductsData = async () => {
     },
   });
   if (!products.ok) throw new Error("Failed to fetch products");
-  await new Promise((resolve) => setTimeout(resolve, 1200));
+  await new Promise((resolve) => setTimeout(resolve, 600));
   const data = await products.json();
   return data.slice(0, 8);
 };

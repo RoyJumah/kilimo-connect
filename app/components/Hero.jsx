@@ -3,8 +3,8 @@ import HeroHeader from "../ui/HeroHeader";
 
 export default function Hero() {
   return (
-    <div>
+    <>
       <HeroHeader />
-    </div>
+    </>
   );
 }

@@ -4,8 +4,8 @@ import YouTube from "react-youtube";
 export default function page() {
   //I got this from geekforgeeks and it enables the autoplay feature of the youtube video
   const opts = {
-    height: "300",
-    width: "550",
+    height: "250em", // 16:9 aspect ratio (9 / 16 * 100)
+    width: "70%",
     playerVars: {
       autoplay: 0,
     },
@@ -45,7 +45,7 @@ export default function page() {
           </p>
         </div>
       </div>
-      <div>
+      <div className="">
         <YouTube videoId="jDwcbn99Uz8" opts={opts} />
       </div>
       <div>

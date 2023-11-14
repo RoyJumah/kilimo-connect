@@ -22,10 +22,10 @@ function DiscoverFoods() {
         </p>
 
         <Image
-          src="/images/discover-images/cacao.jpg"
+          src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/discover-images/cacao.jpg?t=2023-11-14T15%3A06%3A26.167Z"
           width={480}
           height={480}
-          alt="cacao image"
+          alt="product image"
           className="self-center"
         />
       </div>
@@ -42,10 +42,10 @@ function DiscoverFoods() {
         </p>
 
         <Image
-          src="/images/discover-images/chia.jpg"
+          src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/discover-images/chia.jpg?t=2023-11-14T15%3A07%3A07.692Z"
           width={480}
           height={480}
-          alt="cacao image"
+          alt="product image"
           className="self-center"
         />
       </div>
@@ -61,10 +61,10 @@ function DiscoverFoods() {
         </p>
 
         <Image
-          src="/images/discover-images/kosher.jpg"
+          src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/discover-images/kosher.jpg?t=2023-11-14T15%3A07%3A19.813Z"
           width={400}
           height={400}
-          alt="cacao image"
+          alt="product image"
           className="self-center"
         />
       </div>
@@ -80,10 +80,10 @@ function DiscoverFoods() {
         </p>
 
         <Image
-          src="/images/discover-images/farmer.jpg"
+          src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/discover-images/farmer.jpg?t=2023-11-14T15%3A07%3A30.213Z"
           width={400}
           height={400}
-          alt="cacao image"
+          alt="product image"
           className="self-center"
         />
       </div>

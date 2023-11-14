@@ -48,31 +48,6 @@ export default async function Agitourism() {
           ))}
         </ul>
       </div>
-      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-1 p-6 sm:gap-2 md:flex-row md:gap-4">
-        <div class="flex flex-col items-center justify-center md:w-1/2">
-          <h2 class="mb-4 text-center text-3xl font-bold">Guided Farm Tours</h2>
-          <p class="mb-4 text-center text-lg">
-            Experience the best of agritourism with our guided farm tours. Our
-            tours are designed to give you a taste of the unique aspects of
-            agritourism and the variety of experiences you can have on different
-            farms.
-          </p>
-          <p class="text-center text-lg">
-            Join us for a fun-filled day of farm tours and discover the beauty
-            of rural life.
-          </p>
-        </div>
-        <div class="md:w-1/2">
-          <Image
-            src="/images/farms/tour-guide.png"
-            width={200}
-            height={200}
-            alt="Guided Farm Tours"
-            layout="responsive"
-            class="h-[400px] w-[400px]  "
-          />
-        </div>
-      </div>
 
       <div>
         <h2>Explore Farms Near You</h2>

@@ -40,8 +40,8 @@ function NavBar() {
       link: "/",
     },
     {
-      name: "Discover",
-      link: "/discover",
+      name: "Agitourism",
+      link: "/agitourism",
     },
     {
       name: "Superfoods",

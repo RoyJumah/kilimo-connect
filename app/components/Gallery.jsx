@@ -3,15 +3,33 @@ import React from "react";
 
 export default function Gallery() {
   const images = [
-    { url: "/images/gallery/image-01.jpeg" },
-    { url: "/images/gallery/image-02.jpeg" },
-    { url: "/images/gallery/image-03.jpeg" },
-    { url: "/images/gallery/image-04.jpeg" },
-    { url: "/images/gallery/image-05.jpeg" },
-    { url: "/images/gallery/image-06.jpeg" },
-    { url: "/images/gallery/image-07.jpeg" },
-    { url: "/images/gallery/image-08.jpeg" },
-    { url: "/images/gallery/image-09.jpeg" },
+    {
+      url: "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/gallery/image-01.jpeg?t=2023-11-14T14%3A47%3A49.591Z",
+    },
+    {
+      url: "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/gallery/image-02.jpeg?t=2023-11-14T14%3A48%3A02.368Z",
+    },
+    {
+      url: "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/gallery/image-03.jpeg",
+    },
+    {
+      url: "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/gallery/image-04.jpeg?t=2023-11-14T14%3A48%3A29.819Z",
+    },
+    {
+      url: "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/gallery/image-05.jpeg?t=2023-11-14T14%3A48%3A40.823Z",
+    },
+    {
+      url: "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/gallery/image-06.jpeg?t=2023-11-14T14%3A48%3A50.677Z",
+    },
+    {
+      url: "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/gallery/image-07.jpeg?t=2023-11-14T14%3A49%3A01.524Z",
+    },
+    {
+      url: "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/gallery/image-08.jpeg?t=2023-11-14T14%3A49%3A11.908Z",
+    },
+    {
+      url: "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/gallery/image-09.jpeg?t=2023-11-14T14%3A49%3A22.048Z",
+    },
   ];
   return (
     <div className="mt-4 text-center sm:mt-6 md:mt-10">

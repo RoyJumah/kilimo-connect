@@ -6,25 +6,29 @@ export default function TestimonialSection() {
   const [products, setProducts] = useState([]);
   const testimonials = [
     {
-      image: "/images/avatars/ben.jpg",
+      image:
+        "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/avatars/ben.jpg?t=2023-11-14T15%3A20%3A44.994Z",
       name: "Ben Hadley",
       testimonial:
         "The farm tour opened my eyes to sustainable farming practices, offering a taste of the freshest produce. A must-try for any food enthusiast!",
     },
     {
-      image: "/images/avatars/dave.jpg",
+      image:
+        "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/avatars/dave.jpg?t=2023-11-14T15%3A20%3A56.133Z",
       name: "Dave Bryson",
       testimonial:
         "Exploring the farm with knowledgeable guides was amazing. The connection between farmers and the land is inspiring, and the hands-on activities made it a fun and educational day!",
     },
     {
-      image: "/images/avatars/steve.jpg",
+      image:
+        "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/avatars/steve.jpg?t=2023-11-14T15%3A21%3A07.277Z",
       name: "Steve Miller",
       testimonial:
         "As a foodie, the farm tour was a dream come true! Meeting farmers, witnessing organic practices, and tasting freshly harvested goodies made for an unforgettable experience. Highly recommend!",
     },
     {
-      image: "/images/avatars/hannah.jpg",
+      image:
+        "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/avatars/hannah.jpg?t=2023-11-14T15%3A21%3A18.031Z",
       name: "Hannah Smith",
       testimonial:
         "The farm tour transformed me into a huge advocate for organic produce. I didn't know much about sustainable farming before, but now I'm excited to share my experience with others!",

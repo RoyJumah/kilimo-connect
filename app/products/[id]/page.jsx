@@ -55,7 +55,7 @@ export default function ProductPage({ params: { id } }) {
   }
 
   return (
-    <div className="sm:w-[1200px] mx-auto max-w-6xl p-6">
+    <div className="mx-auto max-w-6xl p-6 sm:w-[1200px]">
       <div className="mx-auto my-8 grid grid-cols-[1fr-auto] gap-4 md:grid-cols-[auto_1fr_auto] md:gap-4">
         <Image
           src={image}
@@ -95,25 +95,25 @@ export default function ProductPage({ params: { id } }) {
               width={75}
             />
             <Image
-              src="/images/tags/organic.avif"
+              src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/tags/vegan.avif?t=2023-11-14T15%3A17%3A44.257Z"
               alt="organic icon"
               height={75}
               width={75}
             />
             <Image
-              src="/images/tags/pure.avif"
+              src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/tags/pure.avif?t=2023-11-14T15%3A17%3A56.354Z"
               alt="pure icon"
               height={75}
               width={75}
             />
             <Image
-              src="/images/tags/gluten.avif"
+              src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/tags/gluten.avif?t=2023-11-14T15%3A18%3A09.029Z"
               alt="gluten icon"
               height={75}
               width={75}
             />
             <Image
-              src="/images/tags/digestive.avif"
+              src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/tags/digestive.avif?t=2023-11-14T15%3A18%3A24.722Z"
               alt="digestive icon"
               height={75}
               width={75}
@@ -147,14 +147,14 @@ export default function ProductPage({ params: { id } }) {
           <div className="flex gap-2">
             <Image
               className="h-auto w-auto"
-              src="/images/tags/Warka_Water_Logo.avif"
+              src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/tags/Warka_Water_Logo.avif?t=2023-11-14T15%3A18%3A42.226Z"
               alt="digestive icon"
               height={100}
               width={150}
             />
             <Image
               className="h-auto w-auto"
-              src="/images/tags/Rainforest_Concern_Logo.avif"
+              src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/tags/Rainforest_Concern_Logo.avif?t=2023-11-14T15%3A18%3A53.774Z"
               alt="digestive icon"
               height={75}
               width={75}

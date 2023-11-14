@@ -11,7 +11,7 @@ function HeroHeader() {
           <div className="absolute inset-0 z-0 bg-black opacity-40"></div>
 
           <Image
-            src="/images/hero-img/header-img.jpg"
+            src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/hero-images/header-img.jpg?t=2023-11-14T15%3A02%3A54.312Z"
             alt="header image"
             width={1200}
             height={600}
@@ -37,7 +37,7 @@ function HeroHeader() {
           <div className="relative ">
             <div className="absolute inset-0 z-0 bg-black opacity-40"></div>
             <Image
-              src="/images/hero-img/grapes.jpg"
+              src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/hero-images/grapes.jpg?t=2023-11-14T15%3A02%3A38.398Z"
               alt="header image"
               width={1200}
               height={600}
@@ -62,7 +62,7 @@ function HeroHeader() {
           <div className="relative ">
             <div className="absolute inset-0 z-0 bg-black opacity-40"></div>
             <Image
-              src="/images/hero-img/mountain.jpg"
+              src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/hero-images/grapes.jpg?t=2023-11-14T15%3A02%3A38.398Z"
               alt="header image"
               width={1200}
               height={600}
@@ -89,7 +89,7 @@ function HeroHeader() {
           <div className="relative ">
             <div className="absolute inset-0 z-0 bg-black opacity-40"></div>
             <Image
-              src="/images/hero-img/human-nature.jpg"
+              src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/hero-images/human-nature.jpg?t=2023-11-14T15%3A03%3A40.377Z"
               alt="header image"
               width={1200}
               height={600}

@@ -3,19 +3,17 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, context) {
   try {
-    const { name } = context.params;
+    const id = context.params.id;
 
-    const items = await prisma.products.findMany({
-      take: 5,
-      where: {
-        name: {
-          contains: name,
-          mode: "insensitive",
-        },
-      },
+    const farm = await prisma.farms.findFirst({
+      where: { id: id },
     });
+
+    // Convert BigInt id to string
+    const serializedFarm = farm ? { ...farm, id: farm.id.toString() } : null;
+
     await prisma.$disconnect();
-    return NextResponse.json(items);
+    return NextResponse.json(serializedFarm);
   } catch (error) {
     console.log(error);
     await prisma.$disconnect();

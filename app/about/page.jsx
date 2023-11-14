@@ -11,7 +11,7 @@ export default function page() {
     },
   };
   return (
-    <div className="flex flex-col gap-2 sm:gap-4">
+    <div className="mx-auto flex max-w-6xl flex-col gap-2 p-6 sm:gap-4">
       <div>
         <h2 className="mb-3 text-xl font-medium">Shared Earth</h2>
         <p className="text-sm sm:text-base">

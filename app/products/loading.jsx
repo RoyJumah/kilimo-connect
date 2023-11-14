@@ -2,8 +2,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Loading() {
   return (
-    <>
-      <div className="flex justify-between border-b border-b-slate-200 p-4 sm:mb-4">
+    <div className="mx-auto max-w-6xl p-6">
+      <div className="justify-between border-b border-b-slate-200 p-4 sm:mb-4 ">
         <Skeleton className="w-[100px]" />
 
         <select name="pets" id="pet-select" className="outline-none">
@@ -21,6 +21,6 @@ export default function Loading() {
           <Skeleton key={i} className="h-[240px] w-[180px] " />
         ))}
       </ul>
-    </>
+    </div>
   );
 }

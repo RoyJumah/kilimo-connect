@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function DiscoverFoods() {
   return (
-    <>
+    <div className="mx-auto max-w-6xl p-6">
       <h1 className=" mb-2 text-center text-2xl font-medium duration-200  sm:mb-4 sm:text-3xl">
         Discover Foods
       </h1>
@@ -87,7 +87,7 @@ function DiscoverFoods() {
           className="self-center"
         />
       </div>
-    </>
+    </div>
   );
 }
 

@@ -44,7 +44,7 @@ function SuperFoodsPage() {
     dispatch(addItems(newItem));
   }
   return (
-    <ul className="grid grid-cols-2 gap-2">
+    <ul className="mx-auto grid max-w-6xl grid-cols-2 gap-2 p-6">
       {data.map((product, i) => (
         <Dialog key={i}>
           <li>

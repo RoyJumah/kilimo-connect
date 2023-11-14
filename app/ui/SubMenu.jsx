@@ -35,15 +35,15 @@ export default function SubMenu() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link
-            href="/discover"
+            href="/agitourism"
             className="transition-all duration-100 hover:text-[#9da452]"
           >
-            Discover
+            Agritourism
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link
-            href="/superfoods"
+            href="/"
             className="transition-all duration-100 hover:text-[#9da452]"
           >
             Superfoods

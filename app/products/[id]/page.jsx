@@ -55,7 +55,7 @@ export default function ProductPage({ params: { id } }) {
   }
 
   return (
-    <div className="sm:w-[1200px]">
+    <div className="sm:w-[1200px] mx-auto max-w-6xl p-6">
       <div className="mx-auto my-8 grid grid-cols-[1fr-auto] gap-4 md:grid-cols-[auto_1fr_auto] md:gap-4">
         <Image
           src={image}

@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
           <Provider store={store}>
             <div className="grid grid-rows-[auto_1fr_auto]">
               <NavBar />
-              <main className="mx-auto max-w-6xl p-6">{children}</main>
+              <main>{children}</main>
               <Footer />
             </div>
           </Provider>

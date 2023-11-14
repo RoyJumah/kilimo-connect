@@ -17,7 +17,7 @@ export default async function ProductListPage() {
   const data = await fetchProductsData();
 
   return (
-    <>
+    <div className="mx-auto max-w-6xl p-6">
       <div className="flex justify-between border-b border-b-slate-200 p-4 sm:mb-4">
         <h2 className="text-lg">Products</h2>
 
@@ -55,6 +55,6 @@ export default async function ProductListPage() {
           </Link>
         ))}
       </ul>
-    </>
+    </div>
   );
 }

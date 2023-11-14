@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ProductDetailsLoader() {
   return (
-    <div className="sm:w-[1200px]">
+    <div className="sm:w-[1200px] mx-auto max-w-6xl p-6">
       <div className="mx-auto my-8 grid grid-cols-[1fr-auto] gap-4 md:grid-cols-[auto_1fr_auto] md:gap-4">
         <Skeleton className="h-[500px] w-[400px]" />
         <div className="flex flex-col items-start justify-start gap-3">

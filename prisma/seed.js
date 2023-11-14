@@ -1,463 +1,82 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-async function seedProducts() {
+async function seedFarms() {
   try {
-    await prisma.products.create({
+    await prisma.farms.create({
       data: {
-        name: "Organic Raw Cacao Butter Chunks",
+        name: "Queen Creek Olive Mill",
+        location: "W Combs Rd & Ritten Rd",
         description:
-          "Our award-winning cacao butter originates from Peru where the Cacao tree was sacred amongst the Mayans and Aztecs. Cacao butter is made by pressing ground, milled cacao nibs to make a cocoa paste. This process separates powder from the butter to create a velvety and rich paste that can be used as a natural alternative to processed cooking oils. Our cacao butter also dissolves beautifully onto the skin as a pure chemical-free moisturiser.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/cacaobutterchunks.jpg?t=2023-11-02T09%3A55%3A50.480Z",
-        price: 25,
-        usage:
-          "Clean and pure, our cacao butter melts into a  milky rich buttery mass. With an excellent clean finish, our cacao butter is a very versatile culinary product.",
-        ingredients: "100% Cacao Butter",
-        stripe_id: "price_1O513JKUTnlP475Ovp0HhUpX",
+          "Tour, Shop, Eat, Repeat at Queen Creek Olive Mill - Arizona's only working olive farm and mill. Family owned and operated, our 100-acre farm with over 7000 olive trees is a true blossom to bottle experience. Visitors are able to learn first-hand how olives are pressed into fresh extra virgin olive oil on our educational Olive Oil 101 tour conducted daily. Guests can taste their way through our gourmet marketplace and shop for locally made extra virgin olive oils, Balsamic vinegars, olives and other local treasures. Our Italian inspired Eatery features old-world family recipes. We use local and garden-sourced ingredients to create our healthy and delicious cuisine and showcase how extra virgin olive oil can be used best in your kitchen. Our in-house roastery, Superstition Coffee, will ensure that you'll get the freshest cup of coffee you've ever had. With plenty to taste, discover and enjoy, Queen Creek Olive Mill is a true agritourism experience!",
+        duration: "2-3 hours",
+        gallery: [
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/dan-meyers-IQVFVH0ajag-unsplash.jpg?t=2023-11-14T04%3A53%3A09.961Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/elaine-casap-qgHGDbbSNm8-unsplash.jpg?t=2023-11-14T04%3A53%3A54.203Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/frances-gunn-QcBAZ7VREHQ-unsplash.jpg?t=2023-11-14T04%3A54%3A08.595Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/illiya-vjestica-W5FdAcHp7l8-unsplash.jpg?t=2023-11-14T04%3A54%3A24.733Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/phuc-long-aqrIcYonB-o-unsplash.jpg?t=2023-11-14T04%3A55%3A11.548Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/scott-goodwill-CtRE4_4L7b8-unsplash.jpg?t=2023-11-14T04%3A55%3A30.466Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/timothy-eberly-XemjjFd_4qE-unsplash.jpg?t=2023-11-14T04%3A55%3A45.546Z",
+        ],
+        restaurants_nearby: [
+          "Queen Creek Olive Mill",
+          "San Tan Flat",
+          "Barnone",
+        ],
+      },
+    });
+    await prisma.farms.create({
+      data: {
+        name: "Caywood Farms",
+        description:
+          "We offer farm tours relating to local agriculture including cotton and alfalfa. Learn how cotton is grown from seed to bale. This 2 1/2 to 3 hour tour includes an indoor presentation followed by a hayride out to the field. Cotton is planted in the spring and picked in the fall. We have cotton in the field until mid-February. You will see a cotton picker, cotton module builder and a cotton rood which picks up ground cotton. If cotton is not in the ground, we still offer tours. Please call for information on dates, times and reservations. Reservations are required.",
+        location: "N Sunshine Blvd & I-287",
+        duration: "2-3 hours",
+        gallery: [
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/guido-klinge-OEHZaqr4rlM-unsplash.jpg?t=2023-11-14T04%3A58%3A50.850Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/sparks-johnson-b2PAEIr4NK8-unsplash.jpg",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/tim-mossholder-xDwEa2kaeJA-unsplash.jpg?t=2023-11-14T05%3A00%3A03.137Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/glenn-carstens-peters-2E_dT65fyxo-unsplash.jpg",
+        ],
+
+        restaurants_nearby: [],
+      },
+    });
+    await prisma.farms.create({
+      data: {
+        name: "Martha's Gardens Medjool Date Farm",
+        location: "County 10th St & Araby Blaisdell Rd",
+        description:
+          "Martha's Gardens Medjool Date Farm is a certified organic date farm located in Yuma, Arizona. We offer tours October through March. Our tours are 1 1/2 hours long and include a wagon ride through the date palms, a talk about the history of the farm, a talk about the history of the Medjool date, a talk about the growing cycle of the Medjool date, a talk about the harvesting of the Medjool date, a talk about the packing of the Medjool date, a talk about the nutritional value of the Medjool date, a talk about the many uses of the Medjool date, a talk about the many varieties of dates, a talk about the many products made from the Medjool date, a talk about the many health benefits of the Medjool date, a talk about the many recipes using the Medjool date, a talk about the many gift packages available, a talk about the many gift items available, a talk about the many gift baskets available, a talk about the many gift tins available, and a talk about the many gift boxes available. We also have a gift shop and a snack bar. We are open Monday through Saturday from 9:00 a.m. to 4:00 p.m. and Sunday from 10:00 a.m. to 4:00 p.m. We are closed on Thanksgiving Day, Christmas Day, and New Year's Day. We are open on all other holidays. We are open all year round. We are handicap accessible. We have a handicap accessible restroom. We have a picnic area. We have a parking lot. We have a bus parking lot. We have a bus turnaround. We have a",
+        duration: "1-2 hours",
+        gallery: [
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/guillaume-henrotte-bNOh-Y-ECSg-unsplash.jpg?t=2023-11-14T05%3A04%3A00.055Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/max-O_TVsaeZNlE-unsplash.jpg?t=2023-11-14T05%3A04%3A34.036Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/werner-sevenster-JuP0ZG0UNi0-unsplash.jpg?t=2023-11-14T05%3A04%3A58.165Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/xavi-moll-u-Q14NlYLEI-unsplash.jpg?t=2023-11-14T05%3A05%3A14.575Z",
+        ],
+        restaurants_nearby: [
+          " Da Boyz Pizza & Pasta",
+          "Pizza Hut",
+          "American Veteran  of Yuma",
+        ],
       },
     });
 
-    await prisma.products.create({
+    await prisma.farms.create({
       data: {
-        name: "Organic Raw Cacao Paste Chunks",
+        name: "Shamrock Farms",
+        location: "W Encanto Blvd & N Black Cyn Hwy",
         description:
-          "Containing only a small amount of naturally occurring sugars and no additives, preservatives, or allergens, our 100% vegan and organic Cacao Paste Chunks are a healthier alternative to chocolate. With a luxurious dark chocolate flavour, our cacao paste chunks are made by pressing cacao nibs into a paste which is then broken into chunks. Because of this minimal processing, our cacao paste chunks retain the nutrients found within the cacao bean to create a nutritious and delicious snack.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/cacaopastechunksshavings_600x.jpg?t=2023-11-02T09%3A56%3A16.238Z",
-        price: 24.99,
-        usage:
-          "With a deliciously rich dark chocolate flavour, melt our cacao paste to create decadent organic desserts or hot chocolate!",
-        ingredients: "100% Cacao Paste",
-        stripe_id: "price_1O516SKUTnlP475ObAazNgFa",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Raw Cacao Nibs",
-        description:
-          "Our cacao nibs are made by simply breaking raw cacao beans into small pieces. These nibs preserve the cacao bean's nutritional value and contain no additives resulting in a versatile and nutritious superfood snack.  Cacao nibs are rich in iron, which boosts energy and reduces tiredness, and are naturally filled with antioxidants. They're also impressively high in magnesium which supports psychological health. So take some time to enjoy those feel-good feelings that our super nibs bring.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/cacao-nibs.webp?t=2023-11-02T14%3A50%3A48.112Z",
-        price: 12.99,
-        usage:
-          "With a crunchy texture and rich flavour like unsweetened dark chocolate, you can enjoy our cacao nibs directly from the pack! Or get creative and sprinkle them over cakes and dash over breakfast bowls. ",
-        ingredients: "100% Cacao Nibs",
-        stripe_id: "price_1O518AKUTnlP475OOa4e6Fel",
-      },
-    });
-    await prisma.products.create({
-      data: {
-        name: "Organic Acerola Powder",
-        description:
-          "Grown in Brazil, our Acerola fruits soak up the intense South American sun to develop vibrant crimson red Cherries. We harvest and freeze-dry the cherries to preserve as much of the nutritional content as possible. This results in a superfood powder that is incredibly high in Vitamin C which supports immunity and skin health.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/28_medium.webp?t=2023-11-02T09%3A42%3A09.418Z",
-        price: 19.99,
-        usage:
-          "Our Acerola powder has a sweet and sour taste and can be added to smoothies, juices, and desserts.",
-        ingredients: "100% Acerola Powder",
-        stripe_id: "price_1O519TKUTnlP475OzxqSPZfx",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Hemp Protein Powder",
-        description:
-          "Our hemp protein powder is made from the highest quality raw hemp seeds that are pressed and stone ground to create a powder. With 47g of protein per 100g, it is an exceptional source of vegan protein to support your muscle growth and maintenance. Our hemp protein powder is also high in Manganese, which boosts energy, making it a perfect addition to your pre-workout shakes. It's also natural contains Omega 3 fatty acids which support cholesterol health. With a mild flavour and colour, our hemp protein powder can be conveniently added to any meal, shake or bake for a quick and easy vegan protein super boost.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/hempproteinpowderscoopsandgymgear.webp?t=2023-11-02T09%3A51%3A05.305Z",
-        price: 19.99,
-        usage:
-          "Our hemp protein powder has a mild flavour and colour, making it a convenient addition to any meal, shake or bake for a quick and easy vegan protein super boost.",
-        ingredients: "100% Hemp Protein Powder",
-        stripe_id: "price_1O51JGKUTnlP475OYxdvFVjP",
-      },
-    });
-    await prisma.products.create({
-      data: {
-        name: "Organic Bee Pollen",
-        description:
-          "Our bee pollen is collected by bees from the flowers of the acacia tree. The bees then mix the pollen with their own nectar to create a superfood that is rich in vitamins, minerals, and amino acids. Bee pollen is a great source of protein and is also high in fibre, which supports digestive health. With a sweet and floral flavour, our bee pollen is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/Beepollenbeingserved.webp?t=2023-11-02T09%3A42%3A53.818Z",
-        price: 19.99,
-        usage:
-          "Our bee pollen has a sweet and floral flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Bee Pollen",
-        stripe_id: "price_1O51KFKUTnlP475OG4Xih868",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Ceremonial Matcha Powder",
-        description:
-          "Our ceremonial matcha powder is made from the highest quality green tea leaves that are stone ground to create a fine powder. With a vibrant green colour and a smooth flavour, our matcha powder is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/ceremonialmatchapreperation.webp?t=2023-11-02T09%3A47%3A52.006Z",
-        price: 17.99,
-        usage:
-          "Our matcha powder has a smooth flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Matcha Powder",
-        stripe_id: "price_1O51L7KUTnlP475O8u1xlDFk",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Cacao Butter Wafers",
-        description:
-          "Our award-winning cacao butter originates from Peru where the Cacao tree was sacred amongst the Mayans and Aztecs. Cacao butter is made by pressing ground, milled cacao nibs to make a cocoa paste. This process separates powder from the butter to create a velvety and rich paste that can be used as a natural alternative to processed cooking oils. Our cacao butter also dissolves beautifully onto the skin as a pure chemical-free moisturiser.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/10_medium.webp?t=2023-11-02T09%3A41%3A11.077Z",
-        usage:
-          "Clean and pure, our cacao butter melts into a  milky rich buttery mass. With an excellent clean finish, our cacao butter is a very versatile culinary product.",
-        price: 79.99,
-        ingredients: "100% Cacao Butter",
-        stripe_id: "price_1O51MeKUTnlP475OUIOZejyI",
-      },
-    });
-    await prisma.products.create({
-      data: {
-        name: "Organic Baobab Powder",
-        description:
-          "Our baobab powder is made from the highest quality baobab fruits that are dried and ground to create a fine powder. With a sweet and tangy flavour, our baobab powder is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/14_medium.webp?t=2023-11-02T09%3A41%3A28.006Z",
-        price: 19.99,
-        usage:
-          "Our baobab powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Baobab Powder",
-        stripe_id: "price_1O51QkKUTnlP475OfYIDxxHV",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Chia Seeds",
-        description:
-          "Our chia seeds are made from the highest quality chia seeds that are dried and ground to create a fine powder. With a sweet and tangy flavour, our chia seeds is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/17_medium.webp?t=2023-11-02T09%3A41%3A49.440Z",
-        price: 13.99,
-        usage:
-          "Our chia seeds has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Chia Seeds",
-        stripe_id: "price_1O51RxKUTnlP475OFtKotApK",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Chlorella & Spirulina Tablets",
-        description:
-          "Our chlorella and spirulina tablets are made from the highest quality chlorella and spirulina that are dried and ground to create a fine powder. With a sweet and tangy flavour, our chlorella and spirulina tablets is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/aportionofchlorellaandspirulinatablets.webp?t=2023-11-02T09%3A44%3A39.583Z",
-        price: 19.99,
-        usage:
-          "Our chlorella and spirulina tablets has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Chlorella and Spirulina",
-        stripe_id: "price_1O51TEKUTnlP475OZTjjhatI",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Banana Powder",
-        description:
-          "Our banana powder is made from the highest quality bananas that are dried and ground to create a fine powder. With a sweet and tangy flavour, our banana powder is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/Bananapowderforaproteinshake.webp?t=2023-11-02T09%3A42%3A30.995Z",
-        price: 121.99,
-        usage:
-          "Our banana powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Banana Powder",
-        stripe_id: "price_1O51UkKUTnlP475OUxtQGyN0",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Barley Grass Powder",
-        description:
-          "Our barley grass powder is made from the highest quality barley grass that are dried and ground to create a fine powder. With a sweet and tangy flavour, our barley grass powder is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/barleygrassserving.webp?t=2023-11-02T09%3A44%3A59.189Z",
-        price: 19.99,
-        usage:
-          "Our barley grass powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Barley Grass Powder",
-        stripe_id: "price_1O51W6KUTnlP475ODqoK5juA",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Beetroot Powder",
-        description:
-          "Our beetroot powder is made from the highest quality beetroot that are dried and ground to create a fine powder. With a sweet and tangy flavour, our beetroot powder is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/beetrootpowderonsteak.webp?t=2023-11-02T09%3A45%3A19.562Z",
-        price: 19.99,
-        usage:
-          "Our beetroot powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Beetroot Powder",
-        stripe_id: "price_1O51XYKUTnlP475OmKqvbUi1",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Blueberry Powder",
-        description:
-          "Our blueberry powder is made from the highest quality blueberries that are dried and ground to create a fine powder. With a sweet and tangy flavour, our blueberry powder is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/blueberrywaffles.webp?t=2023-11-02T09%3A46%3A06.936Z",
-        price: 12.49,
-        usage:
-          "Our blueberry powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Blueberry Powder",
-        stripe_id: "price_1O51YgKUTnlP475OfC2Chmc4",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Cacao Beans",
-        description:
-          "Our cacao beans are made from the highest quality cacao beans that are dried and ground to create a fine powder. With a sweet and tangy flavour, our cacao beans is a versatile superfood that can be added to smoothies, desserts, and breakfast bowls.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/cacaobeanswithmortarandpestle.webp?t=2023-11-02T09%3A46%3A32.629Z",
-        price: 11.99,
-        usage:
-          "Our cacao beans has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Cacao Beans",
-        stripe_id: "price_1O51ZpKUTnlP475O431xu0Tx",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Cacao Paste Wafers",
-        description:
-          "Containing only a small amount of naturally occurring sugars and no additives, preservatives or allergens our 100% vegan and organic Cacao paste wafers are a healthier alternative to regular processed chocolate buttons. With a luxurious dark chocolate flavour, our cacao paste wafers are made by pressing cacao nibs into a paste which is then melted and moulded into buttons. Because of this minimal processing, our cacao paste wafers retain the nutrients found within the cacao bean to create a nutritious and delicious snack. ",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/cacaopastewafers.webp?t=2023-11-02T09%3A47%3A06.867Z",
-        price: 12.19,
-        usage:
-          "With a deliciously rich dark chocolate flavour, melt our cacao paste wafers to create decadent organic desserts or hot chocolate!",
-        ingredients: "100% Cacao Paste",
-        stripe_id: "price_1O51bAKUTnlP475OzCTi8IYF",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Camu Camu Powder",
-        description:
-          "Traditionally used in native diets as a natural flavouring in sweets, Camu Camu berries grow wild along the flood plains of the Amazon Rainforest. Along with its fruity flavour and fragrance, our Camu Camu powder is brilliantly high in Vitamin C, which boosts immunity, enhances energy and boasts antioxidants that protect the skin from free radicals that accelerate ageing. ",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/camucamupowderonspoon.webp?t=2023-11-02T09%3A47%3A26.299Z",
-        price: 19.99,
-        usage:
-          "Our Camu Camu powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Camu Camu Powder",
-        stripe_id: "price_1O51ciKUTnlP475ObeXxtp4A",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Chaga Powder",
-        description:
-          "Known as 'Black Gold', Chaga is a treasure trove of nutrients and has been traditionally used as herbal medicine. Our Chaga powder is made from carefully selected premium mushrooms that have a naturally sweet taste. We use only the mushroom's fruiting body as it is the most nutrient-rich part of the mushroom. ",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/Chagateaset.webp?t=2023-11-02T09%3A43%3A24.894Z",
-        price: 43.99,
-        usage:
-          "Our Chaga powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Chaga Powder",
-        stripe_id: "price_1O51diKUTnlP475OGxfAwlzC",
-      },
-    });
-    await prisma.products.create({
-      data: {
-        name: "Organic Cinnamon Powder",
-        description:
-          "Created from the finely milled bark of Sri Lanken laurel trees, our premium quality organic cinnamon powder is deliciously sweet and fragrantly aromatic. As well as its delicate flavour and many uses, our cinnamon powder is also high in fibre! ",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/cinnamonpowderinaspoon.webp?t=2023-11-02T09%3A48%3A35.625Z",
-        price: 19.99,
-        usage:
-          "Our cinnamon powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Cinnamon Powder",
-        stripe_id: "price_1O51elKUTnlP475OsIvDiT3Y",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Coconut Sugar",
-        description:
-          "Coconut Sugar is a natural sweetener made by evaporating the nectar harvested from the coconut palm flower. It is rich in flavour with a hint of caramel sweetness and resembles brown sugar. Our coconut sugar is impressively high in Calcium, which supports bone and tooth health, enhances energy, helps muscle function, and aids digestion. We source our coconut sugar from ethical, sustainable and organic small cooperative farmers in the third world. ",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/coconutsugarinbowl.webp?t=2023-11-02T09%3A49%3A00.433Z",
-        price: 122.19,
-        usage:
-          "Our coconut sugar has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Coconut Sugar",
-        stripe_id: "price_1O51gDKUTnlP475O7c8Vxu7k",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Coconut Water Powder",
-        description:
-          "Our organic coconut water powder is made from fresh coconut water, which is freeze-dried then milled into a fine powder. Our coconuts are sustainably grown and harvested in the Philippines, are rich in nutrients and have a refreshing taste. Our coconut water powder is high in Potassium which supports muscle health and maintains blood pressure and high in Magnesium which enhances energy and balances the nervous system. Our coconut water is also refreshingly high in antioxidants resulting in an all-natural, low in calories, low in sugar, all-natural organic hydration drink.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/coconutwaterpowderonaspoon.webp?t=2023-11-02T09%3A49%3A26.062Z",
-        price: 12.49,
-        usage:
-          "Our coconut water powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Coconut Water Powder",
-        stripe_id: "price_1O51h6KUTnlP475OheDYKePf",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Incan Berries",
-        description:
-          "Also known as the 'Golden Berry' or 'Aztek Berry', these delightfully sweet and tart berries possess a naturally golden colour and a sweet yet tart flavour. Grown in the highlands of Peru, Incan berries are harvested and hand-selected for the finest quality, then cleaned in water and dried to preserve their nutritional content. Containing a high Fibre content, these berries make a delicious super snack. ",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/driedgoldenincanberriesinadish.webp?t=2023-11-02T09%3A49%3A52.208Z",
-        price: 12.49,
-        usage:
-          "Our Incan berries has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Incan Berries",
-        stripe_id: "price_1O51iCKUTnlP475OuwWOY1dk",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Gelatinised Maca Powder",
-        description:
-          "Dubbed the “superfood of the Andes”, Maca has long been integrated into the nutrition of the indigenous population of the Peruvian Andes. Our maca is high in calcium which supports bone and tooth health. ",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/GelatinisedMacadrink.webp?t=2023-11-02T09%3A43%3A49.042Z",
-        price: 11.99,
-        usage:
-          "Our Maca powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Maca Powder",
-        stripe_id: "price_1O51kGKUTnlP475O4KJC2zVb",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Goji Berries",
-        description:
-          "Grown in the alkaline-rich soil of the Chinese Goji Belt, our sweet goji berries are carefully selected for quality, size and flavour to provide the most premium berries. As well as their great taste, our Goji berries are also a source of Protein and are high in Fibre, making them a perfect vegan snack.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/gojiberriesinabulb.webp?t=2023-11-02T09%3A50%3A21.988Z",
-        price: 3.99,
-        usage:
-          "Our Goji berries has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Goji Berries",
-        stripe_id: "price_1O51lvKUTnlP475O0m489mU2",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Guarana Powder",
-        description:
-          "Grown in the Amazon rainforest, the skin of Guarana fruit is red whilst the inside of the white meat is surrounded by black seeds giving the appearance of a human eye. These seeds contain large amounts of Guaranine, which is a natural alternative to caffeine. Our Guarana powder is made from the highest quality hand-selected guarana seeds, which are cleaned in natural water, dried, then ground into a powder. ",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/guaranapowderscooped.webp?t=2023-11-02T09%3A50%3A38.353Z",
-        price: 12.49,
-        usage:
-          "Our Guarana powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Guarana Powder",
-        stripe_id: "price_1O51njKUTnlP475OK3wrR98h",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Lucuma Powder",
-        description:
-          "Grown in the Peruvian Highlands, lucuma is a nutrient-dense superfruit that has been nicknamed 'Gold of The Incas'. Celebrated for its aromatic fragrance and exotic flavour, our lucuma powder is made from the highest quality selected lucuma fruits which are ground into a natural additive-free powder. Lucuma powder is popularly used as a naturally sweet ice cream flavouring in the Andes.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/hempproteinpowderscoopsandgymgear.webp?t=2023-11-02T09%3A51%3A05.305Z",
-        price: 12.29,
-        usage:
-          "Our Lucuma powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Lucuma Powder",
-        stripe_id: "price_1O51ozKUTnlP475OvzojwBA6",
-      },
-    });
-    await prisma.products.create({
-      data: {
-        name: "Organic Maca Root Capsules",
-        description:
-          "Dubbed the “superfood of the Andes”, Maca has long been integrated into the nutrition of the indigenous population of the Peruvian Andes. Our maca is high in calcium which supports bone and tooth health. ",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/macarootcapsulesincutebowl.webp?t=2023-11-02T09%3A51%3A45.478Z",
-        price: 12.49,
-        usage:
-          "Our Maca powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Maca Powder",
-        stripe_id: "price_1O51qFKUTnlP475O5ZSJKSoA",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Acai Berry Powder ",
-        description:
-          "Grown in the flood lands and swampy areas of the Brazilian Amazon Rainforest, Acai berries are a treasure of nutrients. Acai is naturally rich in antioxidants which contribute to the maintenance of normal skin and neutralize the damaging effects of free radicals throughout the body. Our Acai Berry powder is impressively nutrient-dense with approximately 20kg of fruit compressed to create 1kg of Rainforest Foods Acai powder. ",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/RainforestFoodsShopifyImages.webp?t=2023-11-02T09%3A44%3A12.332Z",
-        price: 12.49,
-        usage:
-          "Our Acai Berry powder has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Acai Berry Powder",
-        stripe_id: "price_1O51rRKUTnlP475OHie3v9i7",
-      },
-    });
-    await prisma.products.create({
-      data: {
-        name: "Organic Coconut Flour",
-        description:
-          "White flour can lead to negative health conditions like fatty liver, raised bad cholesterol and weight gain. Our coconut flour is a Gluten-Free alternative that has a finely milled consistency which makes it easy to use. Our coconut flour is unrefined which means that it retains all its nutrients. It is high in iron which supports immunity and enhances energy, high in protein which helps muscle growth and is high in fibre.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/rfcoconutflourgrinder.webp?t=2023-11-02T09%3A52%3A04.021Z",
-        price: 12.49,
-        usage:
-          "Our Coconut Flour has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Coconut Flour",
-        stripe_id: "price_1O51saKUTnlP475Oo04N3wwi",
-      },
-    });
-
-    await prisma.products.create({
-      data: {
-        name: "Organic Chia Seeds",
-        description:
-          "Containing nearly 5 times more calcium than milk, and 3 times more iron than spinach, Chia Seeds are an ancient natural food and originating from South America. Enriched with a plethora of useful proteins and vitamins, Chia Seeds also contain large quantities of omega 3 fatty acids.",
-        image:
-          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/stock/scoopchiaseedsinajar.webp?t=2023-11-02T09%3A52%3A21.011Z",
-        price: 12.49,
-        usage:
-          "Our Chia Seeds has a sweet and tangy flavour and can be added to smoothies, desserts, and breakfast bowls.",
-        ingredients: "100% Chia Seeds",
-        stripe_id: "price_1O51uIKUTnlP475OCHYye3C5",
+          "Shamrock Farms is one of the largest family-owned-and-operated dairies in the country. Located in Stanfield, Arizona, we are uniquely positioned between Phoenix and Tucson, Arizona, and just 30 minutes away from the Phoenix airport. We offer tours of our farm and dairy processing facility, which includes our state-of-the-art milking barn, composting facility, and cow maternity ward. Our tours are educational, interactive, and fun for all ages. We also offer a variety of meeting spaces for corporate events, team building, and private parties. Our meeting spaces include a 5,000-square-foot event center, a 1,000-square-foot boardroom, and a 1,000-square-foot classroom. We also offer a variety of catering options, including our signature ice cream sundaes. We are open Monday through Friday from 9:00 a.m. to 3:00 p.m. and Saturday from 9:00 a.m. to 2:00 p.m. We are closed on Sunday. We are open all year round. We are handicap accessible. We have a handicap accessible restroom. We have a picnic area. We have a parking lot. We have a bus parking lot. We have a bus turnaround. We have a gift shop. We have a snack bar. We have a petting zoo. We have a playground. We have a bounce house. We have a hayride. We have a corn maze. We have a haunted house. We have a haunted corn maze. We have a haunted hayride. We have a haunted barn. We have a haunted trail. We have a haunted forest. We have a haunted graveyard.",
+        duration: "1-2 hours",
+        gallery: [
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/arnaldo-aldana-HfH5yd70ox8-unsplash.jpg",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/aurora-borealis-W0pdzJmTXyE-unsplash.jpg?t=2023-11-14T05%3A08%3A44.222Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/leon-ephraim-AxoNnnH1Y98-unsplash.jpg?t=2023-11-14T05%3A09%3A51.176Z",
+          "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/farms/megan-thomas-xMh_ww8HN_Q-unsplash.jpg?t=2023-11-14T05%3A10%3A15.871Z",
+        ],
+        restaurants_nearby: ["Legend at The Francisco Grande "],
       },
     });
   } catch (error) {
@@ -467,4 +86,4 @@ async function seedProducts() {
   }
 }
 
-seedProducts();
+seedFarms();

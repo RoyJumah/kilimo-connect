@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
       <body id="root">
         <TanstackProvider>
           <Provider store={store}>
-            <div className="grid grid-rows-[auto_1fr_auto]">
+            <div className="grid min-h-screen grid-rows-[auto,1fr,auto]">
               <NavBar />
               <main>{children}</main>
               <Footer />

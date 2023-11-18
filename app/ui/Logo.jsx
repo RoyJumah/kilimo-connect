@@ -4,9 +4,9 @@ import React from "react";
 function Logo() {
   return (
     <Image
-      src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/logo/logo.png?t=2023-11-14T15%3A12%3A42.775Z"
-      height={150}
-      width={150}
+      src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/logo/logo.png?t=2023-11-15T10%3A31%3A08.485Z"
+      height={40}
+      width={40}
       alt="Kilimo Connect Logo"
       priority
     />

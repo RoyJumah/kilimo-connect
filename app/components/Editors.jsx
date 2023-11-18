@@ -5,7 +5,7 @@ import React from "react";
 const Editors = () => {
   const editors = getEditors();
   return (
-    <div className="mt-12">
+    <div className="mx-auto mt-12 max-w-6xl p-6">
       <h2 className=" mb-2 text-lg font-bold  uppercase text-[#9da452] sm:text-xl sm:font-black">
         editor&apos;s desk
       </h2>

@@ -1,161 +1,75 @@
-"use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
+import { formatCurrency } from "@/lib/utilities/helpers";
 import Image from "next/image";
-import { useQuery } from "@tanstack/react-query";
-import ProductsLoader from "./ProductsLoader";
-import { useRouter } from "next/navigation";
-const fetchBestSellingProductsData = async () => {
+import React from "react";
+const fetchProductsData = async () => {
   const products = await fetch("http://localhost:3000/api/products", {
     next: {
       revalidate: 60,
     },
   });
   if (!products.ok) throw new Error("Failed to fetch products");
-  await new Promise((resolve) => setTimeout(resolve, 1200));
+  await new Promise((resolve) => setTimeout(resolve, 600));
   const data = await products.json();
   return data.slice(0, 4);
 };
-const fetchFeaturedProductsData = async () => {
-  const products = await fetch("http://localhost:3000/api/products", {
-    next: {
-      revalidate: 60,
-    },
-  });
-  if (!products.ok) throw new Error("Failed to fetch products");
-  await new Promise((resolve) => setTimeout(resolve, 1200));
-  const data = await products.json();
-  return data.slice(4, 8);
-};
-
-function Products() {
-  const router = useRouter();
-
-  const [activeList, setActiveList] = useState("bestSellingProducts");
-  const {
-    data: bestSellingProducts,
-    error,
-    isLoading,
-  } = useQuery({
-    queryKey: ["bestSellingProducts"],
-    queryFn: fetchBestSellingProductsData,
-  });
-  const {
-    data: featuredProducts,
-    error: featuredProductsError,
-    isLoading: featuredProductsIsLoading,
-  } = useQuery({
-    queryKey: ["featuredProducts"],
-    queryFn: fetchFeaturedProductsData,
-  });
-
-  if (isLoading || featuredProductsIsLoading) return <ProductsLoader />;
-  function handleShowBestSellingProducts() {
-    setActiveList("bestSellingProducts");
-  }
-
-  function handleShowFeaturedProducts() {
-    setActiveList("featuredProducts");
-  }
-
-  // Define the desired image size
-  const imageSize = {
-    width: 200, // Adjust the width to your desired size
-    height: 200, // Adjust the height to your desired size
-  };
-
+export default async function Products() {
+  const data = await fetchProductsData();
   return (
-    <div className="mx-auto my-6 max-w-[200px] sm:my-12 sm:max-w-[1000px]">
-      <div className="mb-4 flex gap-4 p-4 text-[14px] sm:justify-center sm:text-[20px]">
-        <button
-          onClick={handleShowBestSellingProducts}
-          className={`${
-            activeList === "bestSellingProducts"
-              ? "border-b-2 border-stone-600 text-stone-700"
-              : "text-stone-500  hover:text-stone-700"
-          }`}
-        >
-          Best Sellers
-        </button>
-        <button
-          onClick={handleShowFeaturedProducts}
-          className={`${
-            activeList === "featuredProducts"
-              ? "border-b-2 border-stone-600 text-stone-700"
-              : "text-stone-500  hover:text-stone-700"
-          }`}
-        >
-          Featured Products
-        </button>
+    <div className="mx-auto mt-4 max-w-6xl p-6 sm:mt-8 md:mt-12">
+      <div className="flex justify-center gap-4 ">
+        <div className="relative h-[715px] w-[570px]">
+          <Image
+            src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/products/home-banner-1-570x715.jpg?t=2023-11-15T16%3A18%3A45.106Z"
+            width={800}
+            height={500}
+            alt="product image"
+            layout="responsive"
+          />
+          <div className="absolute inset-0 flex h-auto w-full items-center justify-center">
+            <Image
+              src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/products/bg-brush.png?t=2023-11-15T17%3A35%3A18.360Z"
+              width={300}
+              height={100}
+              alt="brush image"
+            />
+            <div className="absolute z-10 space-y-8 font-mangaba text-2xl font-bold text-stone-800 ">
+              <p className="text-center text-[24px] tracking-wider text-[#927f4c] sm:text-[36px] md:text-[48px]">
+                Organic
+              </p>
+              <p className="text-[48px] text-[#3c6a36] sm:text-[56px] md:text-[72px]">
+                Vegetables
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-2">
+          {data.map((product, i) => (
+            <div key={i}>
+              <Image
+                src={product.image}
+                width={250}
+                height={250}
+                alt="product image"
+                className=" h-[300px] w-[270px]"
+              />
+              <h2
+                className="mt-2 text-center font-semibold
+              "
+              >
+                {product.name
+                  .split(" ") // Split the string into an array of words
+                  .slice(-2) // Get the last two words from the array
+                  .join(" ")}{" "}
+                {/* Join the last two words back into a string */}
+              </h2>
+              <p className="text-center text-sm font-medium  text-[#3c6a36]">
+                {formatCurrency(product.price)}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
-      <AnimatePresence mode="wait">
-        {activeList === "bestSellingProducts" && (
-          <motion.ul
-            key="bestSelling"
-            className="flex flex-col gap-4 sm:flex-row sm:items-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-          >
-            {bestSellingProducts.map((product) => (
-              <motion.li
-                key={product.id}
-                className="overflow-hidden"
-                style={{ height: `${imageSize.height}px` }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                onClick={() => router.push(`/products/${product.product_id}`)}
-              >
-                <Image
-                  src={product.image}
-                  width={imageSize.width}
-                  height={imageSize.height}
-                  alt={product.name}
-                  className="h-auto w-auto"
-                  priority
-                />
-              </motion.li>
-            ))}
-          </motion.ul>
-        )}
-        {activeList === "featuredProducts" && (
-          <motion.ul
-            key="featured"
-            className="flex flex-col gap-4 sm:flex-row sm:items-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-          >
-            {featuredProducts.map((product) => (
-              <motion.li
-                key={product.id}
-                className="overflow-hidden"
-                // style={{ width: `${imageSize.width}px` }} prevents the layout shift when the image loads
-                // this is achieved by setting the width of the image container to the desired width
-                style={{ height: `${imageSize.height}px` }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                onClick={() => router.push(`/products/${product.product_id}`)}
-              >
-                <Image
-                  src={product.image}
-                  width={imageSize.width}
-                  height={imageSize.height}
-                  alt={product.name}
-                  className="h-auto w-auto"
-                />
-              </motion.li>
-            ))}
-          </motion.ul>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
-
-export default Products;

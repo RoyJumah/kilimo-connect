@@ -8,6 +8,7 @@ import { IoIosPaw } from "react-icons/io";
 import { CiCircleInfo, CiLink, CiHeart } from "react-icons/ci";
 import { LuPencil } from "react-icons/lu";
 import Locality from "@/app/ui/Locality";
+import MapComponent from "@/app/components/Map";
 
 export default function FarmDetails({ params: { id } }) {
   const fetchFarmDetails = async () => {
@@ -73,7 +74,6 @@ export default function FarmDetails({ params: { id } }) {
             <div className="space-x-1">
               <LuPencil className="inline-block" />
               <span className="text-sm">
-                {" "}
                 Suggest edits to improve what we show.
               </span>
             </div>
@@ -83,16 +83,17 @@ export default function FarmDetails({ params: { id } }) {
             </span>
           </div>
         </div>
-        <div className="md:w-2/3">
+        <div className="h-[500px] md:w-2/3">
           <ImageCarousel gallery={gallery} />
         </div>
       </div>
-      <div className="mx-auto max-w-6xl p-6">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 p-6 sm:flex-row sm:justify-between">
         <Locality
           images={gallery}
           location={location}
           restaurants={restaurants_nearby}
         />
+        <MapComponent name={name} />
       </div>
     </>
   );

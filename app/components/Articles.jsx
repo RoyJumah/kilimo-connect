@@ -58,8 +58,8 @@ function Articles() {
   const articles = DUMMY_ARTICLES;
 
   return (
-    <div className="mt-4 sm:mt-6 md:mt-10">
-      <h2 className="mb-2 text-center text-xl font-extrabold capitalize text-[#9da452] sm:text-2xl md:mb-4 md:text-4xl">
+    <div className="mx-auto mt-4 max-w-6xl p-6 sm:mt-6 md:mt-12">
+      <h2 className="mb-2 text-center font-mangaba text-[40px] font-thin capitalize sm:text-[60px] md:mb-4 md:text-[80px]">
         Our news
       </h2>
 

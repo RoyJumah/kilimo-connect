@@ -1,137 +1,147 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
 import Logo from "../ui/Logo";
+import { FaPhoneAlt, FaLocationArrow } from "react-icons/fa";
+import { FaRegClock } from "react-icons/fa6";
+import { TiSocialFacebook } from "react-icons/ti";
+import { FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa6";
+import Image from "next/image";
 
-import SocialIcons from "../ui/SocialIcons";
 export default function Footer() {
+  const topMargin =
+    "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/footer-photos/bg-top.png?t=2023-11-16T16%3A23%3A08.785Z";
+  const images = [
+    {
+      url: "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/gallery/image-01.jpeg?t=2023-11-14T14%3A47%3A49.591Z",
+    },
+    {
+      url: "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/gallery/image-02.jpeg?t=2023-11-14T14%3A48%3A02.368Z",
+    },
+    {
+      url: "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/gallery/image-03.jpeg",
+    },
+    {
+      url: "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/gallery/image-04.jpeg?t=2023-11-14T14%3A48%3A29.819Z",
+    },
+  ];
   return (
-    <>
-      <footer
-        id="Footer"
-        className=" mt-8 hidden border-t  sm:mt-20  sm:block sm:px-6 "
-      >
-        <div className="min-w-6xl max-w-8xl mx-auto flex flex-col  p-4 sm:flex-row  sm:justify-between sm:px-4 sm:py-10">
-          <ul className="mb-8 w-full sm:mb-0 sm:w-1/3">
+    <footer className="text-footer ">
+      {/* <Image
+        className="absolute top-10 w-full bg-black brightness-75 filter" // Adjust the brightness value as needed
+        alt="bg-parallax-2"
+        height={26}
+        width={1000}
+        layout="responsive"
+        src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/footer-photos/bg-top.png?t=2023-11-16T16%3A23%3A08.785Z"
+      /> */}
+
+      <div className="bg-[#2b2a28] text-[16px] sm:mt-8 sm:block sm:px-6 md:mt-12">
+        <div className=" mx-auto grid max-w-6xl grid-cols-1 gap-4 p-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-3 md:gap-12">
+          <ul className="mb-8 w-full sm:mb-0 ">
             <Logo />
-            <SocialIcons />
+            <p className="border-b-footer gap-2 border-b sm:gap-4 md:pb-6">
+              Herber is an organic farm located in California. We offer healthy
+              foods and products to our clients.
+            </p>
+            <ul className="mt-2 flex flex-col gap-4 sm:mt-4 md:mt-6">
+              <li className="flex items-center gap-4">
+                <span>
+                  <FaPhoneAlt />
+                </span>
+                <p className="font-semibold text-white">+ 1 234-456-7891</p>
+              </li>
+              <li className="flex items-center gap-4">
+                <span>
+                  <FaRegClock />
+                </span>
+                <p className="font-semibold text-white">
+                  Mon-Sat: 07:00AM - 05:00PM
+                </p>
+              </li>
+              <li className="flex items-center gap-4">
+                <span>
+                  <FaLocationArrow />
+                </span>
+                <p className="font-semibold text-white">
+                  123 Main St, New York
+                </p>
+              </li>
+            </ul>
           </ul>
-          <ul className="mb-8 w-full  text-gray-700 sm:mb-0 sm:w-1/3">
-            <li className=" text-lg font-bold">
-              <span className="border-b-2 border-[#9da452] py-2">Links</span>
-            </li>
-            <li className="mt-2 cursor-pointer py-1 text-xs hover:text-[#9da452]">
-              Registration
-            </li>
-            <li className="cursor-pointer py-1 text-xs hover:text-[#9da452]">
-              Money Back Guarantee
-            </li>
-            <li className="cursor-pointer py-1 text-xs hover:text-[#9da452]">
-              Bidding & buying help
-            </li>
-            <li className="cursor-pointer py-1 text-xs hover:text-[#9da452]">
-              Stores
-            </li>
-          </ul>
+          <div className="w-full">
+            <h3 className="py-2 text-lg font-[200] text-white">Newsletter</h3>
+            <p>Join our email newsletter for news and tips.</p>
+            <form className="mt-[25px]">
+              <input
+                type="text"
+                placeholder="Enter your E-mail"
+                className="bg-textInput mt-2 w-full border-none px-4 py-2 text-center capitalize text-white focus:outline-none"
+              />
+              <button
+                type="submit"
+                className=" mt-2 w-full  bg-[#fff] px-4 py-2 text-center font-semibold uppercase tracking-wide text-black transition-all duration-300 ease-in-out hover:bg-[#eda407] hover:text-white "
+              >
+                Subscribe
+              </button>
+            </form>
+            <div className="mt-6 flex items-center gap-4 text-white">
+  
+              <p className="text-base">Follow Us</p>
+              <div className="flex items-center gap-2">
+                <span>
+                  <TiSocialFacebook
+                    size={16}
+                    className="cursor-pointer transition-all duration-300 ease-in-out hover:text-[#eda407]"
+                  />
+                </span>
+                <span>
+                  <FaTwitter
+                    size={16}
+                    className="cursor-pointer transition-all duration-300 ease-in-out hover:text-[#eda407]"
+                  />
+                </span>
+                <span>
+                  <FaTiktok
+                    size={16}
+                    className="cursor-pointer transition-all duration-300 ease-in-out hover:text-[#eda407]"
+                  />
+                </span>
+                <span>
+                  <FaInstagram
+                    size={16}
+                    className="cursor-pointer transition-all duration-300 ease-in-out hover:text-[#eda407]"
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
 
-          <ul className="w-full text-gray-700 sm:w-1/3">
-            <li className="text-lg font-bold">
-              <span className="border-b-2 border-[#9da452] py-2">
-                Our Foods
-              </span>
-            </li>
-            <li className="mt-2 cursor-pointer py-1 text-xs hover:text-[#9da452]">
-              Start selling
-            </li>
-            <li className="cursor-pointer py-1 text-xs hover:text-[#9da452]">
-              Learn to sell
-            </li>
-            <li className="cursor-pointer py-1 text-xs hover:text-[#9da452]">
-              Affiliates
-            </li>
-          </ul>
-
-          <ul className="w-full text-gray-700 sm:w-1/3">
-            <li className=" text-lg font-bold">
-              {" "}
-              <span className=" border-b-2 border-[#9da452] py-2">
-                Our Partners
-              </span>
-            </li>
-            <li className="mt-2 cursor-pointer py-1 text-xs hover:text-[#9da452]">
-              Company info
-            </li>
-            <li className="cursor-pointer py-1 text-xs hover:text-[#9da452]">
-              News
-            </li>
-            <li className="cursor-pointer py-1 text-xs hover:text-[#9da452]">
-              Investors
-            </li>
-            <li className="cursor-pointer py-1 text-xs hover:text-[#9da452]">
-              Careers
-            </li>
-            <li className="cursor-pointer py-1 text-xs hover:text-[#9da452]">
-              Government relations
-            </li>
-            <li className="cursor-pointer py-1 text-xs hover:text-[#9da452]">
-              Policies
-            </li>
+          <ul className="w-full">
+            <h2 className="mb-2 text-center text-lg text-white sm:mb-4 md:mb-6">
+              Gallery
+            </h2>
+            <div className="flex flex-wrap justify-end gap-2 ">
+              {images.map((image, i) => (
+                <Image
+                  src={image.url}
+                  width={129}
+                  height={120}
+                  key={i}
+                  alt="product image"
+                />
+              ))}
+            </div>
           </ul>
         </div>
-      </footer>
-      {/* here i used the accordion component from shadcn ui to display the mobile footer */}
-      <footer className="mt-8 block px-2 sm:hidden">
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>About us</AccordionTrigger>
-            <AccordionContent>
-              <Logo />
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-2">
-            <AccordionTrigger>Follow us</AccordionTrigger>
-            <AccordionContent>
-              <SocialIcons />
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-3">
-            <AccordionTrigger>Links</AccordionTrigger>
-            <AccordionContent>
-              <ul className="w-full text-gray-700">
-                <li className="mt-1 cursor-pointer py-1 text-xs hover:text-[#9da452]">
-                  Start selling
-                </li>
-                <li className="cursor-pointer py-1 text-xs hover:text-[#9da452]">
-                  Learn to sell
-                </li>
-                <li className="cursor-pointer py-1 text-xs hover:text-[#9da452]">
-                  Affiliates
-                </li>
-              </ul>
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-4">
-            <AccordionTrigger>Our Partners</AccordionTrigger>
-            <AccordionContent>
-              <ul className="w-full text-gray-700">
-                <li className="mt-1 cursor-pointer py-1 text-xs hover:text-[#9da452]">
-                  Start selling
-                </li>
-                <li className="cursor-pointer py-1 text-xs hover:text-[#9da452]">
-                  Learn to sell
-                </li>
-                <li className="cursor-pointer py-1 text-xs hover:text-[#9da452]">
-                  Affiliates
-                </li>
-              </ul>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </footer>
-    </>
+      </div>
+      <div className="  w-full  bg-[#222120]">
+        <div className="mx-auto flex max-w-6xl  items-center justify-between gap-2 p-6">
+          <p>© 2023 Kilimo-Connect. All rights reserved.</p>
+          <p>
+            Designed with{" "}
+            <span className="text-orangered inline-block">❤</span> by Roy.
+          </p>
+        </div>
+      </div>
+    </footer>
   );
 }

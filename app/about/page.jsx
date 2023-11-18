@@ -1,82 +1,67 @@
 "use client";
-import YouTube from "react-youtube";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import CompanyInfo from "../components/CompanyInfo";
+import CompanyHistoryCarousel from "../components/CompanyHistoryCarousel";
+import Partners from "../components/Partners";
 
-export default function page() {
-  //I got this from geekforgeeks and it enables the autoplay feature of the youtube video
-  const opts = {
-    height: "250em", // 16:9 aspect ratio (9 / 16 * 100)
-    width: "70%",
-    playerVars: {
-      autoplay: 0,
-    },
-  };
+export default function AboutPage() {
+  const pathname = usePathname();
+
   return (
-    <div className="mx-auto flex max-w-6xl flex-col gap-2 p-6 sm:gap-4">
-      <div>
-        <h2 className="mb-3 text-xl font-medium">Shared Earth</h2>
-        <p className="text-sm sm:text-base">
-          Rainforest Foods has a philosophy we call shared earth. We believe
-          that we all share a responsibility to protect the earth and to improve
-          the lives of those who need a helping hand.
-        </p>
-      </div>
-      <div>
-        <h2 className="mb-3 text-lg font-medium sm:text-xl">About us</h2>
-        <div className="flex flex-col gap-2 text-sm sm:text-base">
-          <p>
-            Rainforest Foods was founded in 2008 to source high quality
-            superfoods from environmentally conscious and ethical suppliers. In
-            the last eight years our business has grown and evolved, however
-            this original goal still guides what we do.
-          </p>
-          <p>
-            We are dedicated to serving our customers and our farmers, but also
-            Nature itself. We do this by working with various charitable,
-            environmental and humanitarian projects.
-          </p>
-          <p>
-            We believe in giving back and donate 10% of company profits to
-            charity. This includes charities such as Rainforest Concern and
-            other charities focused on environmental and social issues.
-          </p>
-          <p>
-            Find out more about the good work of Rainforest Concern and Warka
-            Water below, and find out how you could get involved too.
-          </p>
+    <>
+      <div className="relative">
+        <div className="absolute h-full w-full bg-black opacity-30"></div>
+        <div>
+          <Image
+            src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/about-us/about-us-header.jpg"
+            width={400}
+            height={1000}
+            alt="About Us Header"
+            className="h-auto w-full"
+            layout="responsive"
+          />
+        </div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <h2 className="font-mangaba text-[40px] text-white sm:text-[60px] md:text-[80px]">
+            About Our Farms
+          </h2>
+          {/* Breadcrumb */}
+          <nav className="text-xl tracking-wide ">
+            <ul className="flex gap-2">
+              <li>
+                <Link href="/" legacyBehavior>
+                  <a
+                    className={
+                      pathname === "/" ? "text-activeLink" : "text-white"
+                    }
+                  >
+                    Home
+                  </a>
+                </Link>
+              </li>
+              <li className="text-activeLink">/</li>
+              <li>
+                <Link href="/" legacyBehavior>
+                  <a
+                    className={
+                      pathname === "/about"
+                        ? "pointer-events-none text-activeLink "
+                        : "text-white"
+                    }
+                  >
+                    About Us
+                  </a>
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
-      <div className="">
-        <YouTube videoId="jDwcbn99Uz8" opts={opts} />
-      </div>
-      <div>
-        <h2 className="mb-3 text-xl font-medium">Rainforest Concern</h2>
-        <div className="flex flex-col gap-2 text-sm sm:text-base">
-          <p>
-            Rainforest Concern is a charity that works to protect threatened
-            natural habitats, the biodiversity they contain and the indigenous
-            people who still depend on them for survival.
-          </p>
-          <p>
-            Rainforest Concern was founded in 1993 to protect threatened natural
-            habitats, the biodiversity they contain and the indigenous people
-            who still depend on them for survival. Rainforest Concern is a UK
-            registered charity, and has been granted Special Consultative Status
-            by the Economic and Social Council of the United Nations.
-          </p>
-        </div>
-      </div>
-      <div>
-        <h2 className="mb-3 text-xl font-medium">Warka Water</h2>
-        <div className="flex flex-col gap-2 text-sm sm:text-base">
-          <p>
-            Warka Water is an organisation that aims to provide clean drinking
-            water to rural communities in Ethiopia. They do this by building
-            Warka Towers, which are 30 foot tall bamboo structures that harvest
-            water from the air.
-          </p>
-          <p>Find out more about our work with Warka Water</p>
-        </div>
-      </div>
-    </div>
+      <CompanyInfo />
+      <CompanyHistoryCarousel />
+      <Partners />
+    </>
   );
 }

@@ -1,118 +1,157 @@
+"use client";
+
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { motion } from "framer-motion";
 
-function HeroHeader() {
+const items = [
+  {
+    image:
+      "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/hero-images/slider-2-1920x729.jpg?t=2023-11-15T11%3A33%3A40.440Z",
+    title: "Quality Control",
+    description:
+      "We control the process of farming at Herber to deliver the best organic products to our customers throughout the state",
+  },
+  {
+    image:
+      "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/hero-images/slider-1-1920x729.jpg",
+    title: "Organic Food",
+    description:
+      "Herber provides local citizens and guests of our town with quality organic fruits, vegetables, and other products.",
+  },
+
+  {
+    image:
+      "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/hero-images/slider-3-1920x729.jpg?t=2023-11-15T11%3A33%3A54.175Z",
+    title: "Eco-Friendly",
+    description:
+      "As the leading organic farm, we maintain an eco-friendly policy of growing and selling healthy food without any additives.",
+  },
+];
+const ImageCarousel = () => {
+  const bottomImage =
+    "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/hero-images/bg-top.png?t=2023-11-15T12%3A00%3A28.353Z";
+
+  const variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 1 } },
+  };
+
   return (
-    <>
-      <div className="relative cursor-pointer sm:mx-auto">
-        <div className="relative">
-          {/* Add a div with a semi-transparent background */}
-          <div className="absolute inset-0 z-0 bg-black opacity-40"></div>
-
-          <Image
-            src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/hero-images/header-img.jpg?t=2023-11-14T15%3A02%3A54.312Z"
-            alt="header image"
-            width={1200}
-            height={600}
-            className="z-1" // Set z-index to place the image above the background
-          />
-          <div className="z-2 absolute inset-0 flex flex-col items-center justify-center space-y-4 px-4 py-3">
-            <h1 className="text-lg font-bold text-white sm:text-4xl">
-              Welcome to Kilimo Connect
-            </h1>
-            <div>
-              <Link
-                href="/products"
-                className="bg rounded-2xl bg-[#9da452] px-2 py-1 text-[12px] font-bold uppercase text-white sm:px-4 sm:py-2 sm:text-xl"
+    <Carousel
+      className="relative"
+      showArrows={true}
+      showStatus={false}
+      showThumbs={false}
+      infiniteLoop={true}
+      showIndicators={false}
+      autoPlay={true}
+      transitionTime={0}
+      renderArrowPrev={(onClickHandler, hasPrev, label) =>
+        hasPrev && (
+          <div
+            className="arrow-container"
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "20px",
+              zIndex: "2",
+            }}
+          >
+            <button
+              className="ml-[40px] cursor-pointer border-none bg-[#e9ecef] p-3 text-2xl text-white sm:ml-[60px] md:ml-[80px]"
+              type="button"
+              onClick={onClickHandler}
+              title={label}
+            >
+              {/* Your icon here */}
+              <FaArrowLeft size={16} color="#000" />
+            </button>
+          </div>
+        )
+      }
+      renderArrowNext={(onClickHandler, hasNext, label) =>
+        hasNext && (
+          <div
+            className="arrow-container"
+            style={{
+              position: "absolute",
+              top: "50%",
+              right: "20px",
+              zIndex: "2",
+            }}
+          >
+            <button
+              className="mr-[40px] cursor-pointer border-none bg-[#e9ecef] p-3 text-2xl text-white sm:mr-[60px] md:mr-[80px]"
+              type="button"
+              onClick={onClickHandler}
+              title={label}
+            >
+              {/* Your icon here */}
+              <FaArrowRight size={16} color="#000" />
+            </button>
+          </div>
+        )
+      }
+    >
+      {items.map((item, index) => (
+        <motion.div
+          key={index}
+          initial="hidden"
+          animate="visible"
+          variants={variants}
+          className="fade-carousel-item"
+        >
+          <div>
+            <Image
+              src={item.image}
+              alt={`Image ${index}`}
+              className="h-auto w-full"
+              width={1000}
+              height={400}
+              layout="responsive"
+            />
+            <motion.div
+              className="absolute inset-0 z-10 ml-[80px] flex h-auto max-w-[600px] flex-col items-start justify-center gap-2 p-4 text-white sm:ml-[160px] sm:gap-4 md:ml-[220px] md:gap-6"
+              style={{ color: index < 2 ? "white" : "black" }}
+            >
+              <motion.h2
+                className="font-mangaba text-[40px] font-extrabold tracking-wider sm:text-[80px] md:text-[120px]"
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1, transition: { duration: 1 } }}
               >
-                View Products
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center">
-        <div className="relative ">
-          <div className="relative ">
-            <div className="absolute inset-0 z-0 bg-black opacity-40"></div>
+                {item.title}
+              </motion.h2>
+              <motion.p
+                className="text-start text-sm"
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1, transition: { duration: 1 } }}
+              >
+                {item.description}
+              </motion.p>
+              <motion.button
+                className="bg-[#3c6a36] px-[32px] py-[16px] text-sm font-semibold uppercase tracking-wide text-white transition-all duration-300 ease-in-out hover:bg-[#151515]"
+                onClick={() => console.log("clicked")}
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1, transition: { duration: 1 } }}
+              >
+                READ MORE
+              </motion.button>
+            </motion.div>
             <Image
-              src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/hero-images/grapes.jpg?t=2023-11-14T15%3A02%3A38.398Z"
-              alt="header image"
-              width={1200}
-              height={600}
-              className="h-full w-full"
+              src={bottomImage}
+              height={26}
+              width={1100}
+              alt="header bottom border"
+              className="absolute bottom-0 left-0 w-full"
             />
-            <div className="absolute inset-0 flex flex-col items-end justify-end  p-2 text-white sm:p-4 ">
-              <h2 className="mt-2 text-end text-base font-extrabold sm:text-2xl">
-                Why Eat <br /> Superfoods
-              </h2>
-              <div className="sm:mt-2">
-                <Link
-                  href="/"
-                  className="bg rounded-2xl bg-[#9da452] px-1 py-[2px] text-[8px] font-bold uppercase text-white sm:px-4 sm:py-2 sm:text-base"
-                >
-                  READ MORE
-                </Link>
-              </div>
-            </div>
           </div>
-        </div>
-        <div className="relative ">
-          <div className="relative ">
-            <div className="absolute inset-0 z-0 bg-black opacity-40"></div>
-            <Image
-              src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/hero-images/grapes.jpg?t=2023-11-14T15%3A02%3A38.398Z"
-              alt="header image"
-              width={1200}
-              height={600}
-              className="h-full w-full"
-            />
-            <div className="absolute inset-0 flex flex-col items-end justify-end  p-2 text-white sm:p-4 ">
-              <h2 className="mt-2 text-end text-base font-extrabold sm:text-2xl">
-                Our <br /> Philosophy
-              </h2>
-              <div className="sm:mt-2">
-                <Link
-                  href="/"
-                  className="bg rounded-2xl bg-[#9da452] px-1 py-[2px] text-[8px] font-bold uppercase text-white sm:px-4 sm:py-2 sm:text-base"
-                >
-                  READ MORE
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="mt-2">
-        <div className="relative ">
-          <div className="relative ">
-            <div className="absolute inset-0 z-0 bg-black opacity-40"></div>
-            <Image
-              src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/hero-images/human-nature.jpg?t=2023-11-14T15%3A03%3A40.377Z"
-              alt="header image"
-              width={1200}
-              height={600}
-              className="h-full w-full"
-            />
-            <div className="absolute inset-0 flex flex-col  items-center justify-center p-2 text-white">
-              <h2 className="mt-2 text-base font-extrabold sm:text-2xl">
-                Man & Nature Relationship
-              </h2>
-              <div className="sm:mt-4">
-                <Link
-                  href="/"
-                  className="bg rounded-2xl bg-[#9da452] px-1 py-[2px] text-[8px] font-bold uppercase text-white sm:px-4 sm:py-2 sm:text-base"
-                >
-                  READ MORE
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+        </motion.div>
+      ))}
+    </Carousel>
   );
-}
+};
 
-export default HeroHeader;
+export default ImageCarousel;

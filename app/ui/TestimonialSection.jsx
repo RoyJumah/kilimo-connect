@@ -60,7 +60,7 @@ export default function TestimonialSection() {
         <h2 className="mb-6 text-xl font-semibold text-gray-800 sm:text-2xl md:text-3xl">
           Harvesting Memories: A Culinary Adventure Like No Other
         </h2>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-2 sm:gap-4 md:grid-cols-2 md:gap-6">
           {testimonials.map((testimonial, i) => (
             <div key={i} className=" p-6 text-center">
               <div className="mx-auto mb-4 h-20 w-20 overflow-hidden rounded-full">

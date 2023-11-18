@@ -12,13 +12,15 @@ export default function ImageCarousel({ gallery }) {
     <div className="my-2 sm:my-4">
       <Carousel
         showArrows={true}
-        autoPlay={true}
+        autoPlay={false}
         interval={3000}
         infiniteLoop={true}
-        showThumbs={false}
+        showThumbs={true}
+        // Set the width of the carousel
+        height="500px" // Set the height of the carousel
       >
         {gallery.map((image, index) => (
-          <div key={index}>
+          <div key={index} className="h-auto w-full">
             <Image
               src={image}
               width={500}

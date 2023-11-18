@@ -49,10 +49,6 @@ export default async function Agitourism() {
         </ul>
       </div>
 
-      <div>
-        <h2>Explore Farms Near You</h2>
-      </div>
-
       <TestimonialSection />
       <div className="mx-auto max-w-6xl p-6">
         <h2 className="mt-4 pb-2 text-lg sm:mt-8 sm:text-2xl md:mt-12 md:text-3xl">

@@ -9,6 +9,7 @@ import Carousel from "@/app/_components/Carousel";
 import TextExpander from "@/lib/utilities/textExpander";
 import Locality from "@/app/_ui/Locality";
 import MapComponent from "@/app/_components/Map";
+import Loading from "@/app/loading";
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
 export default function FarmDetails({ params: { id } }) {
   const fetchFarmDetails = async () => {
@@ -28,7 +29,7 @@ export default function FarmDetails({ params: { id } }) {
     queryFn: fetchFarmDetails,
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />;
   const { gallery, description, name, duration, location, restaurants_nearby } =
     farmDetails;
 

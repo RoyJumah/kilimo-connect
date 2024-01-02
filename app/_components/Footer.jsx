@@ -7,6 +7,7 @@ import { FaTiktok } from "react-icons/fa6";
 import Image from "next/image";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
   const topMargin =
     "https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/footer-photos/bg-top.png?t=2023-11-16T16%3A23%3A08.785Z";
   const images = [
@@ -134,7 +135,7 @@ export default function Footer() {
       </div>
       <div className="  w-full  bg-[#222120]">
         <div className="mx-auto flex max-w-6xl  items-center justify-between gap-2 p-6">
-          <p>© 2023 Kilimo-Connect. All rights reserved.</p>
+          <p>© {currentYear} Kilimo-Connect. All rights reserved.</p>
           <p>
             Designed with{" "}
             <span className="text-orangered inline-block">❤</span> by Roy.

@@ -1,15 +1,16 @@
 import Image from "next/image";
 import React from "react";
-import UpdateItemQuantity from "../_ui/UpdateItemQuantity";
-import DeleteItem from "../_ui/DeleteItem";
+
 import { formatCurrency } from "@/lib/utilities/helpers";
 
-import { getCurrentQuantityById } from "../_redux/cartSlice";
-import { useSelector } from "react-redux";
+import useCart from "@/app/_hooks/useCart";
+import UpdateItemQuantity from "@/app/_ui/UpdateItemQuantity";
+import DeleteItem from "@/app/_ui/DeleteItem";
 
 export default function CartItem({ item }) {
   const { id, name, quantity, image, price } = item;
-  const currentQuantity = useSelector(getCurrentQuantityById(id));
+  const { getQuantityById } = useCart();
+  const currentQuantity = getQuantityById(id);
   return (
     <li className="flex flex-col gap-2 py-3 sm:flex-row  sm:items-center sm:justify-between sm:gap-12 ">
       <div>

@@ -1,3 +1,5 @@
+"use client";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItems,
@@ -8,7 +10,7 @@ import {
   getCart,
   getTotalCartQuantity,
   getTotalCartPrice,
-  // getCurrentQuantityById,
+  getCurrentQuantityById,
 } from "../_redux/cartSlice";
 const useCart = () => {
   const dispatch = useDispatch();
@@ -36,10 +38,6 @@ const useCart = () => {
     dispatch(clearCart());
   };
 
-  // const getQuantityById = (itemId) => {
-  //   return useSelector((state) => getCurrentQuantityById(itemId)(state));
-  // };
-
   // Additional functionalities related to the cart can be added here
 
   return {
@@ -51,7 +49,7 @@ const useCart = () => {
     clearAllCart,
     totalQuantity,
     totalPrice,
-    // getQuantityById,
+    getQuantityById: getCurrentQuantityById,
   };
 };
 

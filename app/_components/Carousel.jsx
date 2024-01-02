@@ -12,6 +12,7 @@ export default function ImageCarousel({ gallery }) {
           interval={3000}
           infiniteLoop={true}
           showThumbs={false}
+          showIndicators={false}
         >
           {gallery.map((image, index) => (
             <div key={index} className="h-auto w-full">

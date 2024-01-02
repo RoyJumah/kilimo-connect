@@ -5,8 +5,9 @@ import Footer from "./_components/Footer";
 import NavBar from "./_components/NavBar";
 import "./globals.css";
 import TanstackProvider from "./_providers/TanstackProvider";
-import store from "./_redux/store";
+
 import { Toaster } from "react-hot-toast";
+import store from "./_redux/store";
 
 export default function RootLayout({ children }) {
   return (

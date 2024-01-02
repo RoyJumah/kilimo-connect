@@ -38,12 +38,7 @@ export default async function ProductListPage() {
             href={`/products/${product.product_id}`}
             key={i}
             className="overflow-hidden"
-            // style={{ width: `${imageSize.width}px` }} prevents the layout shift when the image loads
-            // this is achieved by setting the width of the image container to the desired width
-
-            // whileHover={{ scale: 1.1 }}
-            // whileTap={{ scale: 0.9 }}
-            // transition={{ duration: 0.3 }}
+     
           >
             <Image
               src={product.image}

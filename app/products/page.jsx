@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
 
 const fetchProductsData = async () => {
-  const products = await fetch("http://localhost:3000/api/products", {
+  const products = await fetch(`${API_BASE_URL}/api/products`, {
     next: {
       revalidate: 60,
     },

@@ -11,10 +11,10 @@ import ShippingInfoCard from "@/app/_components/ShippingInfoCard";
 import { useQuery } from "@tanstack/react-query";
 import ProductDetailsLoader from "./ProductDetailsLoader";
 import toast from "react-hot-toast";
-
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
 export default function ProductPage({ params: { id } }) {
   const fetchProductDetails = async () => {
-    const productDetails = await fetch(`/api/products/${id}`);
+    const productDetails = await fetch(`${API_BASE_URL}/api/products/${id}`);
     if (!productDetails.ok) throw new Error("Failed to fetch product details");
     await new Promise((resolve) => setTimeout(resolve, 600));
     const data = await productDetails.json();

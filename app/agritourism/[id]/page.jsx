@@ -9,10 +9,10 @@ import Carousel from "@/app/_components/Carousel";
 import TextExpander from "@/lib/utilities/textExpander";
 import Locality from "@/app/_ui/Locality";
 import MapComponent from "@/app/_components/Map";
-
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
 export default function FarmDetails({ params: { id } }) {
   const fetchFarmDetails = async () => {
-    const farmDetails = await fetch(`http://localhost:3000/api/farms/${id}`);
+    const farmDetails = await fetch(`${API_BASE_URL}/api/farms/${id}`);
     if (!farmDetails.ok) throw new Error("Failed to fetch farm details");
     await new Promise((resolve) => setTimeout(resolve, 600));
     const data = await farmDetails.json();

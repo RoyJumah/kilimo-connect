@@ -3,9 +3,9 @@ import Link from "next/link";
 import React from "react";
 import TestimonialSection from "../_ui/TestimonialSection";
 import FAQ from "../_ui/FAQ";
-
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
 const fetchFarmsData = async () => {
-  const farms = await fetch("http://localhost:3000/api/farms", {
+  const farms = await fetch(`${API_BASE_URL}/api/farms`, {
     next: {
       revalidate: 60,
     },

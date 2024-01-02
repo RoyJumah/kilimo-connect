@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import CompanyInfo from "../_components/CompanyInfo";
 
 import Partners from "../_components/Partners";
-import ImageCarousel from "../_components/Carousel";
 
 export default function AboutPage() {
   const pathname = usePathname();
@@ -61,7 +60,7 @@ export default function AboutPage() {
         </div>
       </div>
       <CompanyInfo />
-      {/* <ImageCarousel /> */}
+
       <Partners />
     </>
   );

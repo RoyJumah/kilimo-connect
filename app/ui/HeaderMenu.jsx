@@ -1,7 +1,9 @@
-import { GrCart } from "react-icons/gr";
-import { IoSearchOutline } from "react-icons/io5";
-import { CiMenuBurger } from "react-icons/ci";
+import DialogComponent from "../components/Dialog";
 import Link from "next/link";
+import SheetComponent from "../components/SheetComponent";
+
+import MenuBar from "../components/MenuBar";
+
 function HeaderLinks() {
   const links = [
     { href: "/", label: "Home" },
@@ -23,13 +25,9 @@ function HeaderLinks() {
             </Link>
           </li>
         ))}
-        <GrCart
-          size={24}
-          color="#fff"
-          className="inline-block cursor-pointer"
-        />
-        <IoSearchOutline size={24} className="inline-block cursor-pointer" />
-        <CiMenuBurger size={24} className="inline-block cursor-pointer" />
+        <MenuBar />
+        <DialogComponent />
+        <SheetComponent />
       </ul>
     </>
   );

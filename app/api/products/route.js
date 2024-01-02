@@ -1,15 +1,15 @@
-import prisma from "@/lib/utilities/Prisma";
+import { getProducts } from "@/app/services/apiProducts";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const products = await prisma.products.findMany();
-
-    await prisma.$disconnect();
+    const products = await getProducts();
     return NextResponse.json(products);
-  } catch (error) {
-    console.log(error);
-    await prisma.$disconnect();
-    return new NextResponse("Something went wrong", { status: 400 });
+  } catch (err) {
+    console.error("Error fetching products:", err);
+    return new NextResponse({
+      status: 500,
+      json: { error: "Internal Server Error" },
+    });
   }
 }

@@ -3,8 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import CompanyInfo from "../components/CompanyInfo";
-import CompanyHistoryCarousel from "../components/CompanyHistoryCarousel";
+
 import Partners from "../components/Partners";
+import ImageCarousel from "../components/Carousel";
 
 export default function AboutPage() {
   const pathname = usePathname();
@@ -60,7 +61,7 @@ export default function AboutPage() {
         </div>
       </div>
       <CompanyInfo />
-      <CompanyHistoryCarousel />
+      {/* <ImageCarousel /> */}
       <Partners />
     </>
   );

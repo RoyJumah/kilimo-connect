@@ -31,7 +31,7 @@ export default async function Agitourism() {
         <ul className="grid grid-cols-1 gap-2 sm:grid-cols-3">
           {farms.map((farm, i) => (
             <li key={i} className="group relative overflow-hidden">
-              <Link legacyBehavior href={`/agitourism/${farm.id}`}>
+              <Link legacyBehavior href={`/agritourism/${farm.id}`}>
                 <Image
                   src={farm.gallery[0]}
                   alt={farm.name}

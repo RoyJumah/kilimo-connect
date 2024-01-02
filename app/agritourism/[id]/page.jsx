@@ -1,18 +1,18 @@
 "use client";
-import ImageCarousel from "@/app/components/Carousel";
-import TextExpander from "@/lib/utilities/textExpander";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 import { PiClockCounterClockwiseLight } from "react-icons/pi";
 import { IoIosPaw } from "react-icons/io";
 import { CiCircleInfo, CiLink, CiHeart } from "react-icons/ci";
 import { LuPencil } from "react-icons/lu";
+
+import Carousel from "@/app/components/Carousel";
+import TextExpander from "@/lib/utilities/textExpander";
 import Locality from "@/app/ui/Locality";
 import MapComponent from "@/app/components/Map";
 
 export default function FarmDetails({ params: { id } }) {
   const fetchFarmDetails = async () => {
-    const farmDetails = await fetch(`/api/farms/${id}`);
+    const farmDetails = await fetch(`http://localhost:3000/api/farms/${id}`);
     if (!farmDetails.ok) throw new Error("Failed to fetch farm details");
     await new Promise((resolve) => setTimeout(resolve, 600));
     const data = await farmDetails.json();
@@ -84,7 +84,7 @@ export default function FarmDetails({ params: { id } }) {
           </div>
         </div>
         <div className="h-[500px] md:w-2/3">
-          <ImageCarousel gallery={gallery} />
+          <Carousel gallery={gallery} />
         </div>
       </div>
       <div className="mx-auto flex max-w-6xl flex-col gap-6 p-6 sm:flex-row sm:justify-between">

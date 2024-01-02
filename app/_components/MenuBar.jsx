@@ -15,10 +15,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { formatCurrency } from "@/lib/utilities/helpers";
-import { checkout } from "../stripe/checkout";
+import { checkout } from "../_stripe/checkout";
 
-import useCart from "../hooks/useCart";
-import UpdateItemQuantity from "../ui/UpdateItemQuantity";
+import useCart from "../_hooks/useCart";
+import UpdateItemQuantity from "../_ui/UpdateItemQuantity";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 function MenuBar() {

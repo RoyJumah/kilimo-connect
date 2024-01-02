@@ -9,7 +9,7 @@ import {
   getTotalCartQuantity,
   getTotalCartPrice,
   // getCurrentQuantityById,
-} from "../redux/cartSlice";
+} from "../_redux/cartSlice";
 const useCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector(getCart);

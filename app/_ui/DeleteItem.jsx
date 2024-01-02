@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 
 import Button from "./Button";
-import { deleteItems } from "../redux/cartSlice";
+import { deleteItems } from "../_redux/cartSlice";
 import toast from "react-hot-toast";
 
 function DeleteItem({ productId }) {

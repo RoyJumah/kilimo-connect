@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { useGallery } from "../hooks/useGallery";
+import { useGallery } from "../_hooks/useGallery";
 
 export default function Gallery() {
   const { images } = useGallery();

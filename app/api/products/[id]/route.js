@@ -1,4 +1,4 @@
-import { getProductDetails } from "@/app/services/apiProducts";
+import { getProductDetails } from "@/app/_services/apiProducts";
 
 import { NextResponse } from "next/server";
 

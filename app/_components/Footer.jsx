@@ -1,4 +1,4 @@
-import Logo from "../ui/Logo";
+import Logo from "../_ui/Logo";
 import { FaPhoneAlt, FaLocationArrow } from "react-icons/fa";
 import { FaRegClock } from "react-icons/fa6";
 import { TiSocialFacebook } from "react-icons/ti";
@@ -38,7 +38,7 @@ export default function Footer() {
         <div className=" mx-auto grid max-w-6xl grid-cols-1 gap-4 p-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-3 md:gap-12">
           <ul className="mb-8 w-full sm:mb-0 ">
             <Logo />
-            <p className="border-b-footer gap-2 border-b sm:gap-4 md:pb-6">
+            <p className="gap-2 border-b border-b-footer sm:gap-4 md:pb-6">
               Herber is an organic farm located in California. We offer healthy
               foods and products to our clients.
             </p>
@@ -74,7 +74,7 @@ export default function Footer() {
               <input
                 type="text"
                 placeholder="Enter your E-mail"
-                className="bg-textInput mt-2 w-full border-none px-4 py-2 text-center capitalize text-white focus:outline-none"
+                className="mt-2 w-full border-none bg-textInput px-4 py-2 text-center capitalize text-white focus:outline-none"
               />
               <button
                 type="submit"
@@ -84,7 +84,6 @@ export default function Footer() {
               </button>
             </form>
             <div className="mt-6 flex items-center gap-4 text-white">
-  
               <p className="text-base">Follow Us</p>
               <div className="flex items-center gap-2">
                 <span>

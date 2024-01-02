@@ -3,7 +3,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import TopMenu from "../ui/TopMenu";
+import TopMenu from "../_ui/TopMenu";
 
 export default function HoverCardComponent() {
   return (

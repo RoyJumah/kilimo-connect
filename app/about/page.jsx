@@ -2,10 +2,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import CompanyInfo from "../components/CompanyInfo";
+import CompanyInfo from "../_components/CompanyInfo";
 
-import Partners from "../components/Partners";
-import ImageCarousel from "../components/Carousel";
+import Partners from "../_components/Partners";
+import ImageCarousel from "../_components/Carousel";
 
 export default function AboutPage() {
   const pathname = usePathname();

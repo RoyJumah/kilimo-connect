@@ -1,8 +1,8 @@
-import DialogComponent from "../components/Dialog";
+import DialogComponent from "../_components/Dialog";
 import Link from "next/link";
-import SheetComponent from "../components/SheetComponent";
+import SheetComponent from "../_components/SheetComponent";
 
-import MenuBar from "../components/MenuBar";
+import MenuBar from "../_components/MenuBar";
 
 function HeaderLinks() {
   const links = [

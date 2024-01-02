@@ -8,7 +8,7 @@ import { BiLoaderCircle } from "react-icons/bi";
 
 import Link from "next/link";
 
-import ClientOnly from "../components/ClientOnly";
+import ClientOnly from "../_components/ClientOnly";
 
 export default function SearchBar() {
   const [items, setItems] = useState([]);

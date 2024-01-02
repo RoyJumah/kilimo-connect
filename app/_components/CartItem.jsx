@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React from "react";
-import UpdateItemQuantity from "../ui/UpdateItemQuantity";
-import DeleteItem from "../ui/DeleteItem";
+import UpdateItemQuantity from "../_ui/UpdateItemQuantity";
+import DeleteItem from "../_ui/DeleteItem";
 import { formatCurrency } from "@/lib/utilities/helpers";
 
-import { getCurrentQuantityById } from "../redux/cartSlice";
+import { getCurrentQuantityById } from "../_redux/cartSlice";
 import { useSelector } from "react-redux";
 
 export default function CartItem({ item }) {

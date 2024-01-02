@@ -1,4 +1,4 @@
-import Button from "../ui/Button";
+import Button from "../_ui/Button";
 
 function EmptyCart() {
   return (

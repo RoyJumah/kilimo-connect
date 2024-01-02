@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
-import Logo from "../ui/Logo";
-import HeaderLinks from "../ui/HeaderMenu";
+import Logo from "../_ui/Logo";
+import HeaderLinks from "../_ui/HeaderMenu";
 
 function Navbar() {
   const [isSticky, setIsSticky] = useState(false);

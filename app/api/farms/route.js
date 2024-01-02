@@ -1,4 +1,4 @@
-import { getFarms } from "@/app/services/apiFarms";
+import { getFarms } from "@/app/_services/apiFarms";
 
 import { NextResponse } from "next/server";
 

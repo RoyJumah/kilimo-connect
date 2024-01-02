@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import TestimonialSection from "../ui/TestimonialSection";
-import FAQ from "../ui/FAQ";
+import TestimonialSection from "../_ui/TestimonialSection";
+import FAQ from "../_ui/FAQ";
 
 const fetchFarmsData = async () => {
   const farms = await fetch("http://localhost:3000/api/farms", {

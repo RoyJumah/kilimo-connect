@@ -1,5 +1,5 @@
 import React from "react";
-import SingleArticle from "../ui/SingleArticle";
+import SingleArticle from "../_ui/SingleArticle";
 
 const DUMMY_ARTICLES = [
   {

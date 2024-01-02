@@ -2,19 +2,14 @@ import { formatCurrency } from "../../lib/utilities/helpers";
 import Image from "next/image";
 
 import { useSelector } from "react-redux";
-import { getTotalCartPrice, getTotalCartQuantity } from "../redux/cartSlice";
-
+import { getTotalCartPrice, getTotalCartQuantity } from "../_redux/cartSlice";
 
 export default function OrderSummary() {
   const totalQuantity = useSelector(getTotalCartQuantity);
   const totalPrice = useSelector(getTotalCartPrice);
 
- 
-
   const cartDetails = useSelector((state) => state.cart.cart);
   console.log({ cartDetails });
-
- 
 
   return (
     <div className=" mt-4 flex h-[350px] flex-col gap-4 rounded-md bg-stone-200 p-4 sm:mt-0 sm:w-[350px]">

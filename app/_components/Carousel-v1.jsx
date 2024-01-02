@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { useGallery } from "../hooks/useGallery"; // Adjust the import path as needed
+import { useGallery } from "../_hooks/useGallery"; // Adjust the import path as needed
 
 const ImageCarousel = ({ imagesPerSlide = 4 }) => {
   const { carouselImages: originalImages } = useGallery();

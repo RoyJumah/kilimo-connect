@@ -5,10 +5,10 @@ import { IoIosPaw } from "react-icons/io";
 import { CiCircleInfo, CiLink, CiHeart } from "react-icons/ci";
 import { LuPencil } from "react-icons/lu";
 
-import Carousel from "@/app/components/Carousel";
+import Carousel from "@/app/_components/Carousel";
 import TextExpander from "@/lib/utilities/textExpander";
-import Locality from "@/app/ui/Locality";
-import MapComponent from "@/app/components/Map";
+import Locality from "@/app/_ui/Locality";
+import MapComponent from "@/app/_components/Map";
 
 export default function FarmDetails({ params: { id } }) {
   const fetchFarmDetails = async () => {

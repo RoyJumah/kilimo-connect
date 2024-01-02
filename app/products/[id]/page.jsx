@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 
-import Button from "@/app/ui/Button";
+import Button from "@/app/_ui/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { addItems, getCurrentQuantityById } from "@/app/redux/cartSlice";
-import DeleteItem from "@/app/ui/DeleteItem";
-import UpdateItemQuantity from "@/app/ui/UpdateItemQuantity";
-import ShippingInfoCard from "@/app/components/ShippingInfoCard";
+import { addItems, getCurrentQuantityById } from "@/app/_redux/cartSlice";
+import DeleteItem from "@/app/_ui/DeleteItem";
+import UpdateItemQuantity from "@/app/_ui/UpdateItemQuantity";
+import ShippingInfoCard from "@/app/_components/ShippingInfoCard";
 import { useQuery } from "@tanstack/react-query";
 import ProductDetailsLoader from "./ProductDetailsLoader";
 import toast from "react-hot-toast";

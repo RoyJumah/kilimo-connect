@@ -1,5 +1,8 @@
 import { useDispatch } from "react-redux";
-import { decreaseItemQuantity, increaseItemQuantity } from "../redux/cartSlice";
+import {
+  decreaseItemQuantity,
+  increaseItemQuantity,
+} from "../_redux/cartSlice";
 
 import Button from "./Button";
 

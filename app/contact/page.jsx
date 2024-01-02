@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import ContactForm from "../components/ContactForm";
+import ContactForm from "../_components/ContactForm";
 
 const icons = [
   {

@@ -1,11 +1,11 @@
 "use client";
 import { Provider } from "react-redux";
 
-import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
+import Footer from "./_components/Footer";
+import NavBar from "./_components/NavBar";
 import "./globals.css";
-import TanstackProvider from "./providers/TanstackProvider";
-import store from "./redux/store";
+import TanstackProvider from "./_providers/TanstackProvider";
+import store from "./_redux/store";
 import { Toaster } from "react-hot-toast";
 
 export default function RootLayout({ children }) {

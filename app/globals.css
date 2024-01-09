@@ -6,6 +6,15 @@
 
 @layer base {
   :root {
+    --jungle-green: #0e211e;
+    --hunter-green: #3c5b47;
+    --indigo-dye: #224f6e;
+    --primary-blue: #22506ec4;
+    --jazzberry-jam: #af075c;
+    --primary-color: #dfbfbf;
+    --primary-pink: #9d3199d0;
+    --secondary-font: "Poppins", sans-serif;
+    --tertiary-green: #3c5b47d6;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -145,6 +154,99 @@
     }
     to {
       stroke-dashoffset: -358;
+    }
+  }
+  .disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  .valid-email {
+    border-bottom-width: 4px;
+    --tw-border-opacity: 1;
+    border-bottom-color: rgb(34 197 94 / var(--tw-border-opacity));
+  }
+
+  .touched {
+    border-bottom-width: 4px;
+    --tw-border-opacity: 1;
+    border-bottom-color: rgb(59 130 246 / var(--tw-border-opacity));
+  }
+  .input {
+    display: block;
+    width: 100%;
+    border-radius: 0px;
+    border-bottom-width: 4px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    --tw-border-opacity: 1;
+    border-bottom-color: rgb(255 255 255 / var(--tw-border-opacity));
+    background-color: rgb(18 24 27 / var(--tw-bg-opacity));
+    --tw-bg-opacity: 0.3;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    --tw-text-opacity: 1;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  .btn {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    width: auto;
+    cursor: pointer;
+    border-style: none;
+    --tw-bg-opacity: 1;
+    background-color: #9da452;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    text-align: center;
+    font-family: sofia-pro, sans-serif;
+    font-weight: 700;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color),
+      0 2px 4px -2px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+      var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+
+  /* carousel-animation-css */
+
+  .carousel-line {
+    z-index: 0;
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+  }
+
+  .carousel-dot {
+    z-index: 1;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #3c6a36;
+    margin-top: -8px; /* Half the height of the dot to position it on the line */
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
     }
   }
 }

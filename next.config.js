@@ -5,6 +5,7 @@ const nextConfig = {
       "aigdooxkrussptkeikqq.supabase.co",
       "yvqzpcvcpgibbhhpgcad.supabase.co",
       "fgfppclstifnqgadpqux.supabase.co",
+      "i.pravatar.cc",
     ],
   },
 };

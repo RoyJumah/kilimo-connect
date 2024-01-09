@@ -1,12 +1,15 @@
 "use client";
-import { useEffect, useState } from "react";
-
-import { AnimatePresence } from "framer-motion";
-import TestimonialCard from "./TestimonialCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import Image from "next/image";
+import TestimonialCard from "./TestimonialCard";
 
 export default function TestimonialSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
   const testimonials = [
     {
       image:
@@ -44,34 +47,36 @@ export default function TestimonialSection() {
 
   //display the active card
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((activeIndex) => (activeIndex + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
-
   return (
-    <div className=" relative">
-      <Image
-        alt="bg-parallax-2"
-        height={300}
-        width={1000}
-        layout="responsive"
-        src="https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/about-us/bg-parallax-2.jpg?t=2023-11-16T07%3A30%3A27.059Z"
-      />
-      <div className="absolute inset-0  flex flex-col justify-center ">
-        <h2 className="text-center font-mangaba text-[40px]  text-[#fff] sm:text-[60px] md:text-[80px]">
+    <div
+      className="relative mt-4 flex h-[600px] w-full items-center justify-center bg-cover bg-center p-6 sm:mt-8 md:mt-12"
+      style={{
+        backgroundImage: `url(https://aigdooxkrussptkeikqq.supabase.co/storage/v1/object/public/about-us/bg-parallax-2.jpg?t=2023-11-16T07%3A30%3A27.059Z)`,
+      }}
+    >
+      <div className="absolute inset-0 flex flex-col justify-center bg-black bg-opacity-50">
+        <h2 className="text-center font-mangaba text-[40px] text-[#fff] sm:text-[60px] md:text-[80px]">
           What People Say
         </h2>
-        <div className="flex items-center justify-center">
-          <AnimatePresence mode="wait">
-            <TestimonialCard
-              key={activeIndex}
-              testimonial={testimonials[activeIndex]}
-            />
-          </AnimatePresence>
-        </div>
+        <Carousel
+          opts={{
+            align: "center",
+            loop: true,
+          }}
+        >
+          <CarouselContent>
+            {testimonials.map((testimonial, index) => (
+              <CarouselItem
+                key={index}
+                className="basis-100 mb-4 flex flex-col items-center"
+              >
+                <TestimonialCard testimonial={testimonial} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </div>
   );

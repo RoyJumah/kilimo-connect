@@ -1,10 +1,32 @@
-import React from "react";
-import { FaUser } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
-export default function userAvatar() {
+export default function UserAvatar() {
+  const [avatarUrl, setAvatarUrl] = useState("");
+
+  useEffect(() => {
+    // Check if there's an avatar URL in the session storage
+    const storedAvatarUrl = sessionStorage.getItem("avatarUrl");
+
+    if (storedAvatarUrl) {
+      // If there's an avatar URL in the session storage, use it
+      setAvatarUrl(storedAvatarUrl);
+    } else {
+      // If there's no avatar URL in the session storage, generate a new one
+      const randomId = Math.floor(Math.random() * 5000) + 1;
+      const newAvatarUrl = `https://i.pravatar.cc/48?u=${randomId}`;
+
+      // Store the new avatar URL in the session storage
+      sessionStorage.setItem("avatarUrl", newAvatarUrl);
+
+      // Use the new avatar URL
+      setAvatarUrl(newAvatarUrl);
+    }
+  }, []);
+
   return (
     <div>
-      <FaUser />
+      <Image src={avatarUrl} alt="User Avatar" width={50} height={50} />
     </div>
   );
 }

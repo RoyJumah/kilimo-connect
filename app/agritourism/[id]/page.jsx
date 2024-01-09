@@ -5,11 +5,11 @@ import { IoIosPaw } from "react-icons/io";
 import { CiCircleInfo, CiLink, CiHeart } from "react-icons/ci";
 import { LuPencil } from "react-icons/lu";
 
-import Carousel from "@/app/_components/Carousel";
 import TextExpander from "@/lib/utilities/textExpander";
 import Locality from "@/app/_ui/Locality";
 import MapComponent from "@/app/_components/Map";
 import Loading from "@/app/loading";
+import GalleryCarousel from "@/app/_components/GalleryCarousel";
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
 export default function FarmDetails({ params: { id } }) {
   const fetchFarmDetails = async () => {
@@ -50,7 +50,7 @@ export default function FarmDetails({ params: { id } }) {
           <span className="inline-block">• Farms</span>
         </div>
       </div>
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 p-2 sm:p-4 md:flex-row md:p-6 ">
+      <div className="mx-auto flex max-w-6xl flex-col justify-between gap-4 p-2 sm:p-4 md:flex-row md:p-6 ">
         <div className="rounded-md p-4 shadow-md md:h-full  md:w-1/3">
           <h2 className="my-1 text-lg sm:my-2 sm:text-xl md:my-4 md:text-2xl">
             About
@@ -85,10 +85,10 @@ export default function FarmDetails({ params: { id } }) {
           </div>
         </div>
         <div className="h-[500px] md:w-2/3">
-          <Carousel gallery={gallery} />
+          <GalleryCarousel gallery={gallery} />
         </div>
       </div>
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 p-6 sm:flex-row sm:justify-between">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6  sm:flex-row sm:justify-between">
         <Locality
           images={gallery}
           location={location}

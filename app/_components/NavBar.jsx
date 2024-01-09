@@ -46,7 +46,7 @@ function Navbar() {
           : ""
       } `}
     >
-      <div className="mx-auto  flex max-w-6xl items-center justify-between p-6 px-[30px] py-[16px]">
+      <div className="mx-auto  flex max-w-7xl items-center justify-between p-6 px-[30px] py-[16px]">
         <Logo />
         <div>
           <HeaderLinks />

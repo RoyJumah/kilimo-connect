@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import toast from "react-hot-toast";
+import { BiLoader } from "react-icons/bi";
 
 import { CiDeliveryTruck } from "react-icons/ci";
 import { useState, useEffect } from "react";
@@ -24,6 +25,8 @@ import { useUser } from "../_features/authentication/useUser";
 import { calculateDeliveryTime } from "@/lib/utilities/calcTime";
 
 export default function OrdersPage() {
+  const [deleting, setDeleting] = useState(false);
+
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -56,6 +59,7 @@ export default function OrdersPage() {
   }
 
   const clearOrders = async () => {
+    setDeleting(true);
     const approvedOrders = orders.filter(
       (order) => order.status === "approved",
     );
@@ -73,16 +77,21 @@ export default function OrdersPage() {
           secondary: "#fffaee",
         },
       });
+      setDeleting(false);
       return;
     }
 
-    try {
-      await deleteOrder(userId);
-      setOrders(orders.filter((order) => order.status !== "approved"));
-      toast.success("All approved orders have been deleted.");
-    } catch (error) {
-      toast.error(`Failed to delete orders. ${error.message}`);
-    }
+    setTimeout(async () => {
+      try {
+        await deleteOrder(userId);
+        setOrders(orders.filter((order) => order.status !== "approved"));
+        toast.success("All approved orders have been deleted.");
+      } catch (error) {
+        toast.error(`Failed to delete orders. ${error.message}`);
+      } finally {
+        setDeleting(false);
+      }
+    }, 2000); // Delay of 2 seconds
   };
 
   return (
@@ -206,7 +215,14 @@ export default function OrdersPage() {
               }}
               className=" m-4 flex self-end rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700"
             >
-              Clear All Orders
+              {deleting ? (
+                <div className="flex items-center justify-center gap-4 font-semibold">
+                  <BiLoader className="animate-spin" />
+                  Deleting orders...
+                </div>
+              ) : (
+                "Clear All Orders"
+              )}
             </div>
           )}
         </AlertDialogTrigger>

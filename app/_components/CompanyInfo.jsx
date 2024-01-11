@@ -70,7 +70,7 @@ export default function CompanyInfo() {
               <div
                 id="tabs-4-1"
                 className={`p-4 ${
-                  activeTab === "tabs-4-1" ? "animate-fadeIn block " : "hidden"
+                  activeTab === "tabs-4-1" ? "block animate-fadeIn " : "hidden"
                 }`}
               >
                 {/* Content for Our Goals tab */}
@@ -107,10 +107,16 @@ export default function CompanyInfo() {
                   </li>
                 </ul>
                 <div className="mt-12 flex w-full   gap-4 ">
-                  <button className="min-w-[200px] bg-[#3c6a36] px-[32px] pb-[19px] pt-[19px] text-sm font-[500] uppercase tracking-wide text-white transition-all duration-300 ease-out hover:scale-[1.05] hover:border-2 hover:border-[#151515] hover:bg-transparent hover:text-[#151515]">
+                  <button
+                    type="button"
+                    className="min-w-[200px] bg-[#3c6a36] px-[32px] pb-[19px] pt-[19px] text-sm font-[500] uppercase tracking-wide text-white transition-all duration-300 ease-out hover:scale-[1.05] hover:border-2 hover:border-[#151515] hover:bg-transparent hover:text-[#151515]"
+                  >
                     Read More
                   </button>
-                  <button className="min-w-[200px] border-2 border-[#151515] bg-white px-[32px] pb-[19px] pt-[19px] text-sm font-[500] uppercase tracking-wide text-black transition-all duration-300 ease-out hover:scale-[1.05] hover:border-[#3c6a36] hover:text-[#3c6a36]">
+                  <button
+                    type="button"
+                    className="min-w-[200px] border-2 border-[#151515] bg-white px-[32px] pb-[19px] pt-[19px] text-sm font-[500] uppercase tracking-wide text-black transition-all duration-300 ease-out hover:scale-[1.05] hover:border-[#3c6a36] hover:text-[#3c6a36]"
+                  >
                     Contact Us
                   </button>
                 </div>
@@ -118,7 +124,7 @@ export default function CompanyInfo() {
               <div
                 id="tabs-4-2"
                 className={`p-4 ${
-                  activeTab === "tabs-4-2" ? "animate-fadeIn block" : "hidden"
+                  activeTab === "tabs-4-2" ? "block animate-fadeIn" : "hidden"
                 }`}
               >
                 {/* Content for Our Values tab */}
@@ -155,10 +161,16 @@ export default function CompanyInfo() {
                   </li>
                 </ul>
                 <div className="mt-12 flex w-full   gap-4 ">
-                  <button className="min-w-[200px] bg-[#3c6a36] px-[32px] pb-[19px] pt-[19px] text-sm font-[500] uppercase tracking-wide text-white transition-all duration-300 ease-out hover:scale-[1.05] hover:border-2 hover:border-[#151515] hover:bg-transparent hover:text-[#151515]">
+                  <button
+                    type="button"
+                    className="min-w-[200px] bg-[#3c6a36] px-[32px] pb-[19px] pt-[19px] text-sm font-[500] uppercase tracking-wide text-white transition-all duration-300 ease-out hover:scale-[1.05] hover:border-2 hover:border-[#151515] hover:bg-transparent hover:text-[#151515]"
+                  >
                     Read More
                   </button>
-                  <button className="min-w-[200px] border-2 border-[#151515] bg-white px-[32px] pb-[19px] pt-[19px] text-sm font-[500] uppercase tracking-wide text-black transition-all duration-300 ease-out hover:scale-[1.05] hover:border-[#3c6a36] hover:text-[#3c6a36]">
+                  <button
+                    type="button"
+                    className="min-w-[200px] border-2 border-[#151515] bg-white px-[32px] pb-[19px] pt-[19px] text-sm font-[500] uppercase tracking-wide text-black transition-all duration-300 ease-out hover:scale-[1.05] hover:border-[#3c6a36] hover:text-[#3c6a36]"
+                  >
                     Contact Us
                   </button>
                 </div>
@@ -166,7 +178,7 @@ export default function CompanyInfo() {
               <div
                 id="tabs-4-3"
                 className={`p-4 ${
-                  activeTab === "tabs-4-3" ? "animate-fadeIn block" : "hidden"
+                  activeTab === "tabs-4-3" ? "block animate-fadeIn" : "hidden"
                 }`}
               >
                 {/* Content for Our Mission tab */}
@@ -203,10 +215,16 @@ export default function CompanyInfo() {
                   </li>
                 </ul>
                 <div className="mt-12 flex w-full   gap-4 ">
-                  <button className="min-w-[200px] bg-[#3c6a36] px-[32px] pb-[19px] pt-[19px] text-sm font-[500] uppercase tracking-wide text-white transition-all duration-300 ease-out hover:scale-[1.05] hover:border-2 hover:border-[#151515] hover:bg-transparent hover:text-[#151515]">
+                  <button
+                    type="button"
+                    className="min-w-[200px] bg-[#3c6a36] px-[32px] pb-[19px] pt-[19px] text-sm font-[500] uppercase tracking-wide text-white transition-all duration-300 ease-out hover:scale-[1.05] hover:border-2 hover:border-[#151515] hover:bg-transparent hover:text-[#151515]"
+                  >
                     Read More
                   </button>
-                  <button className="min-w-[200px] border-2 border-[#151515] bg-white px-[32px] pb-[19px] pt-[19px] text-sm font-[500] uppercase tracking-wide text-black transition-all duration-300 ease-out hover:scale-[1.05] hover:border-[#3c6a36] hover:text-[#3c6a36]">
+                  <button
+                    type="button"
+                    className="min-w-[200px] border-2 border-[#151515] bg-white px-[32px] pb-[19px] pt-[19px] text-sm font-[500] uppercase tracking-wide text-black transition-all duration-300 ease-out hover:scale-[1.05] hover:border-[#3c6a36] hover:text-[#3c6a36]"
+                  >
                     Contact Us
                   </button>
                 </div>

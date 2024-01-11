@@ -26,7 +26,15 @@ export default function UserAvatar() {
 
   return (
     <div>
-      <Image src={avatarUrl} alt="User Avatar" width={50} height={50} />
+      {avatarUrl && (
+        <Image
+          src={avatarUrl}
+          alt="User Avatar"
+          width={45}
+          height={45}
+          className="rounded-full"
+        />
+      )}
     </div>
   );
 }

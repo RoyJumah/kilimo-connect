@@ -65,15 +65,16 @@ function HeaderLinks() {
                     Profile
                   </a>
                 </Link>
-                <Link href={`/profile/${userId}/orders`} legacyBehavior>
+                <Link href={`/orders/`} legacyBehavior>
                   <a className="text-lg font-semibold tracking-wide text-stone-700">
                     Orders
                   </a>
                 </Link>
                 <button
+                  type="button"
                   disabled={isLoading}
                   onClick={handleLogout}
-                  className="border-none"
+                  className="border-none text-lg font-semibold tracking-wide text-red-600"
                 >
                   Sign Out
                 </button>

@@ -45,7 +45,7 @@ export default function ContactForm() {
           value={subject}
           className="max-h[265px] h-[156px] min-h-[60px] w-full border border-[#f1efeb] bg-[#f1efeb] px-[22px] py-[16px] focus:outline-none"
         />
-        <button className="mt-4 min-w-[200px] self-start bg-[#3c6a36] px-[32px] pb-[19px] pt-[19px] text-sm font-[500] uppercase tracking-wide text-white transition-all duration-300 ease-out hover:scale-[1.05] hover:border-2 hover:border-[#151515] hover:bg-transparent hover:text-[#151515]">
+        <button type="button" className="mt-4 min-w-[200px] self-start bg-[#3c6a36] px-[32px] pb-[19px] pt-[19px] text-sm font-[500] uppercase tracking-wide text-white transition-all duration-300 ease-out hover:scale-[1.05] hover:border-2 hover:border-[#151515] hover:bg-transparent hover:text-[#151515]">
           Send Message
         </button>
       </form>

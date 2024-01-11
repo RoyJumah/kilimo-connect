@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import { useRouter } from "next/navigation";
 import {
   Tooltip,
@@ -40,26 +41,25 @@ function MenuBar() {
   const handleCheckout = async () => {
     checkout({ lineItems });
 
-    for (const item of items) {
-      // Create new order data
-      const newOrder = {
-        stripe_id: item.stripe_id, // replace with actual stripe_id
-        total_price: totalPrice,
-        quantity: itemQuantity,
-        user_id: userId, // replace with actual user_id
-        order_id: Date.now(),
-        cart: items,
-        status: "pending",
-      };
+    // Create new order data
+    const newOrder = {
+      stripe_id: items[0].stripe_id, // replace with actual stripe_id
+      total_price: totalPrice,
+      quantity: itemQuantity,
+      user_id: userId, // replace with actual user_id
+      order_id: Date.now(),
+      cart: items,
+      status: "pending",
+    };
 
-      // Call createOrder function
-      try {
-        await createOrder(newOrder);
-      } catch (error) {
-        console.error("Failed to create order:", error);
-      }
+    // Call createOrder function
+    try {
+      await createOrder(newOrder);
+    } catch (error) {
+      console.error("Failed to create order:", error);
     }
   };
+
   if (itemQuantity <= 0) {
     return (
       <TooltipProvider>
@@ -76,13 +76,13 @@ function MenuBar() {
   } else {
     return (
       <>
-        {items.map((item, i) => (
-          <DropdownMenu key={i}>
-            <DropdownMenuTrigger>
-              <AiOutlineShoppingCart size={22} />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem>
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <AiOutlineShoppingCart size={22} />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            {items.map((item, index) => (
+              <DropdownMenuItem key={index}>
                 <div className="flex flex-col gap-4 py-2">
                   <div>
                     <p className="text-sm sm:text-[15px] ">
@@ -113,27 +113,27 @@ function MenuBar() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center justify-center gap-2">
-                    <button
-                      type="button"
-                      className="mt-4 inline-block border-2  border-black bg-[#fff] px-4 py-2 text-[15px] font-semibold uppercase  tracking-wide text-stone-600 transition-colors duration-300 focus:outline-none focus:ring focus:ring-slate-200 focus:ring-offset-2 disabled:cursor-not-allowed"
-                      onClick={handleCart}
-                    >
-                      Go to Cart
-                    </button>
-                    <button
-                      onClick={handleCheckout}
-                      type="primary"
-                      className="mt-4 inline-block bg-[#0ca678]  px-4 py-2 text-[15px] font-semibold uppercase  tracking-wide text-slate-50 transition-colors duration-300 focus:outline-none focus:ring focus:ring-green-200 focus:ring-offset-2 disabled:cursor-not-allowed "
-                    >
-                      Checkout
-                    </button>
-                  </div>
                 </div>
               </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        ))}
+            ))}
+            <div className="flex items-center justify-center gap-2">
+              <button
+                type="button"
+                className="mt-4 inline-block border-2  border-black bg-[#fff] px-4 py-2 text-[15px] font-semibold uppercase  tracking-wide text-stone-600 transition-colors duration-300 focus:outline-none focus:ring focus:ring-slate-200 focus:ring-offset-2 disabled:cursor-not-allowed"
+                onClick={handleCart}
+              >
+                Go to Cart
+              </button>
+              <button
+                onClick={handleCheckout}
+                type="primary"
+                className="mt-4 inline-block bg-[#0ca678]  px-4 py-2 text-[15px] font-semibold uppercase  tracking-wide text-slate-50 transition-colors duration-300 focus:outline-none focus:ring focus:ring-green-200 focus:ring-offset-2 disabled:cursor-not-allowed "
+              >
+                Checkout
+              </button>
+            </div>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </>
     );
   }

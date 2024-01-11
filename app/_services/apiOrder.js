@@ -24,3 +24,20 @@ export async function getOrder(userId) {
 
   return data;
 }
+
+// delete orders by user_id and where status is approved
+
+export async function deleteOrder(userId) {
+  const { data, error } = await supabase
+    .from("Order")
+    .delete()
+    .eq("user_id", userId)
+    .eq("status", "approved");
+
+  if (error) {
+    console.error("Error deleting order:", error);
+    throw new Error("Order could not be deleted");
+  }
+
+  return data;
+}

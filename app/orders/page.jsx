@@ -1,4 +1,16 @@
 "use client";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
+import toast from "react-hot-toast";
 
 import { CiDeliveryTruck } from "react-icons/ci";
 import { useState, useEffect } from "react";
@@ -7,15 +19,16 @@ import moment from "moment";
 import { formatCurrency } from "@/lib/utilities/helpers";
 import Image from "next/image";
 
-import { getOrder } from "../_services/apiOrder";
+import { deleteOrder, getOrder } from "../_services/apiOrder";
 import { useUser } from "../_features/authentication/useUser";
 import { calculateDeliveryTime } from "@/lib/utilities/calcTime";
 
-export default function TopMenu() {
+export default function OrdersPage() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { user } = useUser();
+  const userId = user?.id;
   // let cartItems = [];
 
   useEffect(() => {
@@ -42,6 +55,36 @@ export default function TopMenu() {
     return <div>Error: {error}</div>;
   }
 
+  const clearOrders = async () => {
+    const approvedOrders = orders.filter(
+      (order) => order.status === "approved",
+    );
+
+    if (approvedOrders.length === 0) {
+      toast(" ℹ There are no approved orders at the moment.", {
+        style: {
+          border: "1px solid #a1a1a1",
+          padding: "16px",
+          color: "#333",
+          background: "#e1e1a1",
+        },
+        iconTheme: {
+          primary: "#333",
+          secondary: "#fffaee",
+        },
+      });
+      return;
+    }
+
+    try {
+      await deleteOrder(userId);
+      setOrders(orders.filter((order) => order.status !== "approved"));
+      toast.success("All approved orders have been deleted.");
+    } catch (error) {
+      toast.error(`Failed to delete orders. ${error.message}`);
+    }
+  };
+
   return (
     <div id="OrdersPage" className="mx-auto mt-4 max-w-6xl px-2 sm:w-[800px]">
       <div className="mb-2 flex items-center text-base sm:mb-4 sm:text-xl">
@@ -65,7 +108,7 @@ export default function TopMenu() {
                   minutesRemaining: null,
                 };
           return (
-            <div key={i} className=" mx-auto max-w-6xl p-6 text-sm">
+            <div key={i} className="  mx-auto max-w-6xl p-6 text-sm">
               <div className="flex justify-end">
                 <span
                   className={`mb-4 inline-block rounded-full px-3 py-1 text-sm font-semibold uppercase tracking-wide text-white ${
@@ -135,6 +178,50 @@ export default function TopMenu() {
           );
         })(order),
       )}
+      <AlertDialog>
+        <AlertDialogTrigger>
+          {orders.length > 0 && (
+            <div
+              onClick={(event) => {
+                const approvedOrders = orders.filter(
+                  (order) => order.status === "approved",
+                );
+                if (approvedOrders.length === 0) {
+                  toast(" ℹ There are no approved orders at the moment.", {
+                    style: {
+                      border: "1px solid #a1a1a1",
+                      padding: "16px",
+                      color: "#333",
+                      background: "#fff",
+                    },
+                    iconTheme: {
+                      primary: "#333",
+                      secondary: "#fffaee",
+                    },
+                  });
+                  event.stopPropagation();
+                } else {
+                  // Open the AlertDialog here instead of clearing the orders immediately
+                }
+              }}
+              className=" m-4 flex self-end rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700"
+            >
+              Clear All Orders
+            </div>
+          )}
+        </AlertDialogTrigger>
+
+        <AlertDialogContent>
+          <AlertDialogHeader>Clear All Orders</AlertDialogHeader>
+          <AlertDialogTitle>
+            Are you sure you want to clear all orders?
+          </AlertDialogTitle>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={clearOrders}>Clear</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

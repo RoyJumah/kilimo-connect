@@ -22,6 +22,7 @@ function HeaderLinks() {
   const router = useRouter();
   const { user } = useUser();
   const userId = user?.id;
+
   const { logout, isLoading } = useLogout();
   const links = [
     { href: "/", label: "Home" },

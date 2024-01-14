@@ -2,14 +2,20 @@
 import { useQuery } from "@tanstack/react-query";
 import { PiClockCounterClockwiseLight } from "react-icons/pi";
 import { IoIosPaw } from "react-icons/io";
-import { CiCircleInfo, CiLink, CiHeart } from "react-icons/ci";
+import { CiCircleInfo, CiLink } from "react-icons/ci";
+import { BsCalendarCheck } from "react-icons/bs";
 import { LuPencil } from "react-icons/lu";
+
+/* modal component*/
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 import TextExpander from "@/lib/utilities/textExpander";
 import Locality from "@/app/_ui/Locality";
 import MapComponent from "@/app/_components/Map";
 import Loading from "@/app/loading";
 import GalleryCarousel from "@/app/_components/GalleryCarousel";
+import CreateBookingForm from "@/app/_features/_bookings/CreateBookingForm";
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
 export default function FarmDetails({ params: { id } }) {
   const fetchFarmDetails = async () => {
@@ -30,7 +36,7 @@ export default function FarmDetails({ params: { id } }) {
   });
 
   if (isLoading) return <Loading />;
-  const { gallery, description, name, duration, location, restaurants_nearby } =
+  const { gallery, description, name, duration, location, restaurants_nearby, id:farm_id } =
     farmDetails;
 
   return (
@@ -40,9 +46,19 @@ export default function FarmDetails({ params: { id } }) {
           <h1 className="md:text-33xl p-2 text-lg sm:p-4 sm:text-2xl sm:font-semibold md:p-6 md:font-bold">
             {name}
           </h1>
-          <div className="space-x-2">
+          <div className="space-x-4">
             <CiLink size={24} className="inline-block cursor-pointer" />
-            <CiHeart size={24} className="inline-block cursor-pointer" />
+            <Dialog>
+              <DialogTrigger>
+                <BsCalendarCheck
+                  size={20}
+                  className="inline-block cursor-pointer"
+                />
+              </DialogTrigger>
+              <DialogContent>
+                <CreateBookingForm farm_id={farm_id} />
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
         <div className="flex flex-col sm:flex-row sm:items-center  sm:gap-2">

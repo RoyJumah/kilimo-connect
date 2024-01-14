@@ -71,6 +71,11 @@ function HeaderLinks() {
                     Orders
                   </a>
                 </Link>
+                <Link href={`/bookings/`} legacyBehavior>
+                  <a className="text-lg font-semibold tracking-wide text-stone-700">
+                    Bookings
+                  </a>
+                </Link>
                 <button
                   type="button"
                   disabled={isLoading}

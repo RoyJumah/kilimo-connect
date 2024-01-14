@@ -9,7 +9,12 @@ import { useUser } from "../authentication/useUser";
 export default function OrderSummary() {
   const { user } = useUser();
   const userId = user?.id;
-  const { totalQuantity: itemQuantity, cart: items, totalPrice } = useCart();
+  const {
+    totalQuantity: itemQuantity,
+    cart: items,
+    totalPrice,
+    clearAllCart: clearCart,
+  } = useCart();
   const lineItems = items.map((item, _) => ({
     price: item.stripe_id,
     quantity: item.quantity,
@@ -18,6 +23,7 @@ export default function OrderSummary() {
   const handleCheckout = async () => {
     checkout({ lineItems });
 
+    clearCart();
     // Create new order data
     const newOrder = {
       stripe_id: items[0].stripe_id, // replace with actual stripe_id

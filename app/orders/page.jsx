@@ -120,8 +120,10 @@ export default function OrdersPage() {
             <div key={i} className="  mx-auto max-w-6xl p-6 text-sm">
               <div className="flex justify-end">
                 <span
-                  className={`mb-4 inline-block rounded-full px-3 py-1 text-sm font-semibold uppercase tracking-wide text-white ${
-                    order.status === "approved" ? "bg-green-500" : "bg-red-500"
+                  className={`mb-4 inline-block rounded-full px-2 py-1 text-[11px] font-semibold uppercase tracking-wide ${
+                    order.status === "approved"
+                      ? "bg-green-100 text-green-700"
+                      : "bg-blue-100 text-blue-700"
                   }`}
                 >
                   {order.status} order
@@ -132,8 +134,8 @@ export default function OrdersPage() {
                   {deliveryIn !== null && deliveryIn >= 0
                     ? `Only ${hoursRemaining} hr(s) and ${minutesRemaining} minutes left 😃`
                     : order.status === "approved"
-                    ? "Order should have arrived 🚚"
-                    : "This order is being processed 😀 "}
+                      ? "Order should have arrived 🚚"
+                      : "This order is being processed 😀 "}
                 </p>
                 {order.status === "approved" && (
                   <p className="text-xs text-stone-500">

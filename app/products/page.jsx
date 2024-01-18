@@ -32,13 +32,12 @@ export default async function ProductListPage() {
         </select>
       </div>
 
-      <ul className="mt-2  grid gap-2  sm:grid-cols-2 sm:gap-6 md:grid-cols-4 md:gap-4 lg:grid-cols-6 lg:gap-2">
+      <ul className="mt-2 grid gap-2 sm:grid-cols-2 sm:gap-6 md:grid-cols-4 md:gap-4 lg:grid-cols-6 lg:gap-2">
         {data.map((product, i) => (
           <Link
             href={`/products/${product.product_id}`}
             key={i}
             className="overflow-hidden"
-     
           >
             <Image
               src={product.image}

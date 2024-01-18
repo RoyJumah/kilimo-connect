@@ -43,3 +43,17 @@ export async function deleteBooking(userId) {
 
   return data;
 }
+
+export async function getBookingDetails(id) {
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Booking details could not be loaded");
+  }
+  return data;
+}

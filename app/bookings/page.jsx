@@ -1,11 +1,29 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getBookings } from "../_services/apiBooking";
 import { useUser } from "../_features/authentication/useUser";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+import { MdModeEdit } from "react-icons/md";
+import { IoIosTrash } from "react-icons/io";
+import EditDialog from "../_features/_bookings/EditDialog";
+
+import DeleteDialog from "../_features/_bookings/DeleteDialog";
+import { HiEllipsisVertical, HiEye } from "react-icons/hi2";
+import Link from "next/link";
+
 export default function BookingsPage() {
   const [bookings, setBookings] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
   const { user } = useUser();
+
   const userId = user?.id;
 
   useEffect(() => {
@@ -13,13 +31,14 @@ export default function BookingsPage() {
       getBookings(userId).then(setBookings);
     }
   }, [userId]);
+
   return (
     <div className="mx-auto max-w-7xl p-4">
       <h1 className="mb-4 text-4xl">Bookings</h1>
       <table className="w-full table-auto">
         <thead>
-          <tr>
-            <th className="px-4 py-2">ID</th>
+          <tr className="border">
+            <th className="px-4 py-2">Booking ID</th>
             <th className="px-4 py-2">Farm ID</th>
             <th className="px-4 py-2">No of people</th>
             <th className="px-4 py-2">Duration</th>
@@ -29,27 +48,61 @@ export default function BookingsPage() {
         </thead>
         <tbody>
           {bookings.map((booking) => (
-            <tr key={booking.id}>
-              <td className="border px-4 py-2">{booking.id}</td>
-              <td className="border px-4 py-2">{booking.farm_id}</td>
-              <td className="border px-4 py-2">{booking.people}</td>
-              <td className="border px-4 py-2">{booking.duration} hr(s)</td>
-              <td className="border px-4 py-2">{booking.date}</td>
-              <td className="border px-4 py-2">
+            <tr key={booking.id} className="border">
+              <td className="px-4 py-2">{booking.id}</td>
+              <td className="px-4 py-2">{booking.farm_id}</td>
+              <td className="px-4 py-2">{booking.people}</td>
+              <td className="px-4 py-2">{booking.duration} hr(s)</td>
+              <td className="px-4 py-2">{booking.date}</td>
+              <td className="px-4 py-2">
                 {" "}
                 <span
-                  className={`mb-4 inline-block rounded-full px-3 py-1 text-sm font-semibold uppercase tracking-wide text-white ${
+                  className={`mb-4 inline-block rounded-full px-2 py-1 text-[11px] font-[600] uppercase tracking-wide  ${
                     booking.status === "approved"
-                      ? "bg-green-500"
-                      : "bg-red-500"
+                      ? "bg-green-100 text-green-700"
+                      : "bg-blue-100 text-blue-700"
                   }`}
                 >
                   {booking.status}
                 </span>
               </td>
+              <td>
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="outline-none">
+                    <HiEllipsisVertical size={20} />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="px-4 py-2">
+                    <DropdownMenuItem>
+                      <Link href={`/bookings/${booking.id}`} legacyBehavior>
+                        <a className="flex space-x-4">
+                          <HiEye color="#9ca3af" size={16} />
+                          <span>See details</span>
+                        </a>
+                      </Link>
+                    </DropdownMenuItem>
+
+                    <DropdownMenuItem
+                      onSelect={() => setDialogOpen(true)}
+                      className="space-x-4 "
+                    >
+                      <MdModeEdit color="#9ca3af" size={16} />
+                      <span>Edit</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onSelect={() => setOpen(true)}
+                      className="space-x-4 "
+                    >
+                      <IoIosTrash color="#9ca3af" size={16} />
+                      <span>Delete</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </td>
             </tr>
           ))}
         </tbody>
+        <EditDialog open={dialogOpen} onOpenChange={setDialogOpen} />
+        <DeleteDialog open={open} onOpenChange={setOpen} />
       </table>
     </div>
   );

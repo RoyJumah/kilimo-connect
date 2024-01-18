@@ -79,6 +79,26 @@ export default function CreateBookingForm({ farm_id }) {
         <div className="mb-4">
           <label
             className="mb-2 block text-sm font-bold text-gray-700"
+            htmlFor="name"
+          >
+            Name
+          </label>
+          {errors.name && (
+            <p className="text-xs italic text-red-500">Please enter a name.</p>
+          )}
+
+          <input
+            {...register("name", { required: true })}
+            className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+            id="name"
+            type="text"
+            disabled={isCreating}
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            className="mb-2 block text-sm font-bold text-gray-700"
             htmlFor="contact"
           >
             Contact

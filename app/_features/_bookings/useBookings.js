@@ -1,18 +1,21 @@
-import { useQuery } from "react-query";
+import { getBookings } from "@/app/_services/apiBooking";
+import { useQuery } from "@tanstack/react-query";
+import { useUser } from "../authentication/useUser";
 
 export function useBookings() {
-  const fetchBookings = async () => {
-    const res = await fetch(`${API_BASE_URL}/api/bookings`);
-    if (!res.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return res.json();
-  };
+  const { user } = useUser();
+  const id = user?.id;
+  console.log("id", id);
+  const {
+    isLoading,
+    data: bookings,
+    error,
+  } = useQuery({
+    queryKey: ["bookings"],
+    queryFn: () => getBookings(id),
+    // Only run the query if `id` is defined
+    enabled: !!id,
+  });
 
-  const { data, error, isLoading, isError } = useQuery(
-    "bookings",
-    fetchBookings,
-  );
-
-  return { data, error, isLoading, isError };
+  return { isLoading, bookings, error };
 }

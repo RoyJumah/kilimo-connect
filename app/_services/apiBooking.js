@@ -34,7 +34,7 @@ export async function deleteBooking(userId) {
     .from("bookings")
     .delete()
     .eq("user_id", userId)
-    .eq("status", "approved");
+    .single();
 
   if (error) {
     console.error("Error deleting booking:", error);
@@ -55,5 +55,19 @@ export async function getBookingDetails(id) {
     console.error(error);
     throw new Error("Booking details could not be loaded");
   }
+  return data;
+}
+
+export async function updateBooking({ id, ...booking }) {
+  const { data, error } = await supabase
+    .from("bookings")
+    .update(booking)
+    .eq("id", id);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Booking could not be updated");
+  }
+
   return data;
 }

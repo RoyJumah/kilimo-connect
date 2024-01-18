@@ -17,20 +17,21 @@ import EditDialog from "../_features/_bookings/EditDialog";
 import DeleteDialog from "../_features/_bookings/DeleteDialog";
 import { HiEllipsisVertical, HiEye } from "react-icons/hi2";
 import Link from "next/link";
+import { useBookings } from "../_features/_bookings/useBookings";
 
 export default function BookingsPage() {
-  const [bookings, setBookings] = useState([]);
+  const [editingBookingId, setEditingBookingId] = useState(null);
   const [open, setOpen] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const { user } = useUser();
 
-  const userId = user?.id;
+  const { bookings, isLoading, error } = useBookings();
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-  useEffect(() => {
-    if (userId) {
-      getBookings(userId).then(setBookings);
-    }
-  }, [userId]);
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <div className="mx-auto max-w-7xl p-4">
@@ -47,7 +48,7 @@ export default function BookingsPage() {
           </tr>
         </thead>
         <tbody>
-          {bookings.map((booking) => (
+          {bookings?.map((booking) => (
             <tr key={booking.id} className="border">
               <td className="px-4 py-2">{booking.id}</td>
               <td className="px-4 py-2">{booking.farm_id}</td>
@@ -82,7 +83,10 @@ export default function BookingsPage() {
                     </DropdownMenuItem>
 
                     <DropdownMenuItem
-                      onSelect={() => setDialogOpen(true)}
+                      onSelect={() => {
+                        setEditingBookingId(booking.id);
+                        setDialogOpen(true);
+                      }}
                       className="space-x-4 "
                     >
                       <MdModeEdit color="#9ca3af" size={16} />
@@ -101,7 +105,12 @@ export default function BookingsPage() {
             </tr>
           ))}
         </tbody>
-        <EditDialog open={dialogOpen} onOpenChange={setDialogOpen} />
+        <EditDialog
+          open={dialogOpen}
+          onOpenChange={setDialogOpen}
+          bookings={bookings}
+          bookingId={editingBookingId}
+        />
         <DeleteDialog open={open} onOpenChange={setOpen} />
       </table>
     </div>

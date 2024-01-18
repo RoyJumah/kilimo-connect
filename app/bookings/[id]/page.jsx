@@ -1,5 +1,5 @@
 "use client";
-import { getBookingDetails } from "@/app/_services/apiBooking";
+import { deleteBooking, getBookingDetails } from "@/app/_services/apiBooking";
 import React, { useState, useEffect } from "react";
 import { GiFarmer } from "react-icons/gi";
 import { format, isToday } from "date-fns";
@@ -7,9 +7,30 @@ import { calculatePrice, formatDistanceFromNow } from "@/lib/utilities/helpers";
 import { HiOutlineCurrencyDollar } from "react-icons/hi2";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+
+import { useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 export default function BookingDetailsPage({ params: { id } }) {
   const router = useRouter();
   const [bookingDetails, setBookingDetails] = useState([]);
+
+  const [deleting, setDeleting] = useState(false);
+  const queryClient = useQueryClient();
+
+  const handleDeleteBooking = async (bookingId) => {
+    setDeleting(true);
+
+    try {
+      await deleteBooking(bookingId);
+      toast.success("Booking deleted successfully");
+      setDeleting(false);
+      queryClient.invalidateQueries("bookings");
+      router.push("/bookings");
+    } catch (error) {
+      toast.error(`Failed to delete booking: ${error.message}`);
+      setDeleting(false);
+    }
+  };
 
   const goBack = () => {
     router.push("/bookings");
@@ -105,7 +126,12 @@ export default function BookingDetailsPage({ params: { id } }) {
             </div>
           </section>
           <div className="space-x-2 py-4 text-right ">
-            <Button variant="destructive">Delete Booking</Button>
+            <Button
+              variant="destructive"
+              onClick={() => handleDeleteBooking(booking.id)}
+            >
+              {deleting ? "Deleting..." : "Delete"}
+            </Button>
             <Button onClick={goBack}>Back</Button>
           </div>
         </div>

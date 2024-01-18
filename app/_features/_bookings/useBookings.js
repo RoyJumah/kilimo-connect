@@ -5,7 +5,7 @@ import { useUser } from "../authentication/useUser";
 export function useBookings() {
   const { user } = useUser();
   const id = user?.id;
-  console.log("id", id);
+
   const {
     isLoading,
     data: bookings,

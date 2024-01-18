@@ -33,7 +33,7 @@ export async function deleteBooking(userId) {
   const { data, error } = await supabase
     .from("bookings")
     .delete()
-    .eq("user_id", userId)
+    .eq("id", userId)
     .single();
 
   if (error) {

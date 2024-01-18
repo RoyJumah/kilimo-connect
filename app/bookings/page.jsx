@@ -1,7 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { getBookings } from "../_services/apiBooking";
-import { useUser } from "../_features/authentication/useUser";
+import React, { useState } from "react";
 
 import {
   DropdownMenu,
@@ -18,11 +16,18 @@ import DeleteDialog from "../_features/_bookings/DeleteDialog";
 import { HiEllipsisVertical, HiEye } from "react-icons/hi2";
 import Link from "next/link";
 import { useBookings } from "../_features/_bookings/useBookings";
+import toast from "react-hot-toast";
+import { deleteBooking } from "../_services/apiBooking";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function BookingsPage() {
   const [editingBookingId, setEditingBookingId] = useState(null);
   const [open, setOpen] = useState(false);
+  const [deletingBookingId, setDeletingBookingId] = useState(null);
+
+  const [deleting, setDeleting] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const queryClient = useQueryClient();
 
   const { bookings, isLoading, error } = useBookings();
   if (isLoading) {
@@ -33,6 +38,19 @@ export default function BookingsPage() {
     return <div>Error: {error.message}</div>;
   }
 
+  const handleDeleteBooking = async (bookingId) => {
+    setDeleting(true);
+
+    try {
+      await deleteBooking(bookingId);
+      toast.success("Booking deleted successfully");
+      setDeleting(false);
+      queryClient.invalidateQueries("bookings");
+    } catch (error) {
+      toast.error(`Failed to delete booking: ${error.message}`);
+      setDeleting(false);
+    }
+  };
   return (
     <div className="mx-auto max-w-7xl p-4">
       <h1 className="mb-4 text-4xl">Bookings</h1>
@@ -56,7 +74,6 @@ export default function BookingsPage() {
               <td className="px-4 py-2">{booking.duration} hr(s)</td>
               <td className="px-4 py-2">{booking.date}</td>
               <td className="px-4 py-2">
-                {" "}
                 <span
                   className={`mb-4 inline-block rounded-full px-2 py-1 text-[11px] font-[600] uppercase tracking-wide  ${
                     booking.status === "approved"
@@ -75,7 +92,7 @@ export default function BookingsPage() {
                   <DropdownMenuContent className="px-4 py-2">
                     <DropdownMenuItem>
                       <Link href={`/bookings/${booking.id}`} legacyBehavior>
-                        <a className="flex space-x-4">
+                        <a className="flex items-center space-x-4">
                           <HiEye color="#9ca3af" size={16} />
                           <span>See details</span>
                         </a>
@@ -93,7 +110,10 @@ export default function BookingsPage() {
                       <span>Edit</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem
-                      onSelect={() => setOpen(true)}
+                      onSelect={() => {
+                        setOpen(true);
+                        setDeletingBookingId(booking.id);
+                      }}
                       className="space-x-4 "
                     >
                       <IoIosTrash color="#9ca3af" size={16} />
@@ -111,7 +131,12 @@ export default function BookingsPage() {
           bookings={bookings}
           bookingId={editingBookingId}
         />
-        <DeleteDialog open={open} onOpenChange={setOpen} />
+        <DeleteDialog
+          open={open}
+          onOpenChange={setOpen}
+          handleDeleteBooking={() => handleDeleteBooking(deletingBookingId)}
+          deleting={deleting}
+        />
       </table>
     </div>
   );

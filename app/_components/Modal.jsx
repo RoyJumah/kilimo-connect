@@ -2,6 +2,7 @@ import { Auth } from "@supabase/auth-ui-react";
 import { useEffect, useState } from "react";
 import supabase from "../_services/supabase";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
+import Link from "next/link";
 
 function Modal() {
   const [email, setEmail] = useState("");
@@ -31,19 +32,15 @@ function Modal() {
   }
 
   return (
-    <>
-      <div>
-        <ModalText
-          text="Login"
-          email={email}
-          setEmail={setEmail}
-          handleSignIn={handleSignIn}
-          isEmailValid={isEmailValid}
-          isSendingMagicLink={isSendingMagicLink}
-          magicLinkSent={magicLinkSent}
-        />
-      </div>
-    </>
+    <ModalText
+      text="Sign in to Kilimo Connect"
+      email={email}
+      setEmail={setEmail}
+      handleSignIn={handleSignIn}
+      isEmailValid={isEmailValid}
+      isSendingMagicLink={isSendingMagicLink}
+      magicLinkSent={magicLinkSent}
+    />
   );
 }
 const ModalText = ({
@@ -55,51 +52,68 @@ const ModalText = ({
   isSendingMagicLink,
   magicLinkSent,
 }) => (
-  <div className="modal-text flex flex-col gap-2 tracking-wide ">
-    <h2 className="text-[2rem] font-[700] capitalize ">{text}</h2>
-    <h3 className="t font-semibold">With magic email link:</h3>
-    <div className="space-y-4">
-      <div>
-        <p className="block text-[14px] font-semibold leading-6">Email</p>
-        <div className="mt-2">
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            className={`input  ${isEmailValid ? "valid-email" : "touched"}`}
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
-        </div>
-      </div>
-
-      {magicLinkSent && (
-        <p className="text-green-500">Magic signin link sent to {email}</p>
-      )}
-
-      <div>
-        <button
-          onClick={() => handleSignIn()}
-          type="button"
-          className={`btn text-xs tracking-wide ${
-            isEmailValid ? "" : "disabled"
-          }`}
-          disabled={isSendingMagicLink || magicLinkSent} // Disable the button when sending the magic link or already sent
-        >
-          {isSendingMagicLink ? "Sending..." : magicLinkSent ? "Sent" : "Send"}
-        </button>
-      </div>
+  <div>
+    <div className="flex flex-col gap-2 p-4 text-center text-[14px] tracking-wide">
+      <h2>{text}</h2>
+      <Link className="hover:underline" href="/">
+        Switch to agent sign-in &rarr;
+      </Link>
     </div>
 
-    <p className="font-semibold ">Or with account:</p>
-    <Auth
-      onlyThirdPartyProviders
-      supabaseClient={supabase}
-      providers={["google", "github"]}
-      appearance={{ theme: ThemeSupa }}
-    />
+    <div className="flex gap-6">
+      <div className="w-[50%]">
+        <Auth
+          onlyThirdPartyProviders
+          supabaseClient={supabase}
+          providers={["google", "github"]}
+          appearance={{ theme: ThemeSupa }}
+        />
+      </div>
+
+      <div className="w-[50%]">
+        <h3 className="text-[14px]">With magic email link:</h3>
+        <div className="space-y-4">
+          <div>
+            <p className="block text-[14px] leading-6">Email</p>
+            <div className="mt-1">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                className={`input  ${isEmailValid ? "valid-email" : "touched"}`}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
+            </div>
+          </div>
+
+          {magicLinkSent && (
+            <p className="text-[14px] text-green-500">
+              Magic signin link sent to {email}
+            </p>
+          )}
+
+          <div>
+            <button
+              onClick={() => handleSignIn()}
+              type="button"
+              className={`btn text-xs tracking-wide ${
+                isEmailValid ? "" : "disabled"
+              }`}
+              disabled={isSendingMagicLink || magicLinkSent} // Disable the button when sending the magic link or already sent
+            >
+              {isSendingMagicLink
+                ? "Sending..."
+                : magicLinkSent
+                  ? "Sent"
+                  : "Send"}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 );
 

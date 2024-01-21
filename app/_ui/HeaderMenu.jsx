@@ -99,7 +99,7 @@ function HeaderLinks() {
                 Login
               </motion.div>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="h-[400px] max-w-[800px]">
               <Modal />
             </DialogContent>
           </Dialog>

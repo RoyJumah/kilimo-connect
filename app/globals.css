@@ -183,11 +183,8 @@
     border-bottom-color: rgb(255 255 255 / var(--tw-border-opacity));
     background-color: rgb(18 24 27 / var(--tw-bg-opacity));
     --tw-bg-opacity: 0.3;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    font-size: 1.125rem;
+    padding: 12px;
+    font-size: 14px;
     line-height: 1.75rem;
     --tw-text-opacity: 1;
     outline: 2px solid transparent;

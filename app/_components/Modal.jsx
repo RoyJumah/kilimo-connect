@@ -55,7 +55,10 @@ const ModalText = ({
   <div>
     <div className="flex flex-col gap-2 p-4 text-center text-[14px] tracking-wide">
       <h2>{text}</h2>
-      <Link className="hover:underline" href="/">
+      <Link
+        className="text-[12px] hover:underline"
+        href="/authentication/login"
+      >
         Switch to agent sign-in &rarr;
       </Link>
     </div>

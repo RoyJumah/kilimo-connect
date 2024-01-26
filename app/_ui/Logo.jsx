@@ -9,6 +9,7 @@ function Logo() {
       width={40}
       alt="Kilimo Connect Logo"
       priority
+      className="inline-block"
     />
   );
 }

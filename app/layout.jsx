@@ -8,6 +8,7 @@ import TanstackProvider from "./_providers/TanstackProvider";
 
 import { Toaster } from "react-hot-toast";
 import store from "./_redux/store";
+import AppLayout from "./_ui/AppLayout";
 
 export default function RootLayout({ children }) {
   return (
@@ -26,11 +27,7 @@ export default function RootLayout({ children }) {
       <body id="root">
         <TanstackProvider>
           <Provider store={store}>
-            <div className="grid min-h-screen grid-rows-[auto,1fr,auto]">
-              <NavBar />
-              <main>{children}</main>
-              <Footer />
-            </div>
+            <AppLayout>{children}</AppLayout>
           </Provider>
           <Toaster
             position="bottom-right"

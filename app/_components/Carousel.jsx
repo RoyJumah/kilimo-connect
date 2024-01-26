@@ -51,8 +51,7 @@ export function ImageCarousel() {
             <div className="carousel-dot"></div>
             <div className="mt-[10px] text-center text-[20px] text-[#3c6a36]">
               {years[index]}
-            </div>{" "}
-            {/* Add the year */}
+            </div>
           </div>
         ))}
       </CarouselContent>

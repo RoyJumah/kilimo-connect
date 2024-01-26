@@ -57,14 +57,14 @@ const ModalText = ({
       <h2>{text}</h2>
       <Link
         className="text-[12px] hover:underline"
-        href="/authentication/login"
+        href="admin/authentication/login"
       >
         Switch to agent sign-in &rarr;
       </Link>
     </div>
 
-    <div className="flex gap-6">
-      <div className="w-[50%]">
+    <div className="flex items-center gap-6">
+      <div className="flex-1">
         <Auth
           onlyThirdPartyProviders
           supabaseClient={supabase}
@@ -72,8 +72,8 @@ const ModalText = ({
           appearance={{ theme: ThemeSupa }}
         />
       </div>
-
-      <div className="w-[50%]">
+      <div className="mx-4 border-l border-[#ccc]" style={{ height: "25vh" }} />
+      <div className="flex-1">
         <h3 className="text-[14px]">With magic email link:</h3>
         <div className="space-y-4">
           <div>

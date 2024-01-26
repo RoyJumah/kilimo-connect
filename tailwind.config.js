@@ -21,6 +21,10 @@ module.exports = {
     extend: {
       fontFamily: {
         mangaba: "Mangaba, sans-serif",
+        satisfy: "Satisfy, cursive",
+      },
+      gridRow: {
+        "span-full": "1 / -1",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -33,11 +37,11 @@ module.exports = {
         activeLink: "rgba(255, 255, 255, 0.53)",
 
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "#e0e7ff", // Set primary color here
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+          DEFAULT: "#4338ca", // Set secondary color here
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {

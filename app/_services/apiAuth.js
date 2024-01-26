@@ -32,4 +32,22 @@ async function getCurrentUser() {
   return data?.user;
 }
 
-export { loginWithGoogle, logout, loginWithGithub, getCurrentUser };
+async function loginAsAdmin(email, password) {
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  if (error) throw new Error(error.message);
+
+  return data;
+}
+
+export {
+  loginWithGoogle,
+  logout,
+  loginWithGithub,
+  getCurrentUser,
+  loginAsAdmin,
+};

@@ -26,6 +26,9 @@ module.exports = {
       gridRow: {
         "span-full": "1 / -1",
       },
+      gridTemplateColumns: {
+        custom: "64px 1fr",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

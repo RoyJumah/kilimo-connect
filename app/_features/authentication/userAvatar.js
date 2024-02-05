@@ -8,6 +8,8 @@ export default function UserAvatar() {
     // Check if there's an avatar URL in the session storage
     const storedAvatarUrl = sessionStorage.getItem("avatarUrl");
 
+    console.log("Stored Avatar URL:", storedAvatarUrl);
+
     if (storedAvatarUrl) {
       // If there's an avatar URL in the session storage, use it
       setAvatarUrl(storedAvatarUrl);
@@ -15,6 +17,8 @@ export default function UserAvatar() {
       // If there's no avatar URL in the session storage, generate a new one
       const randomId = Math.floor(Math.random() * 5000) + 1;
       const newAvatarUrl = `https://i.pravatar.cc/48?u=${randomId}`;
+
+      console.log("New Avatar URL:", newAvatarUrl);
 
       // Store the new avatar URL in the session storage
       sessionStorage.setItem("avatarUrl", newAvatarUrl);

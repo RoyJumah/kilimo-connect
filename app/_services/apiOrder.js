@@ -1,3 +1,4 @@
+import moment from "moment";
 import supabase from "./supabase";
 
 // passing the newOrder as as an array will work since the field in the form are the same as the ones on the table
@@ -37,6 +38,23 @@ export async function deleteOrder(userId) {
   if (error) {
     console.error("Error deleting order:", error);
     throw new Error("Order could not be deleted");
+  }
+
+  return data;
+}
+export async function getOrdersByDate(date) {
+  const dateOnly = date.slice(0, 10);
+
+  console.log("Querying orders on:", dateOnly);
+
+  const { data, error } = await supabase
+    .from("Order")
+    .select("*")
+    .eq(`date_trunc('day', "created_at")`, dateOnly);
+
+  if (error) {
+    console.error("Error fetching orders:", error);
+    return [];
   }
 
   return data;

@@ -140,10 +140,7 @@ export default function OrdersPage() {
                 {order.status === "approved" && (
                   <p className="text-xs text-stone-500">
                     (Estimated delivery:{" "}
-                    {moment(order?.estimatedDelivery)
-                      .add(3, "hours")
-                      .calendar()}
-                    )
+                    {moment(order?.edited_at).add(3, "hours").calendar()})
                   </p>
                 )}
               </div>

@@ -42,15 +42,9 @@ export async function deleteOrder(userId) {
 
   return data;
 }
-export async function getOrdersByDate(date) {
-  const dateOnly = date.slice(0, 10);
 
-  console.log("Querying orders on:", dateOnly);
-
-  const { data, error } = await supabase
-    .from("Order")
-    .select("*")
-    .eq(`date_trunc('day', "created_at")`, dateOnly);
+export async function getAllOrders() {
+  const { data, error } = await supabase.from("Order").select("*");
 
   if (error) {
     console.error("Error fetching orders:", error);

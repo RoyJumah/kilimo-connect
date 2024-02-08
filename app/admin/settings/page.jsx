@@ -4,7 +4,7 @@ import React from "react";
 export default function SettingsPage() {
   return (
     <div>
-      <Heading>Settings</Heading>
+      <Heading>Update Booking Settings</Heading>
     </div>
   );
 }

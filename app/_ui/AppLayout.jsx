@@ -42,7 +42,10 @@ function LayoutContent({ children }) {
       <div className="grid min-h-screen grid-cols-[260px,1fr] grid-rows-[auto,1fr]">
         <AdminNavBar />
         <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-        <main className="overflow-scroll bg-gray-50  p-16">
+        <main
+          className="overflow-scroll bg-gray-50 p-16"
+          style={{ maxHeight: "100vh" }}
+        >
           <div className="mx-0 my-auto flex max-w-[1200px] flex-col gap-[32px]">
             {activeTab === "/admin/dashboard" && <AdminDashboardPage />}
             {activeTab === "/admin/bookings" && <BookingsPage />}

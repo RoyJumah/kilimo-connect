@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -43,9 +42,9 @@ export default function OrdersPage() {
     queryKey: "orders",
     queryFn: fetchOrdersData,
   });
-  // Add Order no to the data
 
   if (LoadingOrdersData) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
   return (
     <div>
       <Heading>Orders</Heading>
@@ -54,7 +53,6 @@ export default function OrdersPage() {
           <TableRow>
             <TableHead>Order</TableHead>
             <TableHead>Order Id</TableHead>
-
             <TableHead>Status</TableHead>
             <TableHead>Items</TableHead>
             <TableHead>Date</TableHead>

@@ -71,3 +71,12 @@ export async function updateBooking({ id, ...booking }) {
 
   return data;
 }
+
+export async function getAllBookings() {
+  const { data, error } = await supabase.from("bookings").select("*");
+  if (error) {
+    console.error("Supabase error:", error.message);
+    throw new Error("Bookings could not be located");
+  }
+  return data;
+}

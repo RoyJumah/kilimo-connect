@@ -28,6 +28,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         custom: "64px 1fr",
+        formGrid: "240px 1fr 1.2fr",
       },
       colors: {
         border: "hsl(var(--border))",
